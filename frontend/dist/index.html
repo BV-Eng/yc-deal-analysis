@@ -156,7 +156,7 @@
       const [diversityFilter, setDiversityFilter] = useState('');
       const [themeFilter, setThemeFilter] = useState('');
       const [ownerFilter, setOwnerFilter] = useState('');
-      const [sort, setSort] = useState('company_score');
+      const [sort, setSort] = useState('weighted_total');
       const [order, setOrder] = useState('DESC');
       const [selectedIds, setSelectedIds] = useState(new Set());
 
@@ -243,7 +243,7 @@
               ['Workforce', companies.filter(function(c) { return c.thesis_fit_theme && c.thesis_fit_theme.includes('Workforce'); }).length, 'bg-amber-50', '#92400e'],
               ['Off-Thesis', companies.filter(function(c) { return !c.thesis_fit_theme || c.thesis_fit_theme === 'Off-Thesis' || c.thesis_fit_theme === 'Neutral'; }).length, 'bg-red-50', '#dc2626'],
               ['In Progress', companies.filter(function(c) { return ['Reached Out', 'Meeting Scheduled', 'Meeting Complete'].includes(c.status); }).length, 'bg-purple-50', '#7c3aed'],
-              ['Avg Score', companies.length ? (companies.reduce(function(s, c) { return s + (c.company_score || 0); }, 0) / companies.length).toFixed(1) : '0', 'bg-indigo-50', '#4f46e5']
+              ['Avg Score', companies.length ? (companies.reduce(function(s, c) { return s + (c.weighted_total || 0); }, 0) / companies.length).toFixed(1) : '0', 'bg-indigo-50', '#4f46e5']
             ].map(function(item) {
               return (
                 <div key={item[0]} className={item[2] + ' rounded-lg p-2.5 text-center'}>
@@ -319,7 +319,7 @@
                     </th>
                     <th className="px-3 py-2 w-8 text-xs text-gray-400">#</th>
                     <SortHeader col="name">Company</SortHeader>
-                    <SortHeader col="company_score">Score</SortHeader>
+                    <SortHeader col="weighted_total">Score</SortHeader>
                     <SortHeader col="thesis_fit_score">Thesis Fit</SortHeader>
                     <th className="px-3 py-2 text-left text-xs font-semibold text-gray-500 uppercase">Status</th>
                     <SortHeader col="owner">Owner</SortHeader>
@@ -353,7 +353,7 @@
                           </div>
                         </div>
                       </td>
-                      <td className="px-3 py-2"><ScoreBadge score={c.company_score || 0} /></td>
+                      <td className="px-3 py-2"><ScoreBadge score={c.weighted_total || 0} /></td>
                       <td className="px-3 py-2">
                         <ThemeBadge theme={c.thesis_fit_theme || 'Neutral'} compact={true} />
                       </td>
