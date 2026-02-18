@@ -92,18 +92,31 @@ async function saveData(data) {
 
 async function getCompanies(filters = {}) {
   const data = await getData();
-  let companies = data.companies.map(c => ({
-    ...c,
-    founder_names: c.founders?.map(f => f.name).join(', ') || '',
-    founder_linkedin_data: c.founders?.map(f => `${f.name}::${f.linkedin || ''}`).join('|||') || '',
-    has_female_founder: c.founders?.some(f => f.is_female) ? 1 : 0,
-    has_black_founder: c.founders?.some(f => f.is_black) ? 1 : 0,
-    has_hispanic_founder: c.founders?.some(f => f.is_hispanic_latino) ? 1 : 0,
-    last_interaction_date: c.interactions?.[0]?.date || null,
-    avg_founder_score: c.founders?.length > 0
+
+  // Get scoring weights from settings
+  const companyWeight = parseFloat(data.settings?.company_score_weight || 50) / 100;
+  const founderWeight = parseFloat(data.settings?.founder_score_weight || 50) / 100;
+
+  let companies = data.companies.map(c => {
+    const avg_founder_score = c.founders?.length > 0
       ? c.founders.reduce((sum, f) => sum + (f.founder_score || 0), 0) / c.founders.length
-      : 0
-  }));
+      : 0;
+
+    // Calculate weighted total score combining company and founder scores
+    const weighted_total = (c.company_score || 0) * companyWeight + avg_founder_score * founderWeight;
+
+    return {
+      ...c,
+      founder_names: c.founders?.map(f => f.name).join(', ') || '',
+      founder_linkedin_data: c.founders?.map(f => `${f.name}::${f.linkedin || ''}`).join('|||') || '',
+      has_female_founder: c.founders?.some(f => f.is_female) ? 1 : 0,
+      has_black_founder: c.founders?.some(f => f.is_black) ? 1 : 0,
+      has_hispanic_founder: c.founders?.some(f => f.is_hispanic_latino) ? 1 : 0,
+      last_interaction_date: c.interactions?.[0]?.date || null,
+      avg_founder_score,
+      weighted_total: Math.round(weighted_total * 100) / 100
+    };
+  });
 
   // Apply filters
   const { status, industry, location, search, diversity, theme, owner: ownerFilter, tag } = filters;
@@ -155,8 +168,8 @@ async function getCompanies(filters = {}) {
     }
   }
 
-  // Sort
-  const { sort = 'company_score', order = 'DESC' } = filters;
+  // Sort - default to weighted_total which combines company + founder scores
+  const { sort = 'weighted_total', order = 'DESC' } = filters;
   companies.sort((a, b) => {
     const aVal = a[sort] ?? 0;
     const bVal = b[sort] ?? 0;
