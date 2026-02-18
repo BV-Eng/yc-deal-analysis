@@ -1,0 +1,37 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(brew install:*)",
+      "WebFetch(domain:www.ycombinator.com)",
+      "WebFetch(domain:45bwzj1sgc-dsn.algolia.net)",
+      "Bash(/usr/bin/python3:*)",
+      "Bash(node --version:*)",
+      "Bash(npm --version:*)",
+      "Bash(xcode-select:*)",
+      "Bash(export PATH=\"/tmp/node-v20.11.1-darwin-arm64/bin:$PATH\")",
+      "Bash(npm init:*)",
+      "Bash(npm install:*)",
+      "Bash(curl -s \"https://45bwzj1sgc-dsn.algolia.net/1/indexes/YCCompany_production/query\" -H \"x-algolia-application-id: 45BWZJ1SGC\" -H \"x-algolia-api-key: MjBjYjRiMzY0NzdhZWY0NjExY2NhZjYxMGIxYjc2MTAwNWFkNTkwNTc4NjgxYjU0YzFhYTY2ZGQ5OGY5NDMxZnJlc3RyaWN0SW5kaWNlcz0lNUIlMjJZQ0NvbXBhbnlfcHJvZHVjdGlvbiUyMiUyQyUyMllDQ29tcGFueV9CeV9MYXVuY2hfRGF0ZV9wcm9kdWN0aW9uJTIyJTVEJnRhZ0ZpbHRlcnM9JTVCJTIyeWNkY19wdWJsaWMlMjIlNUQmYW5hbHl0aWNzVGFncz0lNUIlMjJ5Y2RjJTIyJTVE\" -d '{\"\"query\"\":\"\"\"\",\"\"page\"\":0,\"\"hitsPerPage\"\":200,\"\"facetFilters\"\":[[\"\"batch:W26\"\"]]}')",
+      "Bash(node -e:*)",
+      "Bash(/usr/bin/curl --version)",
+      "Bash(node scrape_yc.js:*)",
+      "Bash(node debug_fetch.js:*)",
+      "Bash(node debug_batches.js:*)",
+      "Bash(node scrape_founders.js:*)",
+      "Bash(node scrape_founders_v2.js:*)",
+      "Bash(node generate_scores.js:*)",
+      "Bash(node:*)",
+      "Bash(chmod:*)",
+      "Bash(pkill:*)",
+      "Bash(/usr/bin/git:*)",
+      "Bash(/tmp/cloudflared:*)",
+      "Bash(curl:*)",
+      "Bash(python3:*)",
+      "Bash(pgrep:*)",
+      "Bash(kill:*)",
+      "Bash(npx:*)",
+      "Bash(brew list:*)",
+      "WebFetch(domain:www.linkedin.com)"
+    ]
+  }
+}
