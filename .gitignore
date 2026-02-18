@@ -1,9 +1,12 @@
 # Dependencies
 node_modules/
 
-# Data files (large/sensitive)
-data/*.db
-data/*.json
+# Local data (not seed)
+data/local-data.json
+data/yc_deals.db
+data/yc_w26_raw.json
+data/yc_w26_companies.json
+data/founders_to_enrich.json
 *.log
 
 # Environment
@@ -23,5 +26,5 @@ Thumbs.db
 /tmp/
 *.tmp
 
-# Build output
-frontend/dist/
+# Keep seed-data.json for deployment
+!data/seed-data.json

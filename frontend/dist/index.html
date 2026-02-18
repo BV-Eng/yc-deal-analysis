@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YC W26 Deal Analysis CRM</title>
+  <script src="https://cdn.jsdelivr.net/npm/react@18/umd/react.production.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Inter', sans-serif; }
+    .score-badge { transition: all 0.2s; }
+    .score-badge:hover { transform: scale(1.1); }
+    .tab-active { border-bottom: 2px solid #6366f1; color: #6366f1; }
+    .fade-in { animation: fadeIn 0.3s ease-in; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .status-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+    input[type="range"] { -webkit-appearance: none; height: 6px; border-radius: 3px; background: #e2e8f0; }
+    input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%; background: #6366f1; cursor: pointer; }
+    .scrollbar-thin::-webkit-scrollbar { width: 6px; }
+    .scrollbar-thin::-webkit-scrollbar-track { background: #f1f5f9; }
+    .scrollbar-thin::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <div id="root"></div>
+  <script type="text/babel">
+    const { useState, useEffect, useCallback, useRef, useMemo } = React;
+    const API = '';
+
+    // ==========================================
+    // UTILITY FUNCTIONS
+    // ==========================================
+    const statusColors = {
+      'Not Contacted': '#94a3b8',
+      'Reached Out': '#f59e0b',
+      'Interested': '#22c55e',
+      'Not Interested': '#ef4444',
+      'Meeting Scheduled': '#3b82f6',
+      'Meeting Complete': '#8b5cf6',
+      'Passed': '#f97316',
+      'Investing': '#10b981'
+    };
+
+    const statusOptions = ['Not Contacted', 'Reached Out', 'Interested', 'Not Interested', 'Meeting Scheduled', 'Meeting Complete', 'Passed', 'Investing'];
+
+    function scoreColor(score) {
+      if (score >= 8) return '#10b981';
+      if (score >= 6) return '#3b82f6';
+      if (score >= 4) return '#f59e0b';
+      if (score >= 2) return '#ef4444';
+      return '#94a3b8';
+    }
+
+    function ScoreBadge({ score, size = 'md' }) {
+      const sz = size === 'lg' ? 'w-12 h-12 text-lg' : size === 'sm' ? 'w-7 h-7 text-xs' : 'w-9 h-9 text-sm';
+      return (
+        <div className={`score-badge ${sz} rounded-full flex items-center justify-center font-bold text-white`}
+          style={{ backgroundColor: scoreColor(score) }}>
+          {score > 0 ? score.toFixed(1) : '-'}
+        </div>
+      );
+    }
+
+    var themeColors = {
+      'Sustainable Industry': { bg: '#dcfce7', text: '#166534', icon: '🌱' },
+      'Human Health': { bg: '#dbeafe', text: '#1e40af', icon: '🏥' },
+      "Tomorrow's Workforce": { bg: '#fef3c7', text: '#92400e', icon: '🎓' },
+      'Sustainable Industry (Weak)': { bg: '#f0fdf4', text: '#4ade80', icon: '🌱' },
+      'Human Health (Weak)': { bg: '#eff6ff', text: '#93c5fd', icon: '🏥' },
+      "Tomorrow's Workforce (Weak)": { bg: '#fffbeb', text: '#fbbf24', icon: '🎓' },
+      'Off-Thesis': { bg: '#fef2f2', text: '#dc2626', icon: '✗' },
+      'Neutral': { bg: '#f5f5f5', text: '#737373', icon: '○' }
+    };
+
+    function ThemeBadge({ theme, compact }) {
+      var t = themeColors[theme] || themeColors['Neutral'];
+      var shortLabel = theme;
+      if (compact) {
+        shortLabel = theme.replace(' (Weak)', '').replace("Tomorrow's ", '');
+        if (theme.includes('Weak')) shortLabel += '*';
+      }
+      return (
+        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium whitespace-nowrap"
+          style={{ backgroundColor: t.bg, color: t.text }}>
+          <span>{t.icon}</span> {shortLabel}
+        </span>
+      );
+    }
+
+    // ==========================================
+    // APP COMPONENT
+    // ==========================================
+    function App() {
+      const [page, setPage] = useState('dashboard');
+      const [selectedCompanyId, setSelectedCompanyId] = useState(null);
+
+      const navigate = useCallback((p, id) => {
+        setPage(p);
+        if (id) setSelectedCompanyId(id);
+      }, []);
+
+      return (
+        <div className="min-h-screen bg-gray-50">
+          <nav className="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+            <div className="max-w-[1600px] mx-auto px-4">
+              <div className="flex items-center justify-between h-14">
+                <div className="flex items-center gap-6">
+                  <h1 className="text-lg font-bold text-indigo-600 cursor-pointer" onClick={() => navigate('dashboard')}>
+                    YC W26 Deals
+                  </h1>
+                  <div className="flex gap-1">
+                    {[['dashboard', 'Dashboard'], ['analytics', 'Analytics'], ['settings', 'Settings']].map(([key, label]) => (
+                      <button key={key}
+                        className={`px-3 py-1.5 rounded text-sm font-medium transition ${page === key ? 'bg-indigo-50 text-indigo-700' : 'text-gray-600 hover:bg-gray-100'}`}
+                        onClick={() => navigate(key)}>
+                        {label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                <div className="flex items-center gap-3">
+                  <a href="/api/export/csv" className="text-sm text-gray-600 hover:text-indigo-600 font-medium">Export CSV</a>
+                </div>
+              </div>
+            </div>
+          </nav>
+
+          <main className="max-w-[1600px] mx-auto px-4 py-4">
+            {page === 'dashboard' && !selectedCompanyId && <Dashboard onSelect={(id) => navigate('detail', id)} />}
+            {page === 'dashboard' && selectedCompanyId && (
+              <CompanyDetail id={selectedCompanyId} onBack={() => { setSelectedCompanyId(null); navigate('dashboard'); }} />
+            )}
+            {page === 'detail' && selectedCompanyId && (
+              <CompanyDetail id={selectedCompanyId} onBack={() => { setSelectedCompanyId(null); navigate('dashboard'); }} />
+            )}
+            {page === 'analytics' && <Analytics />}
+            {page === 'settings' && <Settings />}
+          </main>
+        </div>
+      );
+    }
+
+    // ==========================================
+    // DASHBOARD
+    // ==========================================
+    function Dashboard({ onSelect }) {
+      const [companies, setCompanies] = useState([]);
+      const [loading, setLoading] = useState(true);
+      const [search, setSearch] = useState('');
+      const [statusFilter, setStatusFilter] = useState('');
+      const [industryFilter, setIndustryFilter] = useState('');
+      const [diversityFilter, setDiversityFilter] = useState('');
+      const [themeFilter, setThemeFilter] = useState('');
+      const [ownerFilter, setOwnerFilter] = useState('');
+      const [sort, setSort] = useState('company_score');
+      const [order, setOrder] = useState('DESC');
+      const [selectedIds, setSelectedIds] = useState(new Set());
+
+      const fetchCompanies = useCallback(async () => {
+        setLoading(true);
+        const params = new URLSearchParams();
+        if (search) params.set('search', search);
+        if (statusFilter) params.set('status', statusFilter);
+        if (industryFilter) params.set('industry', industryFilter);
+        if (diversityFilter) params.set('diversity', diversityFilter);
+        if (themeFilter) params.set('theme', themeFilter);
+        if (ownerFilter) params.set('owner', ownerFilter);
+        if (sort) params.set('sort', sort);
+        if (order) params.set('order', order);
+        const res = await fetch(`${API}/api/companies?${params}`);
+        const data = await res.json();
+        setCompanies(data);
+        setLoading(false);
+      }, [search, statusFilter, industryFilter, diversityFilter, themeFilter, ownerFilter, sort, order]);
+
+      useEffect(() => { fetchCompanies(); }, [fetchCompanies]);
+
+      const industries = useMemo(() => {
+        const set = new Set();
+        companies.forEach(c => (c.industries || '').split(', ').forEach(i => { if (i) set.add(i); }));
+        return [...set].sort();
+      }, [companies]);
+
+      const toggleSort = (col) => {
+        if (sort === col) setOrder(o => o === 'DESC' ? 'ASC' : 'DESC');
+        else { setSort(col); setOrder('DESC'); }
+      };
+
+      const handleBulkStatus = async (newStatus) => {
+        if (selectedIds.size === 0) return;
+        await fetch(`${API}/api/bulk/status`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ companyIds: [...selectedIds], status: newStatus })
+        });
+        setSelectedIds(new Set());
+        fetchCompanies();
+      };
+
+      var updateCompanyField = function(companyId, field, value) {
+        var body = {};
+        body[field] = value;
+        fetch(API + '/api/companies/' + companyId, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body)
+        }).then(function() {
+          setCompanies(function(prev) {
+            return prev.map(function(c) {
+              if (c.id === companyId) {
+                var updated = Object.assign({}, c);
+                updated[field] = value;
+                return updated;
+              }
+              return c;
+            });
+          });
+        });
+      };
+
+      var ownerOptions = ['Wes', 'Rick', 'Lyndsey'];
+
+      const SortHeader = ({ col, children }) => (
+        <th className="px-3 py-2 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider cursor-pointer hover:text-indigo-600 select-none"
+          onClick={() => toggleSort(col)}>
+          {children} {sort === col ? (order === 'DESC' ? '↓' : '↑') : ''}
+        </th>
+      );
+
+      return (
+        <div className="fade-in">
+          {/* Stats bar */}
+          <div className="grid grid-cols-8 gap-2 mb-4">
+            {[
+              ['Total', companies.length, 'bg-gray-100', '#374151'],
+              ['On-Thesis', companies.filter(function(c) { return c.thesis_fit_theme && c.thesis_fit_theme !== 'Off-Thesis' && c.thesis_fit_theme !== 'Neutral' && !c.thesis_fit_theme.includes('Weak'); }).length, 'bg-green-50', '#166534'],
+              ['Climate', companies.filter(function(c) { return c.thesis_fit_theme && c.thesis_fit_theme.includes('Sustainable'); }).length, 'bg-emerald-50', '#065f46'],
+              ['Health', companies.filter(function(c) { return c.thesis_fit_theme && c.thesis_fit_theme.includes('Health'); }).length, 'bg-blue-50', '#1e40af'],
+              ['Workforce', companies.filter(function(c) { return c.thesis_fit_theme && c.thesis_fit_theme.includes('Workforce'); }).length, 'bg-amber-50', '#92400e'],
+              ['Off-Thesis', companies.filter(function(c) { return !c.thesis_fit_theme || c.thesis_fit_theme === 'Off-Thesis' || c.thesis_fit_theme === 'Neutral'; }).length, 'bg-red-50', '#dc2626'],
+              ['In Progress', companies.filter(function(c) { return ['Reached Out', 'Meeting Scheduled', 'Meeting Complete'].includes(c.status); }).length, 'bg-purple-50', '#7c3aed'],
+              ['Avg Score', companies.length ? (companies.reduce(function(s, c) { return s + (c.company_score || 0); }, 0) / companies.length).toFixed(1) : '0', 'bg-indigo-50', '#4f46e5']
+            ].map(function(item) {
+              return (
+                <div key={item[0]} className={item[2] + ' rounded-lg p-2.5 text-center'}>
+                  <div className="text-xl font-bold" style={{ color: item[3] }}>{item[1]}</div>
+                  <div className="text-xs text-gray-500">{item[0]}</div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Filters */}
+          <div className="bg-white rounded-lg border p-3 mb-4 flex flex-wrap gap-3 items-center">
+            <input type="text" placeholder="Search companies, founders..." value={search}
+              onChange={e => setSearch(e.target.value)}
+              className="border rounded-lg px-3 py-1.5 text-sm w-64 focus:ring-2 focus:ring-indigo-300 focus:border-indigo-400 outline-none" />
+            <select value={statusFilter} onChange={e => setStatusFilter(e.target.value)}
+              className="border rounded-lg px-3 py-1.5 text-sm">
+              <option value="">All Statuses</option>
+              {statusOptions.map(s => <option key={s} value={s}>{s}</option>)}
+            </select>
+            <select value={industryFilter} onChange={e => setIndustryFilter(e.target.value)}
+              className="border rounded-lg px-3 py-1.5 text-sm">
+              <option value="">All Industries</option>
+              {industries.map(i => <option key={i} value={i}>{i}</option>)}
+            </select>
+            <select value={themeFilter} onChange={function(e) { setThemeFilter(e.target.value); }}
+              className="border rounded-lg px-3 py-1.5 text-sm font-medium"
+              style={{ borderColor: themeFilter ? '#6366f1' : undefined }}>
+              <option value="">All Themes</option>
+              <option value="on-thesis">On-Thesis Only</option>
+              <option value="Sustainable Industry">🌱 Climate/Sustainability</option>
+              <option value="Human Health">🏥 Human Health</option>
+              <option value="Tomorrow's Workforce">🎓 Workforce</option>
+              <option value="off-thesis">Off-Thesis / Neutral</option>
+            </select>
+            <select value={diversityFilter} onChange={e => setDiversityFilter(e.target.value)}
+              className="border rounded-lg px-3 py-1.5 text-sm">
+              <option value="">All Founders</option>
+              <option value="female">Women Founders</option>
+              <option value="bipoc">BIPOC Founders</option>
+            </select>
+            <select value={ownerFilter} onChange={function(e) { setOwnerFilter(e.target.value); }}
+              className="border rounded-lg px-3 py-1.5 text-sm"
+              style={{ borderColor: ownerFilter ? '#6366f1' : undefined }}>
+              <option value="">All Owners</option>
+              <option value="Wes">Wes</option>
+              <option value="Rick">Rick</option>
+              <option value="Lyndsey">Lyndsey</option>
+              <option value="unassigned">Unassigned</option>
+            </select>
+            {selectedIds.size > 0 && (
+              <div className="flex items-center gap-2 ml-auto">
+                <span className="text-sm text-gray-500">{selectedIds.size} selected</span>
+                <select onChange={e => { if (e.target.value) handleBulkStatus(e.target.value); e.target.value = ''; }}
+                  className="border rounded-lg px-2 py-1 text-sm">
+                  <option value="">Bulk Status...</option>
+                  {statusOptions.map(s => <option key={s} value={s}>{s}</option>)}
+                </select>
+              </div>
+            )}
+          </div>
+
+          {/* Table */}
+          <div className="bg-white rounded-lg border overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead className="bg-gray-50 border-b">
+                  <tr>
+                    <th className="px-3 py-2 w-8">
+                      <input type="checkbox"
+                        onChange={e => setSelectedIds(e.target.checked ? new Set(companies.map(c => c.id)) : new Set())}
+                        checked={selectedIds.size === companies.length && companies.length > 0} />
+                    </th>
+                    <th className="px-3 py-2 w-8 text-xs text-gray-400">#</th>
+                    <SortHeader col="name">Company</SortHeader>
+                    <SortHeader col="company_score">Score</SortHeader>
+                    <SortHeader col="thesis_fit_score">Thesis Fit</SortHeader>
+                    <th className="px-3 py-2 text-left text-xs font-semibold text-gray-500 uppercase">Status</th>
+                    <SortHeader col="owner">Owner</SortHeader>
+                    <th className="px-3 py-2 text-left text-xs font-semibold text-gray-500 uppercase">Founders</th>
+                    <SortHeader col="industries">Industry</SortHeader>
+                    <th className="px-3 py-2 text-left text-xs font-semibold text-gray-500 uppercase">Location</th>
+                    <th className="px-3 py-2 text-left text-xs font-semibold text-gray-500 uppercase">Last Contact</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {loading ? (
+                    <tr><td colSpan={11} className="text-center py-8 text-gray-400">Loading companies...</td></tr>
+                  ) : companies.map((c, idx) => (
+                    <tr key={c.id} className="border-b hover:bg-indigo-50/30 transition cursor-pointer"
+                      onClick={(e) => { if (e.target.type !== 'checkbox') onSelect(c.id); }}>
+                      <td className="px-3 py-2">
+                        <input type="checkbox" checked={selectedIds.has(c.id)}
+                          onChange={e => {
+                            const next = new Set(selectedIds);
+                            e.target.checked ? next.add(c.id) : next.delete(c.id);
+                            setSelectedIds(next);
+                          }} />
+                      </td>
+                      <td className="px-3 py-2 text-xs text-gray-400">{idx + 1}</td>
+                      <td className="px-3 py-2">
+                        <div className="flex items-center gap-2">
+                          {c.logo_url && <img src={c.logo_url} className="w-6 h-6 rounded" alt="" />}
+                          <div>
+                            <div className="font-medium text-sm text-gray-900">{c.name}</div>
+                            <div className="text-xs text-gray-500 truncate max-w-xs">{c.one_liner}</div>
+                          </div>
+                        </div>
+                      </td>
+                      <td className="px-3 py-2"><ScoreBadge score={c.company_score || 0} /></td>
+                      <td className="px-3 py-2">
+                        <ThemeBadge theme={c.thesis_fit_theme || 'Neutral'} compact={true} />
+                      </td>
+                      <td className="px-3 py-2" onClick={function(e) { e.stopPropagation(); }}>
+                        <select value={c.status || 'Not Contacted'}
+                          onChange={function(e) { updateCompanyField(c.id, 'status', e.target.value); }}
+                          className="text-xs font-medium rounded-full px-2 py-0.5 border-0 cursor-pointer appearance-none bg-transparent focus:ring-2 focus:ring-indigo-300 outline-none"
+                          style={{ backgroundColor: statusColors[c.status] + '20', color: statusColors[c.status] }}>
+                          {statusOptions.map(function(s) { return React.createElement('option', { key: s, value: s }, s); })}
+                        </select>
+                      </td>
+                      <td className="px-3 py-2" onClick={function(e) { e.stopPropagation(); }}>
+                        <select value={c.owner || ''}
+                          onChange={function(e) { updateCompanyField(c.id, 'owner', e.target.value || null); }}
+                          className="text-xs rounded px-1.5 py-0.5 border border-gray-200 cursor-pointer focus:ring-2 focus:ring-indigo-300 outline-none bg-white"
+                          style={{ color: c.owner ? '#374151' : '#9ca3af', minWidth: '80px' }}>
+                          <option value="">—</option>
+                          {ownerOptions.map(function(o) { return React.createElement('option', { key: o, value: o }, o); })}
+                        </select>
+                      </td>
+                      <td className="px-3 py-2 text-xs text-gray-600 max-w-[280px]" onClick={function(e) { e.stopPropagation(); }}>
+                        {c.founder_linkedin_data ? c.founder_linkedin_data.split('|||').map(function(fd, fi) {
+                          var parts = fd.split('::');
+                          var fname = parts[0] || '';
+                          var flinkedin = parts[1] || '';
+                          return (
+                            <span key={fi}>
+                              {fi > 0 && ', '}
+                              {flinkedin ? (
+                                <a href={flinkedin} target="_blank" rel="noopener noreferrer"
+                                  className="text-blue-600 hover:text-blue-800 hover:underline">
+                                  {fname}
+                                </a>
+                              ) : fname}
+                            </span>
+                          );
+                        }) : (c.founder_names || '-')}
+                      </td>
+                      <td className="px-3 py-2 text-xs text-gray-600">{c.industries || '-'}</td>
+                      <td className="px-3 py-2 text-xs text-gray-600">{c.all_locations || '-'}</td>
+                      <td className="px-3 py-2 text-xs text-gray-500">{c.last_interaction_date || '-'}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // ==========================================
+    // COMPANY DETAIL
+    // ==========================================
+    function CompanyDetail({ id, onBack }) {
+      const [data, setData] = useState(null);
+      const [loading, setLoading] = useState(true);
+      const [tab, setTab] = useState('overview');
+      const [saving, setSaving] = useState(false);
+
+      const fetchData = useCallback(async () => {
+        setLoading(true);
+        const res = await fetch(`${API}/api/companies/${id}`);
+        const d = await res.json();
+        setData(d);
+        setLoading(false);
+      }, [id]);
+
+      useEffect(() => { fetchData(); }, [fetchData]);
+
+      if (loading || !data) return <div className="text-center py-12 text-gray-400">Loading...</div>;
+
+      const { company, founders, interactions, notes } = data;
+
+      const updateStatus = async (status) => {
+        await fetch(`${API}/api/companies/${id}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ status })
+        });
+        fetchData();
+      };
+
+      const tabs = [
+        ['overview', 'Overview'],
+        ['company_scores', 'Company Scores'],
+        ['founder_scores', 'Founder Scores'],
+        ['interactions', 'Interactions & Notes'],
+        ['research', 'Research Data']
+      ];
+
+      return (
+        <div className="fade-in">
+          <button onClick={onBack} className="text-sm text-indigo-600 hover:text-indigo-800 mb-3 flex items-center gap-1">
+            ← Back to Dashboard
+          </button>
+
+          {/* Header */}
+          <div className="bg-white rounded-lg border p-5 mb-4">
+            <div className="flex items-start justify-between">
+              <div className="flex items-center gap-4">
+                {company.logo_url && <img src={company.logo_url} className="w-14 h-14 rounded-lg" alt="" />}
+                <div>
+                  <h2 className="text-2xl font-bold text-gray-900">{company.name}</h2>
+                  <p className="text-gray-600 mt-0.5">{company.one_liner}</p>
+                  <div className="flex items-center gap-3 mt-2 text-sm text-gray-500">
+                    {company.website && <a href={company.website} target="_blank" className="text-indigo-600 hover:underline">Website</a>}
+                    {company.industries && <span>{company.industries}</span>}
+                    {company.all_locations && <span>{company.all_locations}</span>}
+                    {company.batch && <span className="bg-orange-100 text-orange-700 px-2 py-0.5 rounded text-xs font-medium">{company.batch}</span>}
+                    <ThemeBadge theme={company.thesis_fit_theme || 'Neutral'} />
+                  </div>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <ScoreBadge score={company.weighted_total || 0} size="lg" />
+                <select value={company.status || 'Not Contacted'} onChange={e => updateStatus(e.target.value)}
+                  className="border rounded-lg px-3 py-2 text-sm font-medium"
+                  style={{ color: statusColors[company.status] || '#94a3b8' }}>
+                  {statusOptions.map(s => <option key={s} value={s}>{s}</option>)}
+                </select>
+              </div>
+            </div>
+
+            {/* Founder cards */}
+            {founders.length > 0 && (
+              <div className="mt-4 flex flex-wrap gap-3">
+                {founders.map(f => (
+                  <div key={f.id} className="flex items-center gap-2 bg-gray-50 rounded-lg px-3 py-2">
+                    <div className="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 text-sm font-bold">
+                      {(f.name || '?')[0]}
+                    </div>
+                    <div>
+                      <div className="text-sm font-medium">{f.name}</div>
+                      <div className="text-xs text-gray-500">{f.title}</div>
+                    </div>
+                    {f.linkedin && (
+                      <a href={f.linkedin} target="_blank" className="text-blue-600 hover:text-blue-800 ml-1">
+                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+                      </a>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Tabs */}
+          <div className="border-b border-gray-200 mb-4">
+            <div className="flex gap-0">
+              {tabs.map(([key, label]) => (
+                <button key={key}
+                  className={`px-4 py-2.5 text-sm font-medium transition ${tab === key ? 'tab-active' : 'text-gray-500 hover:text-gray-800'}`}
+                  onClick={() => setTab(key)}>
+                  {label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Tab content */}
+          {tab === 'overview' && <OverviewTab company={company} founders={founders} />}
+          {tab === 'company_scores' && <CompanyScoresTab companyId={id} scores={company} onSave={fetchData} />}
+          {tab === 'founder_scores' && <FounderScoresTab founders={founders} onSave={fetchData} />}
+          {tab === 'interactions' && <InteractionsTab companyId={id} interactions={interactions} notes={notes} onSave={fetchData} />}
+          {tab === 'research' && <ResearchTab company={company} founders={founders} />}
+        </div>
+      );
+    }
+
+    // ==========================================
+    // OVERVIEW TAB
+    // ==========================================
+    function OverviewTab({ company, founders }) {
+      return (
+        <div className="grid grid-cols-3 gap-4 fade-in">
+          <div className="col-span-2 space-y-4">
+            <div className="bg-white rounded-lg border p-4">
+              <h3 className="font-semibold text-gray-900 mb-2">Description</h3>
+              <p className="text-sm text-gray-600">{company.long_description || company.one_liner || 'No description available'}</p>
+            </div>
+
+            <div className="bg-white rounded-lg border p-4">
+              <div className="flex items-center justify-between mb-3">
+                <h3 className="font-semibold text-gray-900">Thesis Alignment</h3>
+                <ThemeBadge theme={company.thesis_fit_theme || 'Neutral'} />
+              </div>
+              <div className="flex items-center gap-3 mb-4 p-3 rounded-lg" style={{ backgroundColor: (themeColors[company.thesis_fit_theme] || themeColors['Neutral']).bg }}>
+                <ScoreBadge score={company.thesis_fit_score || 0} size="lg" />
+                <div>
+                  <div className="font-medium text-sm">{company.thesis_fit_theme || 'Unclassified'}</div>
+                  <div className="text-xs text-gray-600 mt-0.5">{company.thesis_fit_justification || 'Not yet evaluated'}</div>
+                </div>
+              </div>
+              <h4 className="font-medium text-gray-700 text-sm mb-2">Category Scores</h4>
+              <div className="grid grid-cols-4 gap-3">
+                {[
+                  ['Thesis Fit (25%)', company.thesis_fit_score],
+                  ['Impact (20%)', company.impact_score],
+                  ['Team (15%)', company.team_score],
+                  ['Product (10%)', company.product_score],
+                  ['Business Model (10%)', company.business_model_score],
+                  ['Market (10%)', company.market_score],
+                  ['Traction (5%)', company.traction_score],
+                  ['Deal (5%)', company.deal_score]
+                ].map(function(item) {
+                  return (
+                    <div key={item[0]} className="text-center p-2 bg-gray-50 rounded-lg">
+                      <ScoreBadge score={item[1] || 0} size="sm" />
+                      <div className="text-xs text-gray-500 mt-1">{item[0]}</div>
+                    </div>
+                  );
+                })}
+              </div>
+              <div className="mt-3 text-center p-2 bg-indigo-50 rounded-lg">
+                <ScoreBadge score={company.weighted_total || 0} size="lg" />
+                <div className="text-xs text-indigo-600 mt-1 font-medium">Weighted Total</div>
+              </div>
+            </div>
+          </div>
+
+          <div className="space-y-4">
+            <div className="bg-white rounded-lg border p-4">
+              <h3 className="font-semibold text-gray-900 mb-2">Quick Info</h3>
+              <div className="space-y-2 text-sm">
+                <div className="flex justify-between"><span className="text-gray-500">Batch</span><span>{company.batch}</span></div>
+                <div className="flex justify-between"><span className="text-gray-500">Team Size</span><span>{company.team_size || 'Unknown'}</span></div>
+                <div className="flex justify-between"><span className="text-gray-500">Founded</span><span>{company.year_founded || 'Unknown'}</span></div>
+                <div className="flex justify-between"><span className="text-gray-500">Industry</span><span>{company.industries || '-'}</span></div>
+                <div className="flex justify-between"><span className="text-gray-500">Location</span><span>{company.all_locations || '-'}</span></div>
+                <div className="flex justify-between"><span className="text-gray-500">Tags</span><span className="text-right">{company.tags || '-'}</span></div>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-lg border p-4">
+              <h3 className="font-semibold text-gray-900 mb-2">Links</h3>
+              <div className="space-y-1.5">
+                {company.website && <a href={company.website} target="_blank" className="block text-sm text-indigo-600 hover:underline truncate">Website</a>}
+                <a href={`https://www.ycombinator.com/companies/${company.slug}`} target="_blank" className="block text-sm text-indigo-600 hover:underline">YC Profile</a>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-lg border p-4">
+              <h3 className="font-semibold text-gray-900 mb-2">Founders ({founders.length})</h3>
+              {founders.map(function(f) {
+                var summaryParts = [];
+                if (f.schools) summaryParts.push(f.schools);
+                if (f.prior_employers) summaryParts.push(f.prior_employers);
+                if (f.awards) summaryParts.push(f.awards);
+                var quickSummary = summaryParts.join(' · ');
+                return (
+                  <div key={f.id} className="py-2 border-b last:border-0">
+                    <div className="flex items-center gap-2">
+                      <div className="w-6 h-6 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 text-xs font-bold flex-shrink-0">
+                        {(f.name || '?')[0]}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="text-sm font-medium truncate">{f.name}</div>
+                        <div className="text-xs text-gray-500">{f.title}</div>
+                      </div>
+                      {f.is_female ? <span className="text-xs bg-pink-100 text-pink-700 px-1 rounded">W</span> : null}
+                      {f.linkedin && (
+                        <a href={f.linkedin} target="_blank" className="text-blue-600 hover:text-blue-800 flex-shrink-0">
+                          <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        </a>
+                      )}
+                    </div>
+                    {quickSummary && <div className="text-xs text-gray-500 mt-1 ml-8">{quickSummary}</div>}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // ==========================================
+    // COMPANY SCORES TAB
+    // ==========================================
+    function CompanyScoresTab({ companyId, scores, onSave }) {
+      const categories = [
+        { key: 'thesis_fit', label: 'Thesis Fit', desc: 'Alignment with Better.vc themes: Climate/Sustainability, Human Health, Workforce' },
+        { key: 'impact', label: 'Impact', desc: 'Intrinsic impact, scale potential, SDG alignment' },
+        { key: 'team', label: 'Team', desc: 'CEO acumen, technical founders, diversity, domain expertise' },
+        { key: 'product', label: 'Product', desc: 'Innovation, technology type, defensibility, differentiation' },
+        { key: 'business_model', label: 'Business Model', desc: 'B2B/B2C clarity, unit economics, margins, scalability' },
+        { key: 'market', label: 'Market', desc: 'TAM size, competition, urgency, timing, inflections' },
+        { key: 'traction', label: 'Traction', desc: 'Customer validation, product maturity, growth metrics' },
+        { key: 'deal', label: 'Deal', desc: 'Geography fit, referral quality, funding, valuation, investors' }
+      ];
+
+      var defaultWeights = { thesis_fit: 25, impact: 20, team: 15, product: 10, business_model: 10, market: 10, traction: 5, deal: 5 };
+
+      const [form, setForm] = useState(() => {
+        const f = {};
+        categories.forEach(c => {
+          f[`${c.key}_score`] = scores[`${c.key}_score`] || 0;
+          f[`${c.key}_weight`] = scores[`${c.key}_weight`] || defaultWeights[c.key] || 10;
+          f[`${c.key}_justification`] = scores[`${c.key}_justification`] || '';
+        });
+        if (scores.thesis_fit_theme) f.thesis_fit_theme = scores.thesis_fit_theme;
+        return f;
+      });
+
+      const weightedTotal = useMemo(() => {
+        let totalW = 0, sum = 0;
+        categories.forEach(c => {
+          const s = form[`${c.key}_score`] || 0;
+          const w = form[`${c.key}_weight`] || 0;
+          totalW += w;
+          sum += s * w;
+        });
+        return totalW > 0 ? sum / totalW : 0;
+      }, [form]);
+
+      const save = async () => {
+        await fetch(`${API}/api/companies/${companyId}/scores`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(form)
+        });
+        onSave();
+      };
+
+      return (
+        <div className="fade-in space-y-3">
+          <div className="flex items-center justify-between bg-white rounded-lg border p-4">
+            <div className="flex items-center gap-3">
+              <ScoreBadge score={weightedTotal} size="lg" />
+              <div>
+                <div className="font-semibold text-gray-900">Weighted Company Score</div>
+                <div className="text-xs text-gray-500">Based on category scores and weights</div>
+              </div>
+            </div>
+            <button onClick={save} className="px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm font-medium hover:bg-indigo-700">
+              Save Scores
+            </button>
+          </div>
+
+          {categories.map(cat => (
+            <div key={cat.key} className="bg-white rounded-lg border p-4">
+              <div className="flex items-start justify-between mb-3">
+                <div>
+                  <h4 className="font-semibold text-gray-900">{cat.label}</h4>
+                  <p className="text-xs text-gray-500">{cat.desc}</p>
+                </div>
+                <ScoreBadge score={form[`${cat.key}_score`] || 0} />
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-medium text-gray-600 mb-1">Score (1-10)</label>
+                  <div className="flex items-center gap-3">
+                    <input type="range" min="0" max="10" step="0.5"
+                      value={form[`${cat.key}_score`] || 0}
+                      onChange={e => setForm(f => ({...f, [`${cat.key}_score`]: parseFloat(e.target.value)}))}
+                      className="flex-1" />
+                    <input type="number" min="0" max="10" step="0.5"
+                      value={form[`${cat.key}_score`] || 0}
+                      onChange={e => setForm(f => ({...f, [`${cat.key}_score`]: parseFloat(e.target.value) || 0}))}
+                      className="w-16 border rounded px-2 py-1 text-sm text-center" />
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-xs font-medium text-gray-600 mb-1">Weight (%)</label>
+                  <div className="flex items-center gap-3">
+                    <input type="range" min="0" max="50" step="5"
+                      value={form[`${cat.key}_weight`] || 0}
+                      onChange={e => setForm(f => ({...f, [`${cat.key}_weight`]: parseFloat(e.target.value)}))}
+                      className="flex-1" />
+                    <input type="number" min="0" max="100"
+                      value={form[`${cat.key}_weight`] || 0}
+                      onChange={e => setForm(f => ({...f, [`${cat.key}_weight`]: parseFloat(e.target.value) || 0}))}
+                      className="w-16 border rounded px-2 py-1 text-sm text-center" />
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-3">
+                <label className="block text-xs font-medium text-gray-600 mb-1">Justification</label>
+                <textarea value={form[`${cat.key}_justification`] || ''}
+                  onChange={e => setForm(f => ({...f, [`${cat.key}_justification`]: e.target.value}))}
+                  className="w-full border rounded-lg px-3 py-2 text-sm h-20 resize-y focus:ring-2 focus:ring-indigo-300 outline-none"
+                  placeholder={`Why did you give this ${cat.label.toLowerCase()} score?`} />
+              </div>
+            </div>
+          ))}
+        </div>
+      );
+    }
+
+    // ==========================================
+    // FOUNDER SCORES TAB
+    // ==========================================
+    function FounderScoresTab({ founders, onSave }) {
+      const categories = [
+        { key: 'breakthrough', label: 'Breakthrough Idea', desc: 'Non-obvious insights, causal chain thinking, living in the future' },
+        { key: 'mission', label: 'Mission Intentionality', desc: 'Authenticity, personal connection, emotional specificity' },
+        { key: 'achievements', label: 'Extraordinary Achievements', desc: 'Academic honors, publications, patents, previous exits' },
+        { key: 'work_ethic', label: 'Work Ethic & Execution', desc: 'Shipping speed, resourcefulness, fast iteration' },
+        { key: 'grit', label: 'Grit & Perseverance', desc: 'Overcoming adversity, emotional maturity, persistence' },
+        { key: 'magnetism', label: 'Magnetism', desc: 'Leadership, storytelling, talent/capital attraction' },
+        { key: 'curiosity', label: 'Intellectual Curiosity', desc: 'Learning ability, diverse interests, tool adoption' },
+        { key: 'coachability', label: 'Coachability & EQ', desc: 'Adaptability, self-awareness, emotional intelligence' },
+        { key: 'team_chemistry', label: 'Team Chemistry', desc: 'Working history, complementary skills, clear roles' }
+      ];
+
+      if (!founders || founders.length === 0) {
+        return <div className="bg-white rounded-lg border p-8 text-center text-gray-400">No founders found for this company</div>;
+      }
+
+      var firstFounderId = founders[0].id;
+      const [activeFounder, setActiveFounder] = useState(firstFounderId);
+      const [forms, setForms] = useState(function() {
+        var f = {};
+        founders.forEach(function(founder) {
+          f[founder.id] = {};
+          categories.forEach(function(c) {
+            f[founder.id][c.key + '_score'] = founder[c.key + '_score'] || 0;
+            f[founder.id][c.key + '_justification'] = founder[c.key + '_justification'] || '';
+          });
+        });
+        return f;
+      });
+
+      const [founderDetails, setFounderDetails] = useState(function() {
+        var f = {};
+        founders.forEach(function(founder) {
+          f[founder.id] = {
+            schools: founder.schools || '',
+            degrees: founder.degrees || '',
+            prior_employers: founder.prior_employers || '',
+            technical_competence: founder.technical_competence || '',
+            publications_count: founder.publications_count || 0,
+            awards: founder.awards || '',
+            patents: founder.patents || '',
+            is_repeat_founder: founder.is_repeat_founder || 0,
+            is_colocated: founder.is_colocated || 0
+          };
+        });
+        return f;
+      });
+
+      var activeForm = forms[activeFounder] || {};
+      var activeDetails = founderDetails[activeFounder] || {};
+
+      var avgScore = 0;
+      if (activeFounder && forms[activeFounder]) {
+        var sum = 0, count = 0;
+        categories.forEach(function(c) {
+          var s = activeForm[c.key + '_score'] || 0;
+          if (s > 0) { sum += s; count++; }
+        });
+        avgScore = count > 0 ? sum / count : 0;
+      }
+
+      var saveFounder = function(founderId) {
+        fetch(API + '/api/founders/' + founderId + '/scores', {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(forms[founderId])
+        }).then(function() {
+          return fetch(API + '/api/founders/' + founderId, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(founderDetails[founderId])
+          });
+        }).then(function() {
+          onSave();
+        });
+      };
+
+      var currentFounder = null;
+      for (var i = 0; i < founders.length; i++) {
+        if (founders[i].id === activeFounder) { currentFounder = founders[i]; break; }
+      }
+
+      function getFormVal(key) {
+        if (!forms[activeFounder]) return 0;
+        return forms[activeFounder][key] || 0;
+      }
+
+      function getFormText(key) {
+        if (!forms[activeFounder]) return '';
+        return forms[activeFounder][key] || '';
+      }
+
+      function setFormVal(key, val) {
+        setForms(function(prev) {
+          var updated = Object.assign({}, prev);
+          updated[activeFounder] = Object.assign({}, prev[activeFounder] || {});
+          updated[activeFounder][key] = val;
+          return updated;
+        });
+      }
+
+      function setDetailVal(key, val) {
+        setFounderDetails(function(prev) {
+          var updated = Object.assign({}, prev);
+          updated[activeFounder] = Object.assign({}, prev[activeFounder] || {});
+          updated[activeFounder][key] = val;
+          return updated;
+        });
+      }
+
+      return (
+        <div className="fade-in">
+          <div className="flex flex-wrap gap-2 mb-4">
+            {founders.map(function(f) {
+              return (
+                <button key={f.id}
+                  className={'px-4 py-2 rounded-lg text-sm font-medium transition ' + (activeFounder === f.id ? 'bg-indigo-600 text-white' : 'bg-white border text-gray-700 hover:bg-gray-50')}
+                  onClick={function() { setActiveFounder(f.id); }}>
+                  {f.name} {f.title ? '(' + f.title + ')' : ''}
+                </button>
+              );
+            })}
+          </div>
+
+          {currentFounder && (
+            <div className="space-y-3">
+              <div className="bg-white rounded-lg border p-4">
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center gap-3">
+                    <ScoreBadge score={avgScore} size="lg" />
+                    <div>
+                      <div className="font-semibold">{currentFounder.name}</div>
+                      <div className="text-sm text-gray-500">{currentFounder.title}</div>
+                      {currentFounder.linkedin && (
+                        <a href={currentFounder.linkedin} target="_blank" className="text-xs text-blue-600 hover:underline">LinkedIn Profile</a>
+                      )}
+                    </div>
+                  </div>
+                  <button onClick={function() { saveFounder(activeFounder); }}
+                    className="px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm font-medium hover:bg-indigo-700">
+                    Save Scores
+                  </button>
+                </div>
+
+                <div className="bg-gray-50 rounded-lg p-3 text-sm">
+                  <div className="flex items-center justify-between mb-2">
+                    <label className="text-xs font-semibold text-gray-600 uppercase tracking-wide">Background Summary</label>
+                    <div className="flex gap-3">
+                      <label className="flex items-center gap-1.5 text-xs text-gray-600">
+                        <input type="checkbox" checked={!!activeDetails.is_repeat_founder}
+                          onChange={function(e) { setDetailVal('is_repeat_founder', e.target.checked ? 1 : 0); }} />
+                        Repeat Founder
+                      </label>
+                      <label className="flex items-center gap-1.5 text-xs text-gray-600">
+                        <input type="checkbox" checked={!!activeDetails.is_colocated}
+                          onChange={function(e) { setDetailVal('is_colocated', e.target.checked ? 1 : 0); }} />
+                        Co-located
+                      </label>
+                    </div>
+                  </div>
+                  {(function() {
+                    var parts = [];
+                    if (currentFounder.bio) parts.push(currentFounder.bio);
+                    if (currentFounder.schools && !((currentFounder.bio || '').toLowerCase().indexOf(currentFounder.schools.toLowerCase()) !== -1)) {
+                      parts.push('Education: ' + currentFounder.schools + (currentFounder.degrees ? ' (' + currentFounder.degrees + ')' : ''));
+                    }
+                    if (currentFounder.prior_employers && !((currentFounder.bio || '').toLowerCase().indexOf(currentFounder.prior_employers.split(',')[0].trim().toLowerCase()) !== -1)) {
+                      parts.push('Previously at: ' + currentFounder.prior_employers);
+                    }
+                    if (currentFounder.awards) parts.push('Distinctions: ' + currentFounder.awards);
+                    if (currentFounder.publications_count > 0) parts.push('Publications: ' + currentFounder.publications_count);
+                    if (currentFounder.patents) parts.push('Patents: ' + currentFounder.patents);
+                    var summary = parts.join(' | ');
+                    return summary ? (
+                      <p className="text-gray-700 leading-relaxed whitespace-pre-wrap">{summary}</p>
+                    ) : (
+                      <p className="text-gray-400 italic">No background information available</p>
+                    );
+                  })()}
+                  {currentFounder.linkedin && (
+                    <a href={currentFounder.linkedin} target="_blank" className="inline-flex items-center gap-1 text-xs text-blue-600 hover:underline mt-2">
+                      <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                      View LinkedIn Profile
+                    </a>
+                  )}
+                </div>
+              </div>
+
+              {categories.map(function(cat) {
+                return (
+                  <div key={cat.key} className="bg-white rounded-lg border p-4">
+                    <div className="flex items-start justify-between mb-2">
+                      <div>
+                        <h4 className="font-semibold text-gray-900 text-sm">{cat.label}</h4>
+                        <p className="text-xs text-gray-500">{cat.desc}</p>
+                      </div>
+                      <ScoreBadge score={getFormVal(cat.key + '_score')} size="sm" />
+                    </div>
+                    <div className="flex items-center gap-3 mb-2">
+                      <input type="range" min="0" max="10" step="0.5"
+                        value={getFormVal(cat.key + '_score')}
+                        onChange={function(e) { setFormVal(cat.key + '_score', parseFloat(e.target.value)); }}
+                        className="flex-1" />
+                      <input type="number" min="0" max="10" step="0.5"
+                        value={getFormVal(cat.key + '_score')}
+                        onChange={function(e) { setFormVal(cat.key + '_score', parseFloat(e.target.value) || 0); }}
+                        className="w-16 border rounded px-2 py-1 text-sm text-center" />
+                    </div>
+                    <textarea value={getFormText(cat.key + '_justification')}
+                      onChange={function(e) { setFormVal(cat.key + '_justification', e.target.value); }}
+                      className="w-full border rounded-lg px-3 py-2 text-sm h-16 resize-y focus:ring-2 focus:ring-indigo-300 outline-none"
+                      placeholder="Justification..." />
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    // ==========================================
+    // INTERACTIONS TAB
+    // ==========================================
+    function InteractionsTab({ companyId, interactions, notes, onSave }) {
+      const [showForm, setShowForm] = useState(false);
+      const [form, setForm] = useState({ type: 'Meeting', date: new Date().toISOString().split('T')[0], participants: '', notes: '', outcome: '', next_steps: '', follow_up_date: '' });
+      const [noteText, setNoteText] = useState('');
+
+      const addInteraction = async () => {
+        await fetch(`${API}/api/companies/${companyId}/interactions`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(form)
+        });
+        setShowForm(false);
+        setForm({ type: 'Meeting', date: new Date().toISOString().split('T')[0], participants: '', notes: '', outcome: '', next_steps: '', follow_up_date: '' });
+        onSave();
+      };
+
+      const addNote = async () => {
+        if (!noteText.trim()) return;
+        await fetch(`${API}/api/companies/${companyId}/notes`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ content: noteText })
+        });
+        setNoteText('');
+        onSave();
+      };
+
+      const deleteInteraction = async (id) => {
+        await fetch(`${API}/api/interactions/${id}`, { method: 'DELETE' });
+        onSave();
+      };
+
+      return (
+        <div className="grid grid-cols-2 gap-4 fade-in">
+          <div>
+            <div className="flex items-center justify-between mb-3">
+              <h3 className="font-semibold text-gray-900">Interactions</h3>
+              <button onClick={() => setShowForm(!showForm)}
+                className="px-3 py-1.5 bg-indigo-600 text-white rounded-lg text-sm hover:bg-indigo-700">
+                + Add Interaction
+              </button>
+            </div>
+
+            {showForm && (
+              <div className="bg-white rounded-lg border p-4 mb-3 space-y-3">
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <label className="text-xs font-medium text-gray-600">Type</label>
+                    <select value={form.type} onChange={e => setForm(f => ({...f, type: e.target.value}))}
+                      className="w-full border rounded px-2 py-1.5 text-sm mt-0.5">
+                      {['Call', 'Meeting', 'Email', 'Coffee', 'Event'].map(t => <option key={t}>{t}</option>)}
+                    </select>
+                  </div>
+                  <div>
+                    <label className="text-xs font-medium text-gray-600">Date</label>
+                    <input type="date" value={form.date} onChange={e => setForm(f => ({...f, date: e.target.value}))}
+                      className="w-full border rounded px-2 py-1.5 text-sm mt-0.5" />
+                  </div>
+                </div>
+                <div>
+                  <label className="text-xs font-medium text-gray-600">Participants</label>
+                  <input value={form.participants} onChange={e => setForm(f => ({...f, participants: e.target.value}))}
+                    className="w-full border rounded px-2 py-1.5 text-sm mt-0.5" placeholder="Who attended?" />
+                </div>
+                <div>
+                  <label className="text-xs font-medium text-gray-600">Notes</label>
+                  <textarea value={form.notes} onChange={e => setForm(f => ({...f, notes: e.target.value}))}
+                    className="w-full border rounded px-2 py-1.5 text-sm h-24 mt-0.5" placeholder="Meeting notes..." />
+                </div>
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <label className="text-xs font-medium text-gray-600">Outcome</label>
+                    <input value={form.outcome} onChange={e => setForm(f => ({...f, outcome: e.target.value}))}
+                      className="w-full border rounded px-2 py-1.5 text-sm mt-0.5" />
+                  </div>
+                  <div>
+                    <label className="text-xs font-medium text-gray-600">Follow-up Date</label>
+                    <input type="date" value={form.follow_up_date} onChange={e => setForm(f => ({...f, follow_up_date: e.target.value}))}
+                      className="w-full border rounded px-2 py-1.5 text-sm mt-0.5" />
+                  </div>
+                </div>
+                <div>
+                  <label className="text-xs font-medium text-gray-600">Next Steps</label>
+                  <textarea value={form.next_steps} onChange={e => setForm(f => ({...f, next_steps: e.target.value}))}
+                    className="w-full border rounded px-2 py-1.5 text-sm h-16 mt-0.5" placeholder="Next steps..." />
+                </div>
+                <div className="flex gap-2">
+                  <button onClick={addInteraction} className="px-4 py-1.5 bg-indigo-600 text-white rounded text-sm hover:bg-indigo-700">Save</button>
+                  <button onClick={() => setShowForm(false)} className="px-4 py-1.5 bg-gray-200 text-gray-700 rounded text-sm hover:bg-gray-300">Cancel</button>
+                </div>
+              </div>
+            )}
+
+            {interactions.length === 0 && !showForm && (
+              <div className="bg-white rounded-lg border p-8 text-center text-gray-400 text-sm">No interactions yet</div>
+            )}
+
+            <div className="space-y-2">
+              {interactions.map(int => (
+                <div key={int.id} className="bg-white rounded-lg border p-3">
+                  <div className="flex items-center justify-between mb-1">
+                    <div className="flex items-center gap-2">
+                      <span className={`px-2 py-0.5 rounded text-xs font-medium ${
+                        int.type === 'Meeting' ? 'bg-blue-100 text-blue-700' :
+                        int.type === 'Call' ? 'bg-green-100 text-green-700' :
+                        int.type === 'Email' ? 'bg-yellow-100 text-yellow-700' :
+                        'bg-gray-100 text-gray-700'
+                      }`}>{int.type}</span>
+                      <span className="text-xs text-gray-500">{int.date}</span>
+                    </div>
+                    <button onClick={() => deleteInteraction(int.id)} className="text-gray-400 hover:text-red-500 text-xs">Delete</button>
+                  </div>
+                  {int.participants && <div className="text-xs text-gray-500 mb-1">With: {int.participants}</div>}
+                  {int.notes && <p className="text-sm text-gray-700 mb-1">{int.notes}</p>}
+                  {int.outcome && <div className="text-xs text-gray-600"><strong>Outcome:</strong> {int.outcome}</div>}
+                  {int.next_steps && <div className="text-xs text-gray-600"><strong>Next:</strong> {int.next_steps}</div>}
+                  {int.follow_up_date && <div className="text-xs text-indigo-600 mt-1">Follow up: {int.follow_up_date}</div>}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <h3 className="font-semibold text-gray-900 mb-3">Notes</h3>
+            <div className="bg-white rounded-lg border p-3 mb-3">
+              <textarea value={noteText} onChange={e => setNoteText(e.target.value)}
+                className="w-full border rounded-lg px-3 py-2 text-sm h-24 resize-y focus:ring-2 focus:ring-indigo-300 outline-none"
+                placeholder="Add a note..." />
+              <button onClick={addNote} className="mt-2 px-4 py-1.5 bg-indigo-600 text-white rounded text-sm hover:bg-indigo-700">Add Note</button>
+            </div>
+
+            <div className="space-y-2">
+              {notes.map(n => (
+                <div key={n.id} className="bg-white rounded-lg border p-3">
+                  <p className="text-sm text-gray-700 whitespace-pre-wrap">{n.content}</p>
+                  <div className="text-xs text-gray-400 mt-1">{new Date(n.created_at).toLocaleDateString()}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // ==========================================
+    // RESEARCH TAB
+    // ==========================================
+    function ResearchTab({ company, founders }) {
+      return (
+        <div className="space-y-4 fade-in">
+          <div className="bg-white rounded-lg border p-4">
+            <h3 className="font-semibold text-gray-900 mb-2">Company Data</h3>
+            <div className="grid grid-cols-2 gap-4 text-sm">
+              <div>
+                <label className="text-xs font-medium text-gray-500">Full Description</label>
+                <p className="text-gray-700 mt-1">{company.long_description || 'Not available'}</p>
+              </div>
+              <div>
+                <label className="text-xs font-medium text-gray-500">One-Liner</label>
+                <p className="text-gray-700 mt-1">{company.one_liner}</p>
+              </div>
+            </div>
+            <div className="grid grid-cols-4 gap-4 mt-3 text-sm">
+              <div><label className="text-xs font-medium text-gray-500">Industries</label><p>{company.industries || '-'}</p></div>
+              <div><label className="text-xs font-medium text-gray-500">Tags</label><p>{company.tags || '-'}</p></div>
+              <div><label className="text-xs font-medium text-gray-500">Team Size</label><p>{company.team_size || 'Unknown'}</p></div>
+              <div><label className="text-xs font-medium text-gray-500">Year Founded</label><p>{company.year_founded || 'Unknown'}</p></div>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-lg border p-4">
+            <h3 className="font-semibold text-gray-900 mb-2">Links</h3>
+            <div className="grid grid-cols-3 gap-3 text-sm">
+              {company.website && <a href={company.website} target="_blank" className="text-indigo-600 hover:underline">Company Website</a>}
+              <a href={`https://www.ycombinator.com/companies/${company.slug}`} target="_blank" className="text-indigo-600 hover:underline">YC Profile</a>
+            </div>
+          </div>
+
+          {founders.map(function(f) {
+            var parts = [];
+            if (f.bio) parts.push(f.bio);
+            if (f.schools && !((f.bio || '').toLowerCase().indexOf(f.schools.toLowerCase()) !== -1)) {
+              parts.push('Education: ' + f.schools + (f.degrees ? ' (' + f.degrees + ')' : ''));
+            }
+            if (f.prior_employers && !((f.bio || '').toLowerCase().indexOf(f.prior_employers.split(',')[0].trim().toLowerCase()) !== -1)) {
+              parts.push('Previously at: ' + f.prior_employers);
+            }
+            if (f.awards) parts.push('Distinctions: ' + f.awards);
+            if (f.publications_count > 0) parts.push('Publications: ' + f.publications_count);
+            if (f.patents) parts.push('Patents: ' + f.patents);
+            return (
+              <div key={f.id} className="bg-white rounded-lg border p-4">
+                <div className="flex items-center justify-between mb-2">
+                  <h3 className="font-semibold text-gray-900">{f.name} <span className="text-gray-500 font-normal">({f.title})</span></h3>
+                  {f.linkedin && (
+                    <a href={f.linkedin} target="_blank" className="inline-flex items-center gap-1 text-sm text-blue-600 hover:underline">
+                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                      LinkedIn
+                    </a>
+                  )}
+                </div>
+                <p className="text-sm text-gray-700 leading-relaxed">{parts.join(' | ') || 'No background information available'}</p>
+              </div>
+            );
+          })}
+        </div>
+      );
+    }
+
+    // ==========================================
+    // ANALYTICS
+    // ==========================================
+    function Analytics() {
+      const [data, setData] = useState(null);
+      const statusChartRef = useRef(null);
+      const industryChartRef = useRef(null);
+      const scoreChartRef = useRef(null);
+      const chartsRef = useRef({});
+
+      useEffect(() => {
+        fetch(`${API}/api/analytics`).then(r => r.json()).then(setData);
+      }, []);
+
+      useEffect(() => {
+        if (!data) return;
+
+        // Cleanup previous charts
+        Object.values(chartsRef.current).forEach(c => c.destroy());
+        chartsRef.current = {};
+
+        // Status pie chart
+        if (statusChartRef.current) {
+          chartsRef.current.status = new Chart(statusChartRef.current, {
+            type: 'doughnut',
+            data: {
+              labels: data.statusCounts.map(s => s.status || 'Not Contacted'),
+              datasets: [{
+                data: data.statusCounts.map(s => s.count),
+                backgroundColor: data.statusCounts.map(s => statusColors[s.status] || '#94a3b8')
+              }]
+            },
+            options: { responsive: true, plugins: { legend: { position: 'right' } } }
+          });
+        }
+
+        // Industry bar chart
+        if (industryChartRef.current) {
+          const top10 = data.industryCounts.slice(0, 10);
+          chartsRef.current.industry = new Chart(industryChartRef.current, {
+            type: 'bar',
+            data: {
+              labels: top10.map(i => (i.industries || 'Unknown').substring(0, 30)),
+              datasets: [{
+                label: 'Companies',
+                data: top10.map(i => i.count),
+                backgroundColor: '#6366f1'
+              }]
+            },
+            options: { responsive: true, indexAxis: 'y', plugins: { legend: { display: false } } }
+          });
+        }
+
+        // Score distribution
+        if (scoreChartRef.current) {
+          chartsRef.current.score = new Chart(scoreChartRef.current, {
+            type: 'bar',
+            data: {
+              labels: data.scoreDistribution.map(s => s.range),
+              datasets: [{
+                label: 'Companies',
+                data: data.scoreDistribution.map(s => s.count),
+                backgroundColor: data.scoreDistribution.map(s =>
+                  s.range === 'Unscored' ? '#94a3b8' :
+                  s.range === '9-10' ? '#10b981' :
+                  s.range === '7-9' ? '#3b82f6' :
+                  s.range === '5-7' ? '#f59e0b' : '#ef4444'
+                )
+              }]
+            },
+            options: { responsive: true, plugins: { legend: { display: false } } }
+          });
+        }
+
+        return () => {
+          Object.values(chartsRef.current).forEach(c => c.destroy());
+        };
+      }, [data]);
+
+      if (!data) return <div className="text-center py-12 text-gray-400">Loading analytics...</div>;
+
+      return (
+        <div className="fade-in space-y-4">
+          {/* Key metrics */}
+          <div className="grid grid-cols-5 gap-3">
+            <div className="bg-white rounded-lg border p-4 text-center">
+              <div className="text-3xl font-bold text-gray-800">{data.diversityStats?.total_companies || 0}</div>
+              <div className="text-xs text-gray-500">Total Companies</div>
+            </div>
+            <div className="bg-white rounded-lg border p-4 text-center">
+              <div className="text-3xl font-bold text-gray-800">{data.diversityStats?.total_founders || 0}</div>
+              <div className="text-xs text-gray-500">Total Founders</div>
+            </div>
+            <div className="bg-white rounded-lg border p-4 text-center">
+              <div className="text-3xl font-bold text-pink-600">{data.diversityStats?.total_female_founders || 0}</div>
+              <div className="text-xs text-gray-500">Women Founders</div>
+            </div>
+            <div className="bg-white rounded-lg border p-4 text-center">
+              <div className="text-3xl font-bold text-purple-600">{data.diversityStats?.total_bipoc_founders || 0}</div>
+              <div className="text-xs text-gray-500">BIPOC Founders</div>
+            </div>
+            <div className="bg-white rounded-lg border p-4 text-center">
+              <div className="text-3xl font-bold text-blue-600">{data.interactionStats?.companies_contacted || 0}</div>
+              <div className="text-xs text-gray-500">Companies Contacted</div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-3 gap-4">
+            <div className="bg-white rounded-lg border p-4">
+              <h3 className="font-semibold text-gray-900 mb-3">Pipeline Status</h3>
+              <canvas ref={statusChartRef}></canvas>
+            </div>
+            <div className="bg-white rounded-lg border p-4">
+              <h3 className="font-semibold text-gray-900 mb-3">Score Distribution</h3>
+              <canvas ref={scoreChartRef}></canvas>
+            </div>
+            <div className="bg-white rounded-lg border p-4">
+              <h3 className="font-semibold text-gray-900 mb-3">Top Industries</h3>
+              <canvas ref={industryChartRef}></canvas>
+            </div>
+          </div>
+
+          {/* Top 20 Leaderboard */}
+          <div className="bg-white rounded-lg border p-4">
+            <h3 className="font-semibold text-gray-900 mb-3">Top 20 Companies (Thesis-Aligned Ranking)</h3>
+            <table className="w-full">
+              <thead className="bg-gray-50">
+                <tr>
+                  <th className="px-3 py-2 text-left text-xs font-medium text-gray-500">Rank</th>
+                  <th className="px-3 py-2 text-left text-xs font-medium text-gray-500">Company</th>
+                  <th className="px-3 py-2 text-left text-xs font-medium text-gray-500">Description</th>
+                  <th className="px-3 py-2 text-left text-xs font-medium text-gray-500">Thesis Theme</th>
+                  <th className="px-3 py-2 text-left text-xs font-medium text-gray-500">Score</th>
+                  <th className="px-3 py-2 text-left text-xs font-medium text-gray-500">Founder</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data.top20.map(function(c, i) {
+                  return (
+                    <tr key={c.id} className="border-b">
+                      <td className="px-3 py-2 text-sm font-medium text-gray-500">{i + 1}</td>
+                      <td className="px-3 py-2 text-sm font-medium text-gray-900">{c.name}</td>
+                      <td className="px-3 py-2 text-xs text-gray-600 max-w-xs truncate">{c.one_liner}</td>
+                      <td className="px-3 py-2"><ThemeBadge theme={c.thesis_fit_theme || 'Neutral'} compact={true} /></td>
+                      <td className="px-3 py-2"><ScoreBadge score={c.weighted_total || 0} size="sm" /></td>
+                      <td className="px-3 py-2"><ScoreBadge score={c.avg_founder_score || 0} size="sm" /></td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      );
+    }
+
+    // ==========================================
+    // SETTINGS
+    // ==========================================
+    function Settings() {
+      const [settings, setSettings] = useState({});
+      const [saved, setSaved] = useState(false);
+
+      useEffect(() => {
+        fetch(`${API}/api/settings`).then(r => r.json()).then(setSettings);
+      }, []);
+
+      const save = async () => {
+        await fetch(`${API}/api/settings`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(settings)
+        });
+        setSaved(true);
+        setTimeout(() => setSaved(false), 2000);
+      };
+
+      return (
+        <div className="max-w-2xl mx-auto fade-in space-y-4">
+          <div className="bg-white rounded-lg border p-6">
+            <h3 className="font-semibold text-gray-900 mb-4">Scoring Weights</h3>
+            <p className="text-sm text-gray-600 mb-4">Set the relative weight of company vs founder scores in the total score calculation.</p>
+
+            <div className="space-y-4">
+              <div>
+                <label className="text-sm font-medium text-gray-700">Company Score Weight: {settings.company_score_weight || 50}%</label>
+                <input type="range" min="0" max="100" value={settings.company_score_weight || 50}
+                  onChange={e => setSettings(s => ({...s, company_score_weight: e.target.value, founder_score_weight: String(100 - parseInt(e.target.value))}))}
+                  className="w-full mt-1" />
+              </div>
+              <div>
+                <label className="text-sm font-medium text-gray-700">Founder Score Weight: {settings.founder_score_weight || 50}%</label>
+                <input type="range" min="0" max="100" value={settings.founder_score_weight || 50}
+                  onChange={e => setSettings(s => ({...s, founder_score_weight: e.target.value, company_score_weight: String(100 - parseInt(e.target.value))}))}
+                  className="w-full mt-1" />
+              </div>
+            </div>
+
+            <button onClick={save}
+              className="mt-4 px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm font-medium hover:bg-indigo-700">
+              {saved ? 'Saved!' : 'Save Settings'}
+            </button>
+          </div>
+
+          <div className="bg-white rounded-lg border p-6">
+            <h3 className="font-semibold text-gray-900 mb-4">Export Options</h3>
+            <div className="space-y-2">
+              <a href="/api/export/csv" className="block px-4 py-2 bg-gray-100 rounded-lg text-sm hover:bg-gray-200 text-center font-medium">
+                Export All Data as CSV
+              </a>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-lg border p-6">
+            <h3 className="font-semibold text-gray-900 mb-4">About</h3>
+            <p className="text-sm text-gray-600">
+              YC Winter 2026 Deal Analysis CRM. Contains 149 companies from the YC W26 batch with scoring,
+              interaction tracking, and analytics. Data sourced from Y Combinator's public company directory.
+            </p>
+          </div>
+        </div>
+      );
+    }
+
+    // ==========================================
+    // RENDER
+    // ==========================================
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+</body>
+</html>

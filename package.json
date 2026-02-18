@@ -2,12 +2,12 @@
   "name": "yc-deal-analysis",
   "version": "1.0.0",
   "description": "YC Winter 2026 Deal Analysis CRM",
-  "main": "backend/server.js",
+  "main": "backend/server-redis.js",
   "scripts": {
-    "start": "node backend/server.js",
-    "scrape": "node scrape_yc.js && node scrape_founders_v2.js",
-    "scores": "node generate_scores.js",
-    "setup": "node generate_scores.js && node backend/server.js"
+    "start": "node backend/server-redis.js",
+    "dev": "node backend/server-redis.js",
+    "start:local": "node backend/server.js",
+    "build": "echo 'No build step required'"
   },
   "engines": {
     "node": ">=18.0.0"
@@ -16,10 +16,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "better-sqlite3": "^12.6.2",
-    "cookie-parser": "^1.4.7",
+    "@upstash/redis": "^1.36.0",
     "cors": "^2.8.6",
-    "express": "^5.2.1",
-    "express-session": "^1.19.0"
+    "express": "^5.2.1"
   }
 }
