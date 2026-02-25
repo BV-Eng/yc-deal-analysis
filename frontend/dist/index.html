@@ -412,7 +412,7 @@
                           value={c.contact_email || ''}
                           placeholder="Add email..."
                           onChange={function(e) { updateCompanyField(c.id, 'contact_email', e.target.value); }}
-                          className="w-full max-w-[160px] px-2 py-1 text-xs border border-transparent hover:border-gray-300 focus:border-blue-400 focus:ring-1 focus:ring-blue-400 rounded outline-none bg-transparent placeholder-gray-400"
+                          className="w-full min-w-[200px] px-2 py-1 text-xs border border-transparent hover:border-gray-300 focus:border-blue-400 focus:ring-1 focus:ring-blue-400 rounded outline-none bg-transparent placeholder-gray-400"
                         />
                       </td>
                       <td className="px-3 py-2 text-xs text-gray-600">{c.industries || '-'}</td>
