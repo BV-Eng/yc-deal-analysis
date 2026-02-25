@@ -49,6 +49,8 @@ function initializeDatabase() {
       title TEXT,
       linkedin TEXT,
       twitter TEXT,
+      email TEXT,
+      email_confidence INTEGER DEFAULT 0,
       avatar_url TEXT,
       bio TEXT,
       is_female INTEGER DEFAULT 0,

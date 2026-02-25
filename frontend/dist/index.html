@@ -324,6 +324,8 @@
                     <th className="px-3 py-2 text-left text-xs font-semibold text-gray-500 uppercase">Status</th>
                     <SortHeader col="owner">Owner</SortHeader>
                     <th className="px-3 py-2 text-left text-xs font-semibold text-gray-500 uppercase">Founders</th>
+                    <th className="px-3 py-2 text-left text-xs font-semibold text-gray-500 uppercase">Contact</th>
+                    <th className="px-3 py-2 text-left text-xs font-semibold text-gray-500 uppercase">Email</th>
                     <SortHeader col="industries">Industry</SortHeader>
                     <th className="px-3 py-2 text-left text-xs font-semibold text-gray-500 uppercase">Location</th>
                     <th className="px-3 py-2 text-left text-xs font-semibold text-gray-500 uppercase">Last Contact</th>
@@ -331,7 +333,7 @@
                 </thead>
                 <tbody>
                   {loading ? (
-                    <tr><td colSpan={11} className="text-center py-8 text-gray-400">Loading companies...</td></tr>
+                    <tr><td colSpan={13} className="text-center py-8 text-gray-400">Loading companies...</td></tr>
                   ) : companies.map((c, idx) => (
                     <tr key={c.id} className="border-b hover:bg-indigo-50/30 transition cursor-pointer"
                       onClick={(e) => { if (e.target.type !== 'checkbox') onSelect(c.id); }}>
@@ -374,7 +376,7 @@
                           {ownerOptions.map(function(o) { return React.createElement('option', { key: o, value: o }, o); })}
                         </select>
                       </td>
-                      <td className="px-3 py-2 text-xs text-gray-600 max-w-[280px]" onClick={function(e) { e.stopPropagation(); }}>
+                      <td className="px-3 py-2 text-xs text-gray-600 max-w-[200px]" onClick={function(e) { e.stopPropagation(); }}>
                         {c.founder_linkedin_data ? c.founder_linkedin_data.split('|||').map(function(fd, fi) {
                           var parts = fd.split('::');
                           var fname = parts[0] || '';
@@ -391,6 +393,43 @@
                             </span>
                           );
                         }) : (c.founder_names || '-')}
+                      </td>
+                      <td className="px-3 py-2 text-xs text-gray-600" onClick={function(e) { e.stopPropagation(); }}>
+                        {c.founder_linkedin_data ? c.founder_linkedin_data.split('|||').map(function(fd, fi) {
+                          var parts = fd.split('::');
+                          var flinkedin = parts[1] || '';
+                          return flinkedin ? (
+                            <a key={fi} href={flinkedin} target="_blank" rel="noopener noreferrer"
+                              className="inline-block mr-1 text-blue-600 hover:text-blue-800" title={parts[0]}>
+                              <svg className="w-4 h-4 inline" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                            </a>
+                          ) : null;
+                        }) : '-'}
+                      </td>
+                      <td className="px-3 py-2 text-xs" onClick={function(e) { e.stopPropagation(); }}>
+                        {c.founder_linkedin_data ? (function() {
+                          var emailData = c.founder_linkedin_data.split('|||').map(function(fd) {
+                            var parts = fd.split('::');
+                            return { name: parts[0] || '', email: parts[2] || '' };
+                          }).filter(function(d) { return d.email; });
+                          return emailData.length > 0 ? (
+                            <div className="flex flex-wrap gap-1">
+                              {emailData.map(function(d, ei) {
+                                var initials = d.name.split(' ').map(function(n) { return n[0]; }).join('').slice(0, 2).toUpperCase();
+                                return (
+                                  <a key={ei} href={'mailto:' + d.email}
+                                    className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 hover:bg-blue-100 transition"
+                                    title={d.name + ': ' + d.email}>
+                                    <span className="font-medium">{initials}</span>
+                                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                    </svg>
+                                  </a>
+                                );
+                              })}
+                            </div>
+                          ) : <span className="text-gray-400">—</span>;
+                        })() : <span className="text-gray-400">—</span>}
                       </td>
                       <td className="px-3 py-2 text-xs text-gray-600">{c.industries || '-'}</td>
                       <td className="px-3 py-2 text-xs text-gray-600">{c.all_locations || '-'}</td>

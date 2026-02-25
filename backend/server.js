@@ -28,7 +28,7 @@ app.get('/api/companies', (req, res) => {
         cs.market_score, cs.impact_score, cs.traction_score, cs.deal_score,
         cs.thesis_fit_score, cs.thesis_fit_theme,
         (SELECT GROUP_CONCAT(f.name, ', ') FROM founders f WHERE f.company_id = c.id) as founder_names,
-        (SELECT GROUP_CONCAT(f.name || '::' || COALESCE(f.linkedin,''), '|||') FROM founders f WHERE f.company_id = c.id) as founder_linkedin_data,
+        (SELECT GROUP_CONCAT(f.name || '::' || COALESCE(f.linkedin,'') || '::' || COALESCE(f.email,''), '|||') FROM founders f WHERE f.company_id = c.id) as founder_linkedin_data,
         (SELECT MAX(f.is_female) FROM founders f WHERE f.company_id = c.id) as has_female_founder,
         (SELECT MAX(f.is_black) FROM founders f WHERE f.company_id = c.id) as has_black_founder,
         (SELECT MAX(f.is_hispanic_latino) FROM founders f WHERE f.company_id = c.id) as has_hispanic_founder,

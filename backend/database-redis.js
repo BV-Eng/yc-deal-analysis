@@ -108,7 +108,7 @@ async function getCompanies(filters = {}) {
     return {
       ...c,
       founder_names: c.founders?.map(f => f.name).join(', ') || '',
-      founder_linkedin_data: c.founders?.map(f => `${f.name}::${f.linkedin || ''}`).join('|||') || '',
+      founder_linkedin_data: c.founders?.map(f => `${f.name}::${f.linkedin || ''}::${f.email || ''}`).join('|||') || '',
       has_female_founder: c.founders?.some(f => f.is_female) ? 1 : 0,
       has_black_founder: c.founders?.some(f => f.is_black) ? 1 : 0,
       has_hispanic_founder: c.founders?.some(f => f.is_hispanic_latino) ? 1 : 0,
@@ -289,7 +289,7 @@ async function updateFounder(founderId, updates) {
     if (founder) {
       const fields = ['schools', 'degrees', 'prior_employers', 'technical_competence',
         'publications_count', 'citations_count', 'awards', 'patents',
-        'is_repeat_founder', 'is_colocated', 'age_range'];
+        'is_repeat_founder', 'is_colocated', 'age_range', 'email', 'email_confidence'];
       for (const field of fields) {
         if (updates[field] !== undefined) {
           founder[field] = updates[field];
