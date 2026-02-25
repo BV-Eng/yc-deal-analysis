@@ -407,29 +407,13 @@
                         }) : '-'}
                       </td>
                       <td className="px-3 py-2 text-xs" onClick={function(e) { e.stopPropagation(); }}>
-                        {c.founder_linkedin_data ? (function() {
-                          var emailData = c.founder_linkedin_data.split('|||').map(function(fd) {
-                            var parts = fd.split('::');
-                            return { name: parts[0] || '', email: parts[2] || '' };
-                          }).filter(function(d) { return d.email; });
-                          return emailData.length > 0 ? (
-                            <div className="flex flex-wrap gap-1">
-                              {emailData.map(function(d, ei) {
-                                var initials = d.name.split(' ').map(function(n) { return n[0]; }).join('').slice(0, 2).toUpperCase();
-                                return (
-                                  <a key={ei} href={'mailto:' + d.email}
-                                    className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 hover:bg-blue-100 transition"
-                                    title={d.name + ': ' + d.email}>
-                                    <span className="font-medium">{initials}</span>
-                                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                                    </svg>
-                                  </a>
-                                );
-                              })}
-                            </div>
-                          ) : <span className="text-gray-400">—</span>;
-                        })() : <span className="text-gray-400">—</span>}
+                        <input
+                          type="email"
+                          value={c.contact_email || ''}
+                          placeholder="Add email..."
+                          onChange={function(e) { updateCompanyField(c.id, 'contact_email', e.target.value); }}
+                          className="w-full max-w-[160px] px-2 py-1 text-xs border border-transparent hover:border-gray-300 focus:border-blue-400 focus:ring-1 focus:ring-blue-400 rounded outline-none bg-transparent placeholder-gray-400"
+                        />
                       </td>
                       <td className="px-3 py-2 text-xs text-gray-600">{c.industries || '-'}</td>
                       <td className="px-3 py-2 text-xs text-gray-600">{c.all_locations || '-'}</td>

@@ -200,7 +200,7 @@ async function updateCompany(id, updates) {
   const idx = data.companies.findIndex(c => c.id === parseInt(id));
   if (idx === -1) return false;
 
-  const { status, next_action, custom_tags, b2b_b2c, technology_type, business_model, owner } = updates;
+  const { status, next_action, custom_tags, b2b_b2c, technology_type, business_model, owner, contact_email } = updates;
   const company = data.companies[idx];
 
   if (status !== undefined) company.status = status;
@@ -210,6 +210,7 @@ async function updateCompany(id, updates) {
   if (technology_type !== undefined) company.technology_type = technology_type;
   if (business_model !== undefined) company.business_model = business_model;
   if (owner !== undefined) company.owner = owner;
+  if (contact_email !== undefined) company.contact_email = contact_email;
   company.updated_at = new Date().toISOString();
 
   await saveData(data);
