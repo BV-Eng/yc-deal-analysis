@@ -119,8 +119,11 @@ async function getCompanies(filters = {}) {
   });
 
   // Apply filters
-  const { status, industry, location, search, diversity, theme, owner: ownerFilter, tag } = filters;
+  const { status, industry, location, search, diversity, theme, owner: ownerFilter, tag, source } = filters;
 
+  if (source) {
+    companies = companies.filter(c => c.source === source);
+  }
   if (status) {
     companies = companies.filter(c => c.status === status);
   }
@@ -541,10 +544,11 @@ async function exportCSV() {
   const companies = await getCompanies({});
 
   const headers = [
-    'id', 'name', 'one_liner', 'industries', 'status', 'website', 'all_locations',
+    'id', 'name', 'one_liner', 'industries', 'status', 'source', 'website', 'all_locations',
     'team_size', 'year_founded', 'thesis_fit_theme', 'company_score',
     'team_score', 'product_score', 'business_model_score', 'market_score',
-    'impact_score', 'traction_score', 'deal_score', 'founder_names', 'avg_founder_score'
+    'impact_score', 'traction_score', 'deal_score', 'founder_names', 'avg_founder_score',
+    'contact_email', 'deck_url', 'pitchbook_url'
   ];
 
   const rows = [headers.join(',')];

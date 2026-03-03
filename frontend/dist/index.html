@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>YC W26 Deal Analysis CRM</title>
+  <title>YC W26 Deals | Better Ventures CRM</title>
   <script src="https://cdn.jsdelivr.net/npm/react@18/umd/react.production.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.production.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js"></script>
@@ -156,6 +156,7 @@
       const [diversityFilter, setDiversityFilter] = useState('');
       const [themeFilter, setThemeFilter] = useState('');
       const [ownerFilter, setOwnerFilter] = useState('');
+      const [sourceFilter, setSourceFilter] = useState('');
       const [sort, setSort] = useState('weighted_total');
       const [order, setOrder] = useState('DESC');
       const [selectedIds, setSelectedIds] = useState(new Set());
@@ -169,13 +170,14 @@
         if (diversityFilter) params.set('diversity', diversityFilter);
         if (themeFilter) params.set('theme', themeFilter);
         if (ownerFilter) params.set('owner', ownerFilter);
+        if (sourceFilter) params.set('source', sourceFilter);
         if (sort) params.set('sort', sort);
         if (order) params.set('order', order);
         const res = await fetch(`${API}/api/companies?${params}`);
         const data = await res.json();
         setCompanies(data);
         setLoading(false);
-      }, [search, statusFilter, industryFilter, diversityFilter, themeFilter, ownerFilter, sort, order]);
+      }, [search, statusFilter, industryFilter, diversityFilter, themeFilter, ownerFilter, sourceFilter, sort, order]);
 
       useEffect(() => { fetchCompanies(); }, [fetchCompanies]);
 
@@ -294,6 +296,13 @@
               <option value="Lyndsey">Lyndsey</option>
               <option value="unassigned">Unassigned</option>
             </select>
+            <select value={sourceFilter} onChange={function(e) { setSourceFilter(e.target.value); }}
+              className="border rounded-lg px-3 py-1.5 text-sm font-medium"
+              style={{ borderColor: sourceFilter ? '#6366f1' : undefined }}>
+              <option value="">All Sources</option>
+              <option value="YC">YC W26</option>
+              <option value="Deepchecks">Deepchecks</option>
+            </select>
             {selectedIds.size > 0 && (
               <div className="flex items-center gap-2 ml-auto">
                 <span className="text-sm text-gray-500">{selectedIds.size} selected</span>
@@ -327,13 +336,14 @@
                     <th className="px-3 py-2 text-left text-xs font-semibold text-gray-500 uppercase">Contact</th>
                     <th className="px-3 py-2 text-left text-xs font-semibold text-gray-500 uppercase">Email</th>
                     <SortHeader col="industries">Industry</SortHeader>
+                    <th className="px-3 py-2 text-left text-xs font-semibold text-gray-500 uppercase">Source</th>
                     <th className="px-3 py-2 text-left text-xs font-semibold text-gray-500 uppercase">Location</th>
                     <th className="px-3 py-2 text-left text-xs font-semibold text-gray-500 uppercase">Last Contact</th>
                   </tr>
                 </thead>
                 <tbody>
                   {loading ? (
-                    <tr><td colSpan={13} className="text-center py-8 text-gray-400">Loading companies...</td></tr>
+                    <tr><td colSpan={14} className="text-center py-8 text-gray-400">Loading companies...</td></tr>
                   ) : companies.map((c, idx) => (
                     <tr key={c.id} className="border-b hover:bg-indigo-50/30 transition cursor-pointer"
                       onClick={(e) => { if (e.target.type !== 'checkbox') onSelect(c.id); }}>
@@ -416,6 +426,11 @@
                         />
                       </td>
                       <td className="px-3 py-2 text-xs text-gray-600">{c.industries || '-'}</td>
+                      <td className="px-3 py-2">
+                        <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${c.source === 'Deepchecks' ? 'bg-purple-100 text-purple-700' : 'bg-orange-100 text-orange-700'}`}>
+                          {c.source || 'YC'}
+                        </span>
+                      </td>
                       <td className="px-3 py-2 text-xs text-gray-600">{c.all_locations || '-'}</td>
                       <td className="px-3 py-2 text-xs text-gray-500">{c.last_interaction_date || '-'}</td>
                     </tr>
