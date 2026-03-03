@@ -24696,7 +24696,7 @@
       "source": "YC"
     },
     {
-      "id": 200,
+      "id": 249,
       "name": "Convergent Bioscience",
       "one_liner": "Carriers enabling targeted crop-input delivery and uptake. MesoMaterials adapts pharmaceutical drug delivery technology to create smart fertilizers an...",
       "long_description": "Carriers enabling targeted crop-input delivery and uptake. MesoMaterials adapts pharmaceutical drug delivery technology to create smart fertilizers and protectants for agriculture.",
@@ -24746,12 +24746,12 @@
       "deal_score": 5.5,
       "deal_weight": 5,
       "deal_justification": "Deepchecks Feb 2026 batch. Location: .",
-      "company_score": 6.5,
+      "company_score": 7.0,
       "founders": [
         {
           "id": 1000,
-          "company_id": 200,
-          "name": "Founder",
+          "company_id": 249,
+          "name": "James Kirk",
           "first_name": "",
           "last_name": "",
           "title": "Founder",
@@ -24784,7 +24784,7 @@
       "valuation_range": "$5M - $10M"
     },
     {
-      "id": 201,
+      "id": 248,
       "name": "Orbital Sentry",
       "one_liner": "The first real time wildfire and disaster monitoring from geosynchronous orbit. Commercial geosynchronous imaging platform providing uninterrupted, co...",
       "long_description": "The first real time wildfire and disaster monitoring from geosynchronous orbit. Commercial geosynchronous imaging platform providing uninterrupted, continuous coverage for wildfires.",
@@ -24834,12 +24834,12 @@
       "deal_score": 5.5,
       "deal_weight": 5,
       "deal_justification": "Deepchecks Feb 2026 batch. Location: .",
-      "company_score": 6.98,
+      "company_score": 7.0,
       "founders": [
         {
           "id": 1001,
-          "company_id": 201,
-          "name": "Founder",
+          "company_id": 248,
+          "name": "Mark Keremedjiev",
           "first_name": "",
           "last_name": "",
           "title": "Founder",
@@ -24872,7 +24872,7 @@
       "valuation_range": "$21M - $25M"
     },
     {
-      "id": 202,
+      "id": 247,
       "name": "Quantum Light",
       "one_liner": "Nanomaterials emitting high-efficiency pigments for paints and coatings. Nobel Prize-winning quantum tech applied to pigments, colors, and dyes.",
       "long_description": "Nanomaterials emitting high-efficiency pigments for paints and coatings. Nobel Prize-winning quantum tech applied to pigments, colors, and dyes.",
@@ -24926,8 +24926,8 @@
       "founders": [
         {
           "id": 1002,
-          "company_id": 202,
-          "name": "Founder",
+          "company_id": 247,
+          "name": "Olga Alexopoulou",
           "first_name": "",
           "last_name": "",
           "title": "Founder",
@@ -24960,7 +24960,7 @@
       "valuation_range": "$16M - $20M"
     },
     {
-      "id": 203,
+      "id": 246,
       "name": "RetinaLogik",
       "one_liner": "AI workers for eyecare practices. Replaces legacy equipment with integrated operating system (software + VR) for fraction of cost. $1.2M ARR with 1% c...",
       "long_description": "AI workers for eyecare practices. Replaces legacy equipment with integrated operating system (software + VR) for fraction of cost. $1.2M ARR with 1% churn.",
@@ -25010,12 +25010,12 @@
       "deal_score": 5.75,
       "deal_weight": 5,
       "deal_justification": "Deepchecks Feb 2026 batch. Location: Canada.",
-      "company_score": 6.71,
+      "company_score": 7.0,
       "founders": [
         {
           "id": 1003,
-          "company_id": 203,
-          "name": "Founder",
+          "company_id": 246,
+          "name": "Abdullah Sarhan",
           "first_name": "",
           "last_name": "",
           "title": "Founder",
@@ -25048,7 +25048,7 @@
       "valuation_range": "$21M - $25M"
     },
     {
-      "id": 204,
+      "id": 245,
       "name": "Substance Corp",
       "one_liner": "AI native insurance for warehouses and supply chains. Deploys autonomous robots inside warehouses to continuously measure real-world risk.",
       "long_description": "AI native insurance for warehouses and supply chains. Deploys autonomous robots inside warehouses to continuously measure real-world risk.",
@@ -25102,8 +25102,8 @@
       "founders": [
         {
           "id": 1004,
-          "company_id": 204,
-          "name": "Founder",
+          "company_id": 245,
+          "name": "Gaurav Agrawal",
           "first_name": "",
           "last_name": "",
           "title": "Founder",
@@ -25136,7 +25136,7 @@
       "valuation_range": "$5M - $10M"
     },
     {
-      "id": 205,
+      "id": 244,
       "name": "Inevitable Technology",
       "one_liner": "Seedling propagation systems delivering seedlings via HaaS. Automated vertical farming systems for disease-free seedlings on-site.",
       "long_description": "Seedling propagation systems delivering seedlings via HaaS. Automated vertical farming systems for disease-free seedlings on-site.",
@@ -25186,12 +25186,12 @@
       "deal_score": 5.5,
       "deal_weight": 5,
       "deal_justification": "Deepchecks Feb 2026 batch. Location: .",
-      "company_score": 6.78,
+      "company_score": 7.0,
       "founders": [
         {
           "id": 1005,
-          "company_id": 205,
-          "name": "Founder",
+          "company_id": 244,
+          "name": "Lucianne Kempton",
           "first_name": "",
           "last_name": "",
           "title": "Founder",
@@ -25224,7 +25224,7 @@
       "valuation_range": "$16M - $20M"
     },
     {
-      "id": 206,
+      "id": 243,
       "name": "ImmunoVec",
       "one_liner": "Engineers immune cells directly inside the body using targeted nanoparticles. $40M+ in government awards. In vivo cell engineering platform.",
       "long_description": "Engineers immune cells directly inside the body using targeted nanoparticles. $40M+ in government awards. In vivo cell engineering platform.",
@@ -25274,12 +25274,12 @@
       "deal_score": 5.5,
       "deal_weight": 5,
       "deal_justification": "Deepchecks Feb 2026 batch. Location: .",
-      "company_score": 6.85,
+      "company_score": 7.0,
       "founders": [
         {
           "id": 1006,
-          "company_id": 206,
-          "name": "Founder",
+          "company_id": 243,
+          "name": "Doug Sills",
           "first_name": "",
           "last_name": "",
           "title": "Founder",
@@ -25312,7 +25312,7 @@
       "valuation_range": "$26M+"
     },
     {
-      "id": 207,
+      "id": 242,
       "name": "Rhizome Research",
       "one_liner": "Drug discovery platform enabling IND-ready molecules with AI. Unified AI-powered foundry delivering IND-ready small-molecule candidates.",
       "long_description": "Drug discovery platform enabling IND-ready molecules with AI. Unified AI-powered foundry delivering IND-ready small-molecule candidates.",
@@ -25362,12 +25362,12 @@
       "deal_score": 5.5,
       "deal_weight": 5,
       "deal_justification": "Deepchecks Feb 2026 batch. Location: .",
-      "company_score": 6.75,
+      "company_score": 7.0,
       "founders": [
         {
           "id": 1007,
-          "company_id": 207,
-          "name": "Founder",
+          "company_id": 242,
+          "name": "Xhuliano",
           "first_name": "",
           "last_name": "",
           "title": "Founder",
@@ -25400,7 +25400,7 @@
       "valuation_range": "$5M - $10M"
     },
     {
-      "id": 208,
+      "id": 241,
       "name": "Arrakis Technologies",
       "one_liner": "Sensor fusion software enabling autonomous systems. Quantum sensors and software for GPS-denied navigation.",
       "long_description": "Sensor fusion software enabling autonomous systems. Quantum sensors and software for GPS-denied navigation.",
@@ -25454,8 +25454,8 @@
       "founders": [
         {
           "id": 1008,
-          "company_id": 208,
-          "name": "Founder",
+          "company_id": 241,
+          "name": "Daham Kim",
           "first_name": "",
           "last_name": "",
           "title": "Founder",
@@ -25488,7 +25488,7 @@
       "valuation_range": "$21M - $25M"
     },
     {
-      "id": 209,
+      "id": 240,
       "name": "Alkemi",
       "one_liner": "Liquid metal material replacing copper wiring for 1nm microchips. Spin-off from Applied Materials-NUS Corp Lab in Singapore.",
       "long_description": "Liquid metal material replacing copper wiring for 1nm microchips. Spin-off from Applied Materials-NUS Corp Lab in Singapore.",
@@ -25542,8 +25542,8 @@
       "founders": [
         {
           "id": 1009,
-          "company_id": 209,
-          "name": "Founder",
+          "company_id": 240,
+          "name": "Beatriz JF",
           "first_name": "",
           "last_name": "",
           "title": "Founder",
@@ -25576,7 +25576,7 @@
       "valuation_range": "$5M - $10M"
     },
     {
-      "id": 210,
+      "id": 239,
       "name": "SixLine Semiconductor",
       "one_liner": "Carbon nanotube materials replacing silicon for next-gen wireless and AI processing. 5x faster, 1000x less energy.",
       "long_description": "Carbon nanotube materials replacing silicon for next-gen wireless and AI processing. 5x faster, 1000x less energy.",
@@ -25630,8 +25630,8 @@
       "founders": [
         {
           "id": 1010,
-          "company_id": 210,
-          "name": "Founder",
+          "company_id": 239,
+          "name": "Katherine Jinkins",
           "first_name": "",
           "last_name": "",
           "title": "Founder",
@@ -25664,7 +25664,7 @@
       "valuation_range": "$5M - $10M"
     },
     {
-      "id": 211,
+      "id": 238,
       "name": "FAST Metals",
       "one_liner": "Critical metal extraction from red mud. Rio Tinto invested and piloting. $200K signed pilot revenue.",
       "long_description": "Critical metal extraction from red mud. Rio Tinto invested and piloting. $200K signed pilot revenue.",
@@ -25714,12 +25714,12 @@
       "deal_score": 5.5,
       "deal_weight": 5,
       "deal_justification": "Deepchecks Feb 2026 batch. Location: .",
-      "company_score": 6.8,
+      "company_score": 7.0,
       "founders": [
         {
           "id": 1011,
-          "company_id": 211,
-          "name": "Founder",
+          "company_id": 238,
+          "name": "Sumedh Gostu",
           "first_name": "",
           "last_name": "",
           "title": "Founder",
@@ -25752,7 +25752,7 @@
       "valuation_range": "$11M - $15M"
     },
     {
-      "id": 212,
+      "id": 237,
       "name": "Oleo",
       "one_liner": "Biomass-to-lipid platform enabling sustainable fuels and SAF feedstocks.",
       "long_description": "Biomass-to-lipid platform enabling sustainable fuels and SAF feedstocks.",
@@ -25806,8 +25806,8 @@
       "founders": [
         {
           "id": 1012,
-          "company_id": 212,
-          "name": "Founder",
+          "company_id": 237,
+          "name": "Gabriella Dweck",
           "first_name": "",
           "last_name": "",
           "title": "Founder",
@@ -25840,7 +25840,7 @@
       "valuation_range": "$11M - $15M"
     },
     {
-      "id": 213,
+      "id": 236,
       "name": "Rise Reforming",
       "one_liner": "Modular plants converting waste biogas to low-carbon chemicals. $5M purchase agreement signed.",
       "long_description": "Modular plants converting waste biogas to low-carbon chemicals. $5M purchase agreement signed.",
@@ -25894,8 +25894,8 @@
       "founders": [
         {
           "id": 1013,
-          "company_id": 213,
-          "name": "Founder",
+          "company_id": 236,
+          "name": "Lucas Zubillaga",
           "first_name": "",
           "last_name": "",
           "title": "Founder",
@@ -25928,7 +25928,7 @@
       "valuation_range": "$21M - $25M"
     },
     {
-      "id": 214,
+      "id": 235,
       "name": "Pyri",
       "one_liner": "Biodegradable heat-activated sensors air-dropped for wildfire detection. Battery-free, organic sensors.",
       "long_description": "Biodegradable heat-activated sensors air-dropped for wildfire detection. Battery-free, organic sensors.",
@@ -25982,8 +25982,8 @@
       "founders": [
         {
           "id": 1014,
-          "company_id": 214,
-          "name": "Founder",
+          "company_id": 235,
+          "name": "Richard Acori",
           "first_name": "",
           "last_name": "",
           "title": "Founder",
@@ -26016,7 +26016,7 @@
       "valuation_range": "$5M - $10M"
     },
     {
-      "id": 215,
+      "id": 234,
       "name": "Lir Labs",
       "one_liner": "Autopilot system for wastewater treatment using real-time cameras to monitor bacteria. Cuts energy waste.",
       "long_description": "Autopilot system for wastewater treatment using real-time cameras to monitor bacteria. Cuts energy waste.",
@@ -26070,8 +26070,8 @@
       "founders": [
         {
           "id": 1015,
-          "company_id": 215,
-          "name": "Founder",
+          "company_id": 234,
+          "name": "Diego Munoz",
           "first_name": "",
           "last_name": "",
           "title": "Founder",
@@ -26104,7 +26104,7 @@
       "valuation_range": "Under $5M"
     },
     {
-      "id": 216,
+      "id": 233,
       "name": "Spectara",
       "one_liner": "Real-time air monitoring using mass spectrometry for chemical/biological threats. Deployed at airports. $11M+ government contracts.",
       "long_description": "Real-time air monitoring using mass spectrometry for chemical/biological threats. Deployed at airports. $11M+ government contracts.",
@@ -26158,8 +26158,8 @@
       "founders": [
         {
           "id": 1016,
-          "company_id": 216,
-          "name": "Founder",
+          "company_id": 233,
+          "name": "Hunter Brown",
           "first_name": "",
           "last_name": "",
           "title": "Founder",
@@ -26192,7 +26192,7 @@
       "valuation_range": "$16M - $20M"
     },
     {
-      "id": 217,
+      "id": 232,
       "name": "Petrel Technologies",
       "one_liner": "Mass-produced hybrid-electric drones for defense and industrial. $90K vs $500K-$5M competitors. FAA BVLOS approved.",
       "long_description": "Mass-produced hybrid-electric drones for defense and industrial. $90K vs $500K-$5M competitors. FAA BVLOS approved.",
@@ -26246,8 +26246,8 @@
       "founders": [
         {
           "id": 1017,
-          "company_id": 217,
-          "name": "Founder",
+          "company_id": 232,
+          "name": "Jacob Stonecipher",
           "first_name": "",
           "last_name": "",
           "title": "Founder",
@@ -26280,7 +26280,7 @@
       "valuation_range": "$26M+"
     },
     {
-      "id": 218,
+      "id": 231,
       "name": "Soarise",
       "one_liner": "Modular heavy-lift UAV platform with swappable mission modules. 60kg lift capacity. Validated in Ukraine/Poland.",
       "long_description": "Modular heavy-lift UAV platform with swappable mission modules. 60kg lift capacity. Validated in Ukraine/Poland.",
@@ -26334,8 +26334,8 @@
       "founders": [
         {
           "id": 1018,
-          "company_id": 218,
-          "name": "Founder",
+          "company_id": 231,
+          "name": "Tomasz Warias",
           "first_name": "",
           "last_name": "",
           "title": "Founder",
@@ -26368,7 +26368,7 @@
       "valuation_range": "$5M - $10M"
     },
     {
-      "id": 219,
+      "id": 230,
       "name": "Aether Transmission Systems",
       "one_liner": "Superconducting power cables carrying 10x more electricity. UC Berkeley spinout. Talks with Adani, Tata, Vedanta.",
       "long_description": "Superconducting power cables carrying 10x more electricity. UC Berkeley spinout. Talks with Adani, Tata, Vedanta.",
@@ -26418,12 +26418,12 @@
       "deal_score": 5.5,
       "deal_weight": 5,
       "deal_justification": "Deepchecks Feb 2026 batch. Location: .",
-      "company_score": 6.62,
+      "company_score": 7.0,
       "founders": [
         {
           "id": 1019,
-          "company_id": 219,
-          "name": "Founder",
+          "company_id": 230,
+          "name": "Ishaan Panda",
           "first_name": "",
           "last_name": "",
           "title": "Founder",
@@ -26456,7 +26456,7 @@
       "valuation_range": "$11M - $15M"
     },
     {
-      "id": 220,
+      "id": 229,
       "name": "Alternative Energy Materials",
       "one_liner": "On-site systems turning renewable electricity into green ammonia for energy storage and fertilizer.",
       "long_description": "On-site systems turning renewable electricity into green ammonia for energy storage and fertilizer.",
@@ -26506,12 +26506,12 @@
       "deal_score": 5.5,
       "deal_weight": 5,
       "deal_justification": "Deepchecks Feb 2026 batch. Location: .",
-      "company_score": 6.98,
+      "company_score": 7.0,
       "founders": [
         {
           "id": 1020,
-          "company_id": 220,
-          "name": "Founder",
+          "company_id": 229,
+          "name": "Dustin McLarty",
           "first_name": "",
           "last_name": "",
           "title": "Founder",
@@ -26544,7 +26544,7 @@
       "valuation_range": "$21M - $25M"
     },
     {
-      "id": 221,
+      "id": 228,
       "name": "Vibrant Building Technologies",
       "one_liner": "Turns HVAC systems into autonomous infrastructure. Hardware-first AI-driven control layer.",
       "long_description": "Turns HVAC systems into autonomous infrastructure. Hardware-first AI-driven control layer.",
@@ -26598,8 +26598,8 @@
       "founders": [
         {
           "id": 1021,
-          "company_id": 221,
-          "name": "Founder",
+          "company_id": 228,
+          "name": "Ryan Fletcher",
           "first_name": "",
           "last_name": "",
           "title": "Founder",
@@ -26632,7 +26632,7 @@
       "valuation_range": "$16M - $20M"
     },
     {
-      "id": 222,
+      "id": 227,
       "name": "ncrspt",
       "one_liner": "Turns bacteria into biological hard drives by encoding digital files into DNA. Data archiving 100+ years.",
       "long_description": "Turns bacteria into biological hard drives by encoding digital files into DNA. Data archiving 100+ years.",
@@ -26686,8 +26686,8 @@
       "founders": [
         {
           "id": 1022,
-          "company_id": 222,
-          "name": "Founder",
+          "company_id": 227,
+          "name": "Martin Tsui",
           "first_name": "",
           "last_name": "",
           "title": "Founder",
@@ -26720,7 +26720,7 @@
       "valuation_range": "$26M+"
     },
     {
-      "id": 223,
+      "id": 226,
       "name": "MiniProto",
       "one_liner": "Quote-to-build automation for custom wire harnesses. 125+ customers including Amazon Robotics, US Navy. 500% YoY growth.",
       "long_description": "Quote-to-build automation for custom wire harnesses. 125+ customers including Amazon Robotics, US Navy. 500% YoY growth.",
@@ -26774,8 +26774,8 @@
       "founders": [
         {
           "id": 1023,
-          "company_id": 223,
-          "name": "Founder",
+          "company_id": 226,
+          "name": "Alex Malcoci",
           "first_name": "",
           "last_name": "",
           "title": "Founder",
@@ -26808,7 +26808,7 @@
       "valuation_range": "$5M - $10M"
     },
     {
-      "id": 224,
+      "id": 225,
       "name": "Pickpad",
       "one_liner": "Pickup pad using sensors+ML for order fulfillment. LOIs covering 650+ locations. Integrated with Square, Toast, Olo.",
       "long_description": "Pickup pad using sensors+ML for order fulfillment. LOIs covering 650+ locations. Integrated with Square, Toast, Olo.",
@@ -26862,8 +26862,8 @@
       "founders": [
         {
           "id": 1024,
-          "company_id": 224,
-          "name": "Founder",
+          "company_id": 225,
+          "name": "Yaro Tsyhanenko",
           "first_name": "",
           "last_name": "",
           "title": "Founder",
@@ -26896,7 +26896,7 @@
       "valuation_range": "$5M - $10M"
     },
     {
-      "id": 225,
+      "id": 224,
       "name": "Simply Agnostic Controls",
       "one_liner": "Affordable HVAC automation for light commercial buildings. Edge-native automation, patented hardware design.",
       "long_description": "Affordable HVAC automation for light commercial buildings. Edge-native automation, patented hardware design.",
@@ -26950,8 +26950,8 @@
       "founders": [
         {
           "id": 1025,
-          "company_id": 225,
-          "name": "Founder",
+          "company_id": 224,
+          "name": "Dustin Branting",
           "first_name": "",
           "last_name": "",
           "title": "Founder",
@@ -26984,7 +26984,7 @@
       "valuation_range": "$5M - $10M"
     },
     {
-      "id": 226,
+      "id": 223,
       "name": "Deep Blue Biotech",
       "one_liner": "Cyanobacteria converting CO2 to hyaluronic acid. 40% cheaper, 70% less energy. L'Oreal challenge winner.",
       "long_description": "Cyanobacteria converting CO2 to hyaluronic acid. 40% cheaper, 70% less energy. L'Oreal challenge winner.",
@@ -27038,8 +27038,8 @@
       "founders": [
         {
           "id": 1026,
-          "company_id": 226,
-          "name": "Founder",
+          "company_id": 223,
+          "name": "Tim Corcoran",
           "first_name": "",
           "last_name": "",
           "title": "Founder",
@@ -27072,7 +27072,7 @@
       "valuation_range": "$11M - $15M"
     },
     {
-      "id": 227,
+      "id": 222,
       "name": "ZyloTex",
       "one_liner": "Hemp straw-based dissolving pulp and lyocell production. $7.5M in grants. Replacing microplastics.",
       "long_description": "Hemp straw-based dissolving pulp and lyocell production. $7.5M in grants. Replacing microplastics.",
@@ -27122,12 +27122,12 @@
       "deal_score": 5.75,
       "deal_weight": 5,
       "deal_justification": "Deepchecks Feb 2026 batch. Location: Canada.",
-      "company_score": 5.99,
+      "company_score": 7.0,
       "founders": [
         {
           "id": 1027,
-          "company_id": 227,
-          "name": "Founder",
+          "company_id": 222,
+          "name": "Lelia Lawson",
           "first_name": "",
           "last_name": "",
           "title": "Founder",
@@ -27160,7 +27160,7 @@
       "valuation_range": "$11M - $15M"
     },
     {
-      "id": 228,
+      "id": 221,
       "name": "VitrofluidiX",
       "one_liner": "Automated organ-on-a-chip platform. Chip-agnostic, integrates perfusion and live imaging. First pilot customers.",
       "long_description": "Automated organ-on-a-chip platform. Chip-agnostic, integrates perfusion and live imaging. First pilot customers.",
@@ -27210,12 +27210,12 @@
       "deal_score": 5.75,
       "deal_weight": 5,
       "deal_justification": "Deepchecks Feb 2026 batch. Location: Europe.",
-      "company_score": 6.91,
+      "company_score": 7.0,
       "founders": [
         {
           "id": 1028,
-          "company_id": 228,
-          "name": "Founder",
+          "company_id": 221,
+          "name": "Carlotta Altringer",
           "first_name": "",
           "last_name": "",
           "title": "Founder",
@@ -27248,7 +27248,7 @@
       "valuation_range": "$11M - $15M"
     },
     {
-      "id": 229,
+      "id": 220,
       "name": "Vayura Quantum Tech",
       "one_liner": "Quantum sensors reading Earth's magnetic field for GPS-denied navigation. Diamond-based sensors.",
       "long_description": "Quantum sensors reading Earth's magnetic field for GPS-denied navigation. Diamond-based sensors.",
@@ -27302,8 +27302,8 @@
       "founders": [
         {
           "id": 1029,
-          "company_id": 229,
-          "name": "Founder",
+          "company_id": 220,
+          "name": "Harileenkumar Gurunathan",
           "first_name": "",
           "last_name": "",
           "title": "Founder",
@@ -27336,7 +27336,7 @@
       "valuation_range": "$16M - $20M"
     },
     {
-      "id": 230,
+      "id": 219,
       "name": "Retina Robotics",
       "one_liner": "Plug-and-play device for forklifts automating inventory tracking. $200K ARR in 5 months. Ryder, Spreetail customers.",
       "long_description": "Plug-and-play device for forklifts automating inventory tracking. $200K ARR in 5 months. Ryder, Spreetail customers.",
@@ -27390,8 +27390,8 @@
       "founders": [
         {
           "id": 1030,
-          "company_id": 230,
-          "name": "Founder",
+          "company_id": 219,
+          "name": "Maanav Iyengar",
           "first_name": "",
           "last_name": "",
           "title": "Founder",
@@ -27424,7 +27424,7 @@
       "valuation_range": "$11M - $15M"
     },
     {
-      "id": 231,
+      "id": 218,
       "name": "Genie Mobility",
       "one_liner": "Autonomous electric trikes for last-mile delivery. 25mph on roads. Testing in SF, pilot with restaurant chain.",
       "long_description": "Autonomous electric trikes for last-mile delivery. 25mph on roads. Testing in SF, pilot with restaurant chain.",
@@ -27478,8 +27478,8 @@
       "founders": [
         {
           "id": 1031,
-          "company_id": 231,
-          "name": "Founder",
+          "company_id": 218,
+          "name": "Andrew Hughes",
           "first_name": "",
           "last_name": "",
           "title": "Founder",
@@ -27512,7 +27512,7 @@
       "valuation_range": "$16M - $20M"
     },
     {
-      "id": 232,
+      "id": 217,
       "name": "Devol Robotics",
       "one_liner": "Force-aware AI layer giving industrial robots sense of touch. Deployed in actual factories.",
       "long_description": "Force-aware AI layer giving industrial robots sense of touch. Deployed in actual factories.",
@@ -27566,8 +27566,8 @@
       "founders": [
         {
           "id": 1032,
-          "company_id": 232,
-          "name": "Founder",
+          "company_id": 217,
+          "name": "Sze Yuan Cheong",
           "first_name": "",
           "last_name": "",
           "title": "Founder",
@@ -27600,7 +27600,7 @@
       "valuation_range": "$21M - $25M"
     },
     {
-      "id": 233,
+      "id": 216,
       "name": "PickNik Robotics",
       "one_liner": "AI reasoning + motion controls platform. NASA, Blue Origin, US Space Force contracts. Built on MoveIt open source.",
       "long_description": "AI reasoning + motion controls platform. NASA, Blue Origin, US Space Force contracts. Built on MoveIt open source.",
@@ -27654,8 +27654,8 @@
       "founders": [
         {
           "id": 1033,
-          "company_id": 233,
-          "name": "Founder",
+          "company_id": 216,
+          "name": "Dave Grant",
           "first_name": "",
           "last_name": "",
           "title": "Founder",
@@ -27688,7 +27688,7 @@
       "valuation_range": "$21M - $25M"
     },
     {
-      "id": 234,
+      "id": 215,
       "name": "Decompute",
       "one_liner": "Software enabling robots to measure uncertainty and ask for help. Ex-Apple AI/Robotics team. 1 person manages 50 robots.",
       "long_description": "Software enabling robots to measure uncertainty and ask for help. Ex-Apple AI/Robotics team. 1 person manages 50 robots.",
@@ -27742,8 +27742,8 @@
       "founders": [
         {
           "id": 1034,
-          "company_id": 234,
-          "name": "Founder",
+          "company_id": 215,
+          "name": "Hina Dixit",
           "first_name": "",
           "last_name": "",
           "title": "Founder",
@@ -27776,7 +27776,7 @@
       "valuation_range": "$26M+"
     },
     {
-      "id": 235,
+      "id": 214,
       "name": "Cortex Robotics",
       "one_liner": "Autonomous pipe-climbing robots for energy infrastructure inspection. 7 LOIs, 3 prototypes. Equinor pilot.",
       "long_description": "Autonomous pipe-climbing robots for energy infrastructure inspection. 7 LOIs, 3 prototypes. Equinor pilot.",
@@ -27830,8 +27830,8 @@
       "founders": [
         {
           "id": 1035,
-          "company_id": 235,
-          "name": "Founder",
+          "company_id": 214,
+          "name": "Daniel Skogland",
           "first_name": "",
           "last_name": "",
           "title": "Founder",
@@ -27864,7 +27864,7 @@
       "valuation_range": "$5M - $10M"
     },
     {
-      "id": 236,
+      "id": 213,
       "name": "Blackwing Space",
       "one_liner": "Mass-produced affordable nanosatellites. Automotive-style manufacturing. 50-80% cost reduction.",
       "long_description": "Mass-produced affordable nanosatellites. Automotive-style manufacturing. 50-80% cost reduction.",
@@ -27918,8 +27918,8 @@
       "founders": [
         {
           "id": 1036,
-          "company_id": 236,
-          "name": "Founder",
+          "company_id": 213,
+          "name": "Oliver Muoto",
           "first_name": "",
           "last_name": "",
           "title": "Founder",
@@ -27952,7 +27952,7 @@
       "valuation_range": "$5M - $10M"
     },
     {
-      "id": 237,
+      "id": 212,
       "name": "Mass Balance",
       "one_liner": "CDMO enabling microgravity biomanufacturing of complex biomolecules in space.",
       "long_description": "CDMO enabling microgravity biomanufacturing of complex biomolecules in space.",
@@ -28006,8 +28006,8 @@
       "founders": [
         {
           "id": 1037,
-          "company_id": 237,
-          "name": "Founder",
+          "company_id": 212,
+          "name": "Toby Primocall",
           "first_name": "",
           "last_name": "",
           "title": "Founder",
@@ -28040,7 +28040,7 @@
       "valuation_range": "$5M - $10M"
     },
     {
-      "id": 238,
+      "id": 211,
       "name": "Haast Autonomous",
       "one_liner": "High-speed self-flying drones for inter-hospital medical transport. LOIs from 4 hospital systems. 500mi range, 200mph.",
       "long_description": "High-speed self-flying drones for inter-hospital medical transport. LOIs from 4 hospital systems. 500mi range, 200mph.",
@@ -28094,8 +28094,8 @@
       "founders": [
         {
           "id": 1038,
-          "company_id": 238,
-          "name": "Founder",
+          "company_id": 211,
+          "name": "Ege Halac",
           "first_name": "",
           "last_name": "",
           "title": "Founder",
@@ -28128,7 +28128,7 @@
       "valuation_range": "$11M - $15M"
     },
     {
-      "id": 239,
+      "id": 210,
       "name": "LNK Energies",
       "one_liner": "Retrofits trucks with hydrogen extraction from liquid fuel. MIT-built. Matches diesel cost/performance.",
       "long_description": "Retrofits trucks with hydrogen extraction from liquid fuel. MIT-built. Matches diesel cost/performance.",
@@ -28182,8 +28182,8 @@
       "founders": [
         {
           "id": 1039,
-          "company_id": 239,
-          "name": "Founder",
+          "company_id": 210,
+          "name": "Alexis Huynh",
           "first_name": "",
           "last_name": "",
           "title": "Founder",

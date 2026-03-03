@@ -23,6 +23,11 @@
     .scrollbar-thin::-webkit-scrollbar { width: 6px; }
     .scrollbar-thin::-webkit-scrollbar-track { background: #f1f5f9; }
     .scrollbar-thin::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+    /* Performance optimizations */
+    table { table-layout: fixed; }
+    tbody { will-change: scroll-position; }
+    tr { contain: layout style paint; }
+    .table-container { contain: strict; overflow-anchor: none; }
   </style>
 </head>
 <body class="bg-gray-50">
@@ -110,7 +115,7 @@
               <div className="flex items-center justify-between h-14">
                 <div className="flex items-center gap-6">
                   <h1 className="text-lg font-bold text-indigo-600 cursor-pointer" onClick={() => navigate('dashboard')}>
-                    YC W26 Deals
+                    Deal Analysis
                   </h1>
                   <div className="flex gap-1">
                     {[['dashboard', 'Dashboard'], ['analytics', 'Analytics'], ['settings', 'Settings']].map(([key, label]) => (
@@ -157,7 +162,7 @@
       const [themeFilter, setThemeFilter] = useState('');
       const [ownerFilter, setOwnerFilter] = useState('');
       const [sourceFilter, setSourceFilter] = useState('');
-      const [sort, setSort] = useState('weighted_total');
+      const [sort, setSort] = useState('id');
       const [order, setOrder] = useState('DESC');
       const [selectedIds, setSelectedIds] = useState(new Set());
 

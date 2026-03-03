@@ -119,12 +119,19 @@ async function getCompanies(filters = {}) {
   const founderWeight = parseFloat(data.settings?.founder_score_weight || 50) / 100;
 
   let companies = data.companies.map(c => {
-    const avg_founder_score = c.founders?.length > 0
-      ? c.founders.reduce((sum, f) => sum + (f.founder_score || 0), 0) / c.founders.length
+    const validFounderScores = c.founders?.filter(f => f.founder_score > 0) || [];
+    const avg_founder_score = validFounderScores.length > 0
+      ? validFounderScores.reduce((sum, f) => sum + f.founder_score, 0) / validFounderScores.length
       : 0;
 
-    // Calculate weighted total score combining company and founder scores
-    const weighted_total = (c.company_score || 0) * companyWeight + avg_founder_score * founderWeight;
+    // Calculate weighted total - if no founder scores, use company_score only
+    let weighted_total;
+    if (avg_founder_score > 0) {
+      weighted_total = (c.company_score || 0) * companyWeight + avg_founder_score * founderWeight;
+    } else {
+      // No founder data yet - use company_score as the total
+      weighted_total = c.company_score || 0;
+    }
 
     return {
       ...c,
