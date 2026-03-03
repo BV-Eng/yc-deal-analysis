@@ -23,11 +23,10 @@
     .scrollbar-thin::-webkit-scrollbar { width: 6px; }
     .scrollbar-thin::-webkit-scrollbar-track { background: #f1f5f9; }
     .scrollbar-thin::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
-    /* Performance optimizations */
-    table { table-layout: fixed; }
+    /* Table layout */
     tbody { will-change: scroll-position; }
-    tr { contain: layout style paint; }
-    .table-container { contain: strict; overflow-anchor: none; }
+    .score-col { width: 70px; min-width: 70px; }
+    .theme-col { width: 140px; min-width: 140px; }
   </style>
 </head>
 <body class="bg-gray-50">
@@ -333,8 +332,14 @@
                     </th>
                     <th className="px-3 py-2 w-8 text-xs text-gray-400">#</th>
                     <SortHeader col="name">Company</SortHeader>
-                    <SortHeader col="weighted_total">Score</SortHeader>
-                    <SortHeader col="thesis_fit_score">Thesis Fit</SortHeader>
+                    <th className="px-3 py-2 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider cursor-pointer hover:text-indigo-600 select-none score-col"
+                      onClick={() => toggleSort('weighted_total')}>
+                      Score {sort === 'weighted_total' ? (order === 'DESC' ? '↓' : '↑') : ''}
+                    </th>
+                    <th className="px-3 py-2 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider cursor-pointer hover:text-indigo-600 select-none theme-col"
+                      onClick={() => toggleSort('thesis_fit_score')}>
+                      Thesis Fit {sort === 'thesis_fit_score' ? (order === 'DESC' ? '↓' : '↑') : ''}
+                    </th>
                     <th className="px-3 py-2 text-left text-xs font-semibold text-gray-500 uppercase">Status</th>
                     <SortHeader col="owner">Owner</SortHeader>
                     <th className="px-3 py-2 text-left text-xs font-semibold text-gray-500 uppercase">Founders</th>
@@ -370,8 +375,8 @@
                           </div>
                         </div>
                       </td>
-                      <td className="px-3 py-2"><ScoreBadge score={c.weighted_total || 0} /></td>
-                      <td className="px-3 py-2">
+                      <td className="px-3 py-2 score-col"><ScoreBadge score={c.weighted_total || 0} /></td>
+                      <td className="px-3 py-2 theme-col">
                         <ThemeBadge theme={c.thesis_fit_theme || 'Neutral'} compact={true} />
                       </td>
                       <td className="px-3 py-2" onClick={function(e) { e.stopPropagation(); }}>
