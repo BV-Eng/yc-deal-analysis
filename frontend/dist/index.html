@@ -110,7 +110,7 @@
       return (
         <div className="min-h-screen bg-gray-50">
           <nav className="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
-            <div className="max-w-[1600px] mx-auto px-4">
+            <div className="max-w-[1900px] mx-auto px-4">
               <div className="flex items-center justify-between h-14">
                 <div className="flex items-center gap-6">
                   <h1 className="text-lg font-bold text-indigo-600 cursor-pointer" onClick={() => navigate('dashboard')}>
@@ -133,7 +133,7 @@
             </div>
           </nav>
 
-          <main className="max-w-[1600px] mx-auto px-4 py-4">
+          <main className="max-w-[1900px] mx-auto px-4 py-4">
             {page === 'dashboard' && !selectedCompanyId && <Dashboard onSelect={(id) => navigate('detail', id)} />}
             {page === 'dashboard' && selectedCompanyId && (
               <CompanyDetail id={selectedCompanyId} onBack={() => { setSelectedCompanyId(null); navigate('dashboard'); }} />
@@ -348,12 +348,11 @@
                     <SortHeader col="industries">Industry</SortHeader>
                     <th className="px-3 py-2 text-left text-xs font-semibold text-gray-500 uppercase">Source</th>
                     <th className="px-3 py-2 text-left text-xs font-semibold text-gray-500 uppercase">Location</th>
-                    <th className="px-3 py-2 text-left text-xs font-semibold text-gray-500 uppercase">Last Contact</th>
                   </tr>
                 </thead>
                 <tbody>
                   {loading ? (
-                    <tr><td colSpan={14} className="text-center py-8 text-gray-400">Loading companies...</td></tr>
+                    <tr><td colSpan={13} className="text-center py-8 text-gray-400">Loading companies...</td></tr>
                   ) : companies.map((c, idx) => (
                     <tr key={c.id} className="border-b hover:bg-indigo-50/30 transition cursor-pointer"
                       onClick={(e) => { if (e.target.type !== 'checkbox') onSelect(c.id); }}>
@@ -441,8 +440,7 @@
                           {c.source || 'YC'}
                         </span>
                       </td>
-                      <td className="px-3 py-2 text-xs text-gray-600">{c.all_locations || '-'}</td>
-                      <td className="px-3 py-2 text-xs text-gray-500">{c.last_interaction_date || '-'}</td>
+                      <td className="px-3 py-2 text-xs text-gray-600 whitespace-nowrap">{c.all_locations || '-'}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -640,7 +638,7 @@
               <h3 className="font-semibold text-gray-900 mb-2">Links</h3>
               <div className="space-y-1.5">
                 {company.website && <a href={company.website} target="_blank" className="block text-sm text-indigo-600 hover:underline truncate">Website</a>}
-                <a href={`https://www.ycombinator.com/companies/${company.slug}`} target="_blank" className="block text-sm text-indigo-600 hover:underline">YC Profile</a>
+                {company.pitchbook_url && <a href={company.pitchbook_url} target="_blank" className="block text-sm text-indigo-600 hover:underline">Pitchbook</a>}
               </div>
             </div>
 
@@ -1196,7 +1194,7 @@
             <h3 className="font-semibold text-gray-900 mb-2">Links</h3>
             <div className="grid grid-cols-3 gap-3 text-sm">
               {company.website && <a href={company.website} target="_blank" className="text-indigo-600 hover:underline">Company Website</a>}
-              <a href={`https://www.ycombinator.com/companies/${company.slug}`} target="_blank" className="text-indigo-600 hover:underline">YC Profile</a>
+              {company.pitchbook_url && <a href={company.pitchbook_url} target="_blank" className="text-indigo-600 hover:underline">Pitchbook</a>}
             </div>
           </div>
 
