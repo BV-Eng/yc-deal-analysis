@@ -639,6 +639,7 @@
               <h3 className="font-semibold text-gray-900 mb-2">Links</h3>
               <div className="space-y-1.5">
                 {company.website && <a href={company.website} target="_blank" className="block text-sm text-indigo-600 hover:underline truncate">Website</a>}
+                {company.deck_url && <a href={company.deck_url} target="_blank" className="block text-sm text-indigo-600 hover:underline">Pitch Deck</a>}
                 {company.pitchbook_url && <a href={company.pitchbook_url} target="_blank" className="block text-sm text-indigo-600 hover:underline">Pitchbook</a>}
               </div>
             </div>
