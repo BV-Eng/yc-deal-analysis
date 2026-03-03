@@ -168,6 +168,20 @@ app.put('/api/settings', async (req, res) => {
 });
 
 // ==========================================
+// ADMIN
+// ==========================================
+
+app.post('/api/admin/reload-seed', async (req, res) => {
+  try {
+    const result = await db.reloadFromSeed();
+    res.json(result);
+  } catch (e) {
+    console.error('Error reloading seed:', e);
+    res.status(500).json({ error: e.message });
+  }
+});
+
+// ==========================================
 // ANALYTICS
 // ==========================================
 

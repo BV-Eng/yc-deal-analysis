@@ -69,6 +69,27 @@ async function getData() {
   return seed;
 }
 
+// Reload data from seed file (admin function)
+async function reloadFromSeed() {
+  const seed = loadSeedData();
+  const r = getRedis();
+
+  if (r) {
+    try {
+      await r.set(DATA_KEY, JSON.stringify(seed));
+      console.log('Reloaded data from seed to Redis');
+      return { success: true, companies: seed.companies.length };
+    } catch (e) {
+      console.error('Redis error during reload:', e.message);
+      throw e;
+    }
+  }
+
+  // Local file fallback
+  fs.writeFileSync(LOCAL_FILE, JSON.stringify(seed, null, 2));
+  return { success: true, companies: seed.companies.length };
+}
+
 // Save all data
 async function saveData(data) {
   const r = getRedis();
@@ -581,5 +602,6 @@ module.exports = {
   getSettings,
   updateSettings,
   getAnalytics,
-  exportCSV
+  exportCSV,
+  reloadFromSeed
 };
