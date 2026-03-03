@@ -507,6 +507,7 @@
                   <p className="text-gray-600 mt-0.5">{company.one_liner}</p>
                   <div className="flex items-center gap-3 mt-2 text-sm text-gray-500">
                     {company.website && <a href={company.website} target="_blank" className="text-indigo-600 hover:underline">Website</a>}
+                    {company.deck_url && <a href={company.deck_url} target="_blank" className="text-indigo-600 hover:underline flex items-center gap-1">📊 Deck</a>}
                     {company.industries && <span>{company.industries}</span>}
                     {company.all_locations && <span>{company.all_locations}</span>}
                     {company.batch && <span className="bg-orange-100 text-orange-700 px-2 py-0.5 rounded text-xs font-medium">{company.batch}</span>}
@@ -1194,6 +1195,7 @@
             <h3 className="font-semibold text-gray-900 mb-2">Links</h3>
             <div className="grid grid-cols-3 gap-3 text-sm">
               {company.website && <a href={company.website} target="_blank" className="text-indigo-600 hover:underline">Company Website</a>}
+              {company.deck_url && <a href={company.deck_url} target="_blank" className="text-indigo-600 hover:underline">📊 Pitch Deck</a>}
               {company.pitchbook_url && <a href={company.pitchbook_url} target="_blank" className="text-indigo-600 hover:underline">Pitchbook</a>}
             </div>
           </div>
