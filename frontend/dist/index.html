@@ -346,13 +346,14 @@
                     <th className="px-3 py-2 text-left text-xs font-semibold text-gray-500 uppercase">Contact</th>
                     <th className="px-3 py-2 text-left text-xs font-semibold text-gray-500 uppercase">Email</th>
                     <SortHeader col="industries">Industry</SortHeader>
+                    <th className="px-3 py-2 text-left text-xs font-semibold text-gray-500 uppercase">Valuation</th>
                     <th className="px-3 py-2 text-left text-xs font-semibold text-gray-500 uppercase">Source</th>
                     <th className="px-3 py-2 text-left text-xs font-semibold text-gray-500 uppercase">Location</th>
                   </tr>
                 </thead>
                 <tbody>
                   {loading ? (
-                    <tr><td colSpan={13} className="text-center py-8 text-gray-400">Loading companies...</td></tr>
+                    <tr><td colSpan={14} className="text-center py-8 text-gray-400">Loading companies...</td></tr>
                   ) : companies.map((c, idx) => (
                     <tr key={c.id} className="border-b hover:bg-indigo-50/30 transition cursor-pointer"
                       onClick={(e) => { if (e.target.type !== 'checkbox') onSelect(c.id); }}>
@@ -435,6 +436,7 @@
                         />
                       </td>
                       <td className="px-3 py-2 text-xs text-gray-600">{c.industries || '-'}</td>
+                      <td className="px-3 py-2 text-xs text-gray-600 whitespace-nowrap">{c.valuation_range || '-'}</td>
                       <td className="px-3 py-2">
                         <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${c.source === 'Deepchecks' ? 'bg-purple-100 text-purple-700' : 'bg-orange-100 text-orange-700'}`}>
                           {c.source || 'YC'}
@@ -627,6 +629,7 @@
               <h3 className="font-semibold text-gray-900 mb-2">Quick Info</h3>
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between"><span className="text-gray-500">Batch</span><span>{company.batch}</span></div>
+                <div className="flex justify-between"><span className="text-gray-500">Valuation</span><span className="font-medium text-green-700">{company.valuation_range || '-'}</span></div>
                 <div className="flex justify-between"><span className="text-gray-500">Team Size</span><span>{company.team_size || 'Unknown'}</span></div>
                 <div className="flex justify-between"><span className="text-gray-500">Founded</span><span>{company.year_founded || 'Unknown'}</span></div>
                 <div className="flex justify-between"><span className="text-gray-500">Industry</span><span>{company.industries || '-'}</span></div>
