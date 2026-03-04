@@ -29,24 +29,46 @@ Claude will run:
 python3 scripts/1_extract_from_html.py /path/to/deepchecks.html "Deepchecks Mar 2026"
 ```
 
-This script:
-- Parses the HTML and extracts company data
-- Adds companies to `data/seed-data.json` with initial scores
-- Generates a lookup CSV for research
+This script extracts:
+- Company name, valuation range, industry
+- Full description with bullet points
+- Founder's pitch (their own words)
+- Founder's work & education
+- Deck URLs (Google Drive links)
+- Contact emails and websites
+- Founder names and LinkedIn URLs
 
-### Step 1.3: Generate Lookup Sheet
+### Step 1.3: Data Format
+The script creates structured descriptions with three sections:
+```
+**DESCRIPTION**
+[Main company description with bullet points using •]
+
+**FOUNDER'S PITCH**
+[Founder's own pitch text]
+
+**FOUNDER'S WORK & EDUCATION**
+[Background info: companies, universities]
+```
+
+The frontend automatically parses this format to render:
+- Bold section headings
+- Bullet points as proper lists
+- Paragraph breaks
+
+### Step 1.4: Generate Lookup Sheet
 The script outputs a CSV with columns:
+- Website (for Pitchbook lookup)
+- Pitchbook URL (empty - for user to fill)
 - Company Name
 - ID
-- Website (for Pitchbook lookup)
 - Founder Name
-- Founder LinkedIn (may need manual lookup)
-- Pitchbook URL (empty - for user to fill)
+- Founder LinkedIn
 
 **User Action:**
-1. Look up missing founder LinkedIn URLs
-2. Look up Pitchbook URLs for each company
-3. Use a LinkedIn scraper (e.g., Phantombuster, Apify) to scrape founder profiles
+1. Fill in Pitchbook URLs for each company
+2. Verify/add missing founder LinkedIn URLs
+3. Use a LinkedIn scraper to get founder profile data
 
 ---
 
@@ -97,11 +119,12 @@ python3 scripts/4_import_pitchbook_urls.py /path/to/pitchbook_urls.csv
 
 ### Step 2.4: Deploy
 ```bash
+# Commit changes
 git add data/seed-data.json
 git commit -m "Add Deepchecks [Month Year] batch with founder scoring"
 git push origin main
 
-# Wait 20 seconds for Vercel deployment, then:
+# Wait 20 seconds for Vercel deployment, then reload:
 curl -X POST https://yc-deal-analysis.vercel.app/api/admin/reload-seed
 ```
 
@@ -115,12 +138,14 @@ curl -X POST https://yc-deal-analysis.vercel.app/api/admin/reload-seed
 | `id` | Unique identifier (auto-incremented) |
 | `name` | Company name |
 | `one_liner` | Short description |
-| `long_description` | Full description |
+| `long_description` | Full description with **SECTION** headers |
 | `batch` | e.g., "Deepchecks Mar 2026" |
 | `source` | "Deepchecks" or "YC" |
 | `website` | Company website URL |
 | `deck_url` | Google Drive link to pitch deck |
 | `pitchbook_url` | Pitchbook profile URL |
+| `valuation_range` | e.g., "$5M - $10M", "$26M+", "Under $5M" |
+| `all_locations` | Default: "United States" for Deepchecks |
 | `thesis_fit_theme` | "Sustainable Industry", "Human Health", "Tomorrow's Workforce", or "Neutral" |
 | `thesis_fit_score` | 1-10 score |
 | `company_score` | Weighted average of category scores |
@@ -142,6 +167,37 @@ curl -X POST https://yc-deal-analysis.vercel.app/api/admin/reload-seed
 | `breakthrough_score` | 1-10 |
 | `breakthrough_justification` | Reasoning |
 | ... | (9 score/justification pairs) |
+
+### Description Format
+The `long_description` field uses this format for proper frontend rendering:
+```
+**DESCRIPTION**
+Main description text here.
+
+• Bullet point one
+• Bullet point two
+• Bullet point three
+
+**FOUNDER'S PITCH**
+The founder's own pitch in their words.
+
+**FOUNDER'S WORK & EDUCATION**
+Company1, Company2, University1, University2
+```
+
+The frontend parses:
+- `**SECTION**` → Bold heading
+- `•` → Bullet list item
+- Double newlines → Paragraph breaks
+
+### Valuation Ranges
+Common formats:
+- `$5M - $10M`
+- `$11M - $15M`
+- `$16M - $20M`
+- `$21M - $25M`
+- `$26M+`
+- `Under $5M`
 
 ### Thesis Themes
 | Theme | Keywords |
@@ -170,7 +226,7 @@ curl -X POST https://yc-deal-analysis.vercel.app/api/admin/reload-seed
 ## Quick Reference Commands
 
 ```bash
-# Extract from HTML
+# Extract from HTML (includes valuation, descriptions, deck URLs)
 python3 scripts/1_extract_from_html.py ~/Downloads/deepchecks.html "Deepchecks Apr 2026"
 
 # Import LinkedIn profiles
@@ -200,11 +256,20 @@ curl -X POST https://yc-deal-analysis.vercel.app/api/admin/reload-seed
 2. Check that `founder_score` is set (average of 9 scores)
 3. Verify `weighted_total` is recalculated
 
+### Description not rendering properly
+1. Ensure sections use `**SECTION NAME**` format (double asterisks)
+2. Use `•` character for bullet points (not `-` or `*`)
+3. Use double newlines between sections
+
 ### Git push rejected
 Ensure git config is correct:
 ```bash
 git config user.email "eng@better.vc"
 ```
+
+### Valuation not showing
+1. Check `valuation_range` field is populated in seed-data.json
+2. Verify format matches expected patterns ($XM - $YM)
 
 ---
 
@@ -213,8 +278,26 @@ git config user.email "eng@better.vc"
 | File | Purpose |
 |------|---------|
 | `data/seed-data.json` | Main data file with all companies |
-| `scripts/1_extract_from_html.py` | Parse Deepchecks HTML |
+| `scripts/1_extract_from_html.py` | Parse Deepchecks HTML, extract all data |
 | `scripts/3_import_linkedin_and_score.py` | Import LinkedIn data |
 | `scripts/4_import_pitchbook_urls.py` | Import Pitchbook URLs |
 | `frontend/dist/index.html` | Single-file React frontend |
 | `backend/server-redis.js` | Express API server |
+
+---
+
+## Checklist for New Batch
+
+- [ ] Save Deepchecks page as HTML
+- [ ] Run extraction script with batch name
+- [ ] Verify company count and valuation ranges
+- [ ] Fill in Pitchbook URLs in generated CSV
+- [ ] Scrape LinkedIn profiles for founders
+- [ ] Import LinkedIn data
+- [ ] Score founders with Claude (10 at a time)
+- [ ] Import Pitchbook URLs
+- [ ] Commit with eng@better.vc email
+- [ ] Push to trigger Vercel deploy
+- [ ] Wait 20+ seconds
+- [ ] Reload seed data
+- [ ] Hard refresh and verify all data displays

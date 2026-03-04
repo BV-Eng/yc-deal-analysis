@@ -3,13 +3,24 @@
 Step 1: Extract companies from Deepchecks HTML export
 
 Usage:
-    python3 scripts/1_extract_from_html.py /path/to/deepchecks_export.html
+    python3 scripts/1_extract_from_html.py /path/to/deepchecks_export.html "Deepchecks Mar 2026"
 
 This script:
 1. Parses the Deepchecks HTML export
-2. Extracts company names, descriptions, deck URLs, founder info
+2. Extracts company data including:
+   - Name, valuation, industry
+   - Full description with bullet points
+   - Founder's pitch
+   - Founder's work & education
+   - Deck URLs
+   - Contact emails
 3. Adds companies to seed-data.json with initial scoring
 4. Generates lookup sheet for LinkedIn/Pitchbook research
+
+Data Structure Notes:
+- long_description uses **SECTION** format for headings
+- Bullet points use • character
+- Frontend parses this format automatically
 """
 
 import sys
@@ -27,7 +38,6 @@ THEME_MAPPING = {
 def classify_theme(industries, tags, description):
     """Classify company into thesis theme based on keywords."""
     text = f"{industries} {tags} {description}".lower()
-
     for theme, keywords in THEME_MAPPING.items():
         for keyword in keywords:
             if keyword in text:
@@ -56,17 +66,37 @@ def parse_html(html_path):
 
         company = {'name': name}
 
+        # Extract valuation range (e.g., "$5M - $10M Valuation")
+        valuation_match = re.search(r'(\$[\d]+M\s*-\s*\$[\d]+M|\$[\d]+M\+|Under \$[\d]+M)', section)
+        if valuation_match:
+            company['valuation_range'] = valuation_match.group(1).strip()
+
         # Extract slogan (one-liner)
         slogan_match = re.search(r'class="company-slogan[^"]*"[^>]*>([^<]+)<', section)
         if slogan_match:
             company['one_liner'] = slogan_match.group(1).strip()
 
-        # Extract descriptions
+        # Extract all company-desc sections
         desc_matches = re.findall(r'class="company-desc"[^>]*>([^<]+)<', section)
+
+        # Find the main description (usually longer, not founder background)
+        main_description = ""
+        founders_background = ""
         for d in desc_matches:
-            if len(d.strip()) > 100 and 'University' not in d and 'School' not in d:
-                company['long_description'] = d.strip().replace('&amp;', '&').replace('&nbsp;', ' ').replace('&gt;', '>').replace('&lt;', '<')
-                break
+            d = d.strip().replace('&amp;', '&').replace('&nbsp;', ' ').replace('&gt;', '>').replace('&lt;', '<')
+            if len(d) > 100 and 'University' not in d[:50] and 'School' not in d[:50]:
+                if not main_description:
+                    main_description = d
+            elif 'University' in d or 'School' in d or 'Institute' in d:
+                founders_background = d
+
+        company['main_description'] = main_description
+        company['founders_background'] = founders_background
+
+        # Extract founder's pitch (look for "founder's pitch" section)
+        pitch_match = re.search(r"founder's pitch[^<]*</[^>]+>\s*([^<]+)", section, re.IGNORECASE)
+        if pitch_match:
+            company['founders_pitch'] = pitch_match.group(1).strip()
 
         # Extract deck URL
         deck_match = re.search(r'href="(https://drive\.google\.com/file/d/[^"]+)"', section)
@@ -75,27 +105,6 @@ def parse_html(html_path):
             if 'https://' in url[8:]:
                 url = url.split('https://')[0]
             company['deck_url'] = url
-
-        # Extract founder names and LinkedIn URLs
-        founder_pattern = r'class="founder-name[^"]*"[^>]*>([^<]+)<'
-        linkedin_pattern = r'href="(https://(?:www\.)?linkedin\.com/in/[^"]+)"'
-
-        founder_names = re.findall(founder_pattern, section)
-        linkedin_urls = re.findall(linkedin_pattern, section)
-
-        # Also try to extract from company-desc that look like founder info
-        if not founder_names:
-            # Look for names that appear before LinkedIn-like patterns
-            email_match = re.search(r'([A-Z][a-z]+ [A-Z][a-z]+)[^@]*@', section)
-            if email_match:
-                founder_names = [email_match.group(1)]
-
-        company['founders'] = []
-        for i, name in enumerate(founder_names[:3]):  # Max 3 founders
-            founder = {'name': name.strip()}
-            if i < len(linkedin_urls):
-                founder['linkedin'] = linkedin_urls[i]
-            company['founders'].append(founder)
 
         # Extract contact email
         email_match = re.search(r'([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})', section)
@@ -113,9 +122,37 @@ def parse_html(html_path):
             company['industries'] = tag_matches[0] if tag_matches else ''
             company['tags'] = ', '.join(tag_matches)
 
+        # Extract founder name from section
+        founder_name_match = re.search(r'class="founder-name[^"]*"[^>]*>([^<]+)<', section)
+        if founder_name_match:
+            company['founder_name'] = founder_name_match.group(1).strip()
+
+        # Extract founder LinkedIn
+        linkedin_match = re.search(r'href="(https://(?:www\.)?linkedin\.com/in/[^"]+)"', section)
+        if linkedin_match:
+            company['founder_linkedin'] = linkedin_match.group(1)
+
         companies.append(company)
 
     return companies
+
+def build_structured_description(company):
+    """Build the long_description with proper section formatting."""
+    sections = []
+
+    # Description section
+    if company.get('main_description'):
+        sections.append("**DESCRIPTION**\n" + company['main_description'])
+
+    # Founder's Pitch section
+    if company.get('founders_pitch'):
+        sections.append("**FOUNDER'S PITCH**\n" + company['founders_pitch'])
+
+    # Founder's Work & Education section
+    if company.get('founders_background'):
+        sections.append("**FOUNDER'S WORK & EDUCATION**\n" + company['founders_background'])
+
+    return "\n\n".join(sections) if sections else company.get('one_liner', '')
 
 def add_to_seed_data(companies, batch_name):
     """Add extracted companies to seed-data.json."""
@@ -141,15 +178,18 @@ def add_to_seed_data(companies, batch_name):
         theme = classify_theme(
             company.get('industries', ''),
             company.get('tags', ''),
-            company.get('long_description', company.get('one_liner', ''))
+            company.get('main_description', company.get('one_liner', ''))
         )
+
+        # Build structured description
+        long_description = build_structured_description(company)
 
         # Create company record
         record = {
             'id': next_id,
             'name': company['name'],
             'one_liner': company.get('one_liner', ''),
-            'long_description': company.get('long_description', company.get('one_liner', '')),
+            'long_description': long_description,
             'batch': batch_name,
             'source': 'Deepchecks',
             'status': 'Not Contacted',
@@ -157,7 +197,7 @@ def add_to_seed_data(companies, batch_name):
             'subindustry': company.get('industries', ''),
             'tags': company.get('tags', 'Deep Tech'),
             'website': company.get('website', ''),
-            'all_locations': '',
+            'all_locations': 'United States',  # Default for Deepchecks
             'team_size': 0,
             'year_founded': None,
             'logo_url': '',
@@ -172,18 +212,18 @@ def add_to_seed_data(companies, batch_name):
             'contact_email': company.get('contact_email', ''),
             'pitchbook_url': '',
             'deck_url': company.get('deck_url', ''),
-            'valuation_range': '$5M - $10M',
+            'valuation_range': company.get('valuation_range', ''),
 
-            # Initial thesis scoring (will be refined manually if needed)
+            # Initial thesis scoring
             'thesis_fit_theme': theme,
             'thesis_fit_score': 7.5 if theme != 'Neutral' else 5,
             'thesis_fit_weight': 25,
             'thesis_fit_justification': f"{'Strong' if theme != 'Neutral' else 'Limited'} alignment with Better.vc {theme} theme." if theme != 'Neutral' else 'Off-thesis or unclear alignment.',
 
-            # Default company scores (to be refined)
+            # Default company scores
             'team_score': 6,
             'team_weight': 15,
-            'team_justification': f"Founder: {company['founders'][0]['name'] if company.get('founders') else 'Unknown'}. Pending LinkedIn analysis.",
+            'team_justification': f"Founder: {company.get('founder_name', 'Unknown')}. Pending LinkedIn analysis.",
             'product_score': 6,
             'product_weight': 10,
             'product_justification': f"Deep tech: {company.get('industries', 'Unknown')}.",
@@ -198,85 +238,52 @@ def add_to_seed_data(companies, batch_name):
             'impact_justification': '',
             'traction_score': 6,
             'traction_weight': 5,
-            'traction_justification': 'Deepchecks curated batch.',
+            'traction_justification': f"Valuation: {company.get('valuation_range', 'Unknown')}. Deepchecks curated batch.",
             'deal_score': 5.5,
             'deal_weight': 5,
             'deal_justification': f'{batch_name}.',
             'company_score': 7,
             'avg_founder_score': None,
-            'weighted_total': 7,  # Will be recalculated after founder scoring
+            'weighted_total': 7,
 
             'founders': [],
             'interactions': [],
             'notes': []
         }
 
-        # Add founders
-        for founder in company.get('founders', []):
-            founder_record = {
-                'id': next_founder_id,
-                'company_id': next_id,
-                'name': founder['name'],
-                'first_name': '',
-                'last_name': '',
-                'title': 'Founder',
-                'linkedin': founder.get('linkedin', ''),
-                'twitter': '',
-                'avatar_url': '',
-                'bio': '',
-                'email': company.get('contact_email', ''),
-                'is_female': 0,
-                'is_black': 0,
-                'is_hispanic_latino': 0,
-                'schools': '',
-                'degrees': '',
-                'prior_employers': '',
-                'technical_competence': '',
-                'publications_count': 0,
-                'citations_count': 0,
-                'awards': None,
-                'patents': None,
-                'is_repeat_founder': 0,
-                'is_colocated': 0,
-                'age_range': None,
-                'created_at': '2026-03-03 12:00:00',
-                'founder_score': None
-            }
-            record['founders'].append(founder_record)
-            next_founder_id += 1
-
-        # If no founders found, add placeholder
-        if not record['founders']:
-            record['founders'].append({
-                'id': next_founder_id,
-                'company_id': next_id,
-                'name': 'Founder',
-                'first_name': '',
-                'last_name': '',
-                'title': 'Founder',
-                'linkedin': '',
-                'twitter': '',
-                'avatar_url': '',
-                'bio': '',
-                'email': company.get('contact_email', ''),
-                'is_female': 0,
-                'is_black': 0,
-                'is_hispanic_latino': 0,
-                'schools': '',
-                'degrees': '',
-                'prior_employers': '',
-                'technical_competence': '',
-                'publications_count': 0,
-                'citations_count': 0,
-                'awards': None,
-                'patents': None,
-                'is_repeat_founder': 0,
-                'is_colocated': 0,
-                'age_range': None,
-                'created_at': '2026-03-03 12:00:00',
-                'founder_score': None
-            })
-            next_founder_id += 1
+        # Add founder
+        founder_name = company.get('founder_name', 'Founder')
+        founder_record = {
+            'id': next_founder_id,
+            'company_id': next_id,
+            'name': founder_name,
+            'first_name': '',
+            'last_name': '',
+            'title': 'Founder',
+            'linkedin': company.get('founder_linkedin', ''),
+            'twitter': '',
+            'avatar_url': '',
+            'bio': '',
+            'email': company.get('contact_email', ''),
+            'is_female': 0,
+            'is_black': 0,
+            'is_hispanic_latino': 0,
+            'schools': '',
+            'degrees': '',
+            'prior_employers': '',
+            'technical_competence': '',
+            'publications_count': 0,
+            'citations_count': 0,
+            'awards': None,
+            'patents': None,
+            'is_repeat_founder': 0,
+            'is_colocated': 0,
+            'age_range': None,
+            'created_at': '2026-03-03 12:00:00',
+            'founder_score': None
+        }
+        record['founders'].append(founder_record)
+        next_founder_id += 1
 
         seed_data['companies'].append(record)
         added.append(record)
@@ -294,18 +301,28 @@ def generate_lookup_sheet(companies, output_path):
 
     with open(output_path, 'w', newline='') as f:
         writer = csv.writer(f)
-        writer.writerow(['Company Name', 'ID', 'Website', 'Founder Name', 'Founder LinkedIn', 'Pitchbook URL'])
+        writer.writerow(['Website', 'Pitchbook URL', 'Company Name', 'ID', 'Founder Name', 'Founder LinkedIn'])
 
         for company in companies:
-            founders = company.get('founders', [{'name': 'Unknown', 'linkedin': ''}])
-            for i, founder in enumerate(founders):
+            founders = company.get('founders', [])
+            if founders:
+                f = founders[0]
                 writer.writerow([
-                    company['name'] if i == 0 else '',
-                    company['id'] if i == 0 else '',
-                    company.get('website', '') if i == 0 else '',
-                    founder.get('name', ''),
-                    founder.get('linkedin', ''),
-                    '' if i == 0 else ''  # Pitchbook URL column for user to fill
+                    company.get('website', ''),
+                    '',  # Pitchbook URL - to be filled
+                    company['name'],
+                    company['id'],
+                    f.get('name', ''),
+                    f.get('linkedin', '')
+                ])
+            else:
+                writer.writerow([
+                    company.get('website', ''),
+                    '',
+                    company['name'],
+                    company['id'],
+                    '',
+                    ''
                 ])
 
     return output_path
@@ -323,7 +340,11 @@ if __name__ == '__main__':
     companies = parse_html(html_path)
     print(f"Found {len(companies)} companies\n")
 
-    print("Adding to seed-data.json...")
+    for c in companies:
+        val = c.get('valuation_range', 'N/A')
+        print(f"  {c['name']}: {val}")
+
+    print(f"\nAdding to seed-data.json...")
     added = add_to_seed_data(companies, batch_name)
     print(f"Added {len(added)} companies (IDs {added[0]['id']} - {added[-1]['id']})\n")
 
@@ -336,9 +357,13 @@ if __name__ == '__main__':
     print("NEXT STEPS:")
     print("="*60)
     print("1. Open the lookup CSV and fill in:")
-    print("   - Missing founder LinkedIn URLs")
     print("   - Pitchbook URLs for each company")
+    print("   - Missing founder LinkedIn URLs")
     print("2. Use a LinkedIn scraper to get founder profile data")
     print("3. Run step 3 to import LinkedIn profiles and score founders")
     print("4. Run step 4 to import Pitchbook URLs")
     print("5. Commit and push, then reload seed data")
+    print("\nData format notes:")
+    print("- Descriptions use **SECTION** for headings")
+    print("- Bullet points use • character")
+    print("- Location defaults to 'United States'")
