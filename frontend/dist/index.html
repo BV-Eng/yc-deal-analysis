@@ -581,8 +581,21 @@
         <div className="grid grid-cols-3 gap-4 fade-in">
           <div className="col-span-2 space-y-4">
             <div className="bg-white rounded-lg border p-4">
-              <h3 className="font-semibold text-gray-900 mb-2">Description</h3>
-              <p className="text-sm text-gray-600">{company.long_description || company.one_liner || 'No description available'}</p>
+              <div className="text-sm text-gray-600 space-y-4">
+                {(company.long_description || company.one_liner || 'No description available').split(/\*\*([A-Z][A-Z\s'&]+)\*\*/).map(function(part, i) {
+                  if (i % 2 === 1) {
+                    return <h4 key={i} className="font-semibold text-gray-900 mt-4 mb-2">{part}</h4>;
+                  }
+                  return part.split('\n\n').map(function(para, j) {
+                    if (para.includes('•')) {
+                      return <ul key={i + '-' + j} className="list-disc list-inside space-y-1 ml-2">{para.split('•').filter(Boolean).map(function(item, k) {
+                        return <li key={k}>{item.trim()}</li>;
+                      })}</ul>;
+                    }
+                    return para.trim() ? <p key={i + '-' + j}>{para.trim()}</p> : null;
+                  });
+                })}
+              </div>
             </div>
 
             <div className="bg-white rounded-lg border p-4">
