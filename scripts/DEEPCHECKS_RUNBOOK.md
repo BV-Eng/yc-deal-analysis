@@ -60,9 +60,13 @@ This script extracts:
 - Full description with bullet points
 - Founder's pitch (their own words)
 - Founder's work & education
-- Deck URLs (Google Drive links)
+- Deck URLs (PDF from webflow or Google Drive)
+- Memo URLs (Google Drive) - only some companies have these
+- Founder Video URLs (Google Drive) - only some companies have these
 - Contact emails and websites
 - Founder names and LinkedIn URLs
+
+**Note:** Pitchbook URLs are NOT in the Deepchecks HTML - they must be looked up manually.
 
 ### Step 1.3: Data Format
 The script creates structured descriptions with three sections:
@@ -212,10 +216,12 @@ curl -X POST https://yc-deal-analysis.vercel.app/api/admin/reload-seed
 | `one_liner` | Short description |
 | `long_description` | Full description with **SECTION** headers |
 | `batch` | e.g., "Deepchecks Mar 2026" |
-| `source` | "Deepchecks" or "YC" |
+| `source` | e.g., "Deepchecks (2/3/26)" - include date for tracking |
 | `website` | Company website URL |
-| `deck_url` | Google Drive link to pitch deck |
-| `pitchbook_url` | Pitchbook profile URL |
+| `deck_url` | Pitch deck URL (PDF from webflow or Google Drive) |
+| `memo_url` | Deep Checks memo URL (Google Drive) - not all companies have this |
+| `founder_video_url` | Founder video URL (Google Drive) - not all companies have this |
+| `pitchbook_url` | Pitchbook profile URL (manually added - not in Deepchecks HTML) |
 | `valuation_range` | e.g., "$5M - $10M", "$26M+", "Under $5M" |
 | `all_locations` | Default: "United States" for Deepchecks |
 | `thesis_fit_theme` | "Sustainable Industry", "Human Health", "Tomorrow's Workforce", or "Neutral" |
