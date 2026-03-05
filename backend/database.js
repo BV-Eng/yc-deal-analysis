@@ -22,6 +22,7 @@ function initializeDatabase() {
       one_liner TEXT,
       long_description TEXT,
       batch TEXT DEFAULT 'Winter 2026',
+      source TEXT,
       status TEXT DEFAULT 'Not Contacted',
       industries TEXT,
       subindustry TEXT,
@@ -36,6 +37,8 @@ function initializeDatabase() {
       business_model TEXT,
       next_action TEXT,
       custom_tags TEXT,
+      owner TEXT,
+      pitchbook_url TEXT,
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
       updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
     );
@@ -74,6 +77,9 @@ function initializeDatabase() {
     CREATE TABLE IF NOT EXISTS company_scores (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       company_id INTEGER NOT NULL UNIQUE,
+      thesis_fit_score REAL DEFAULT 0,
+      thesis_fit_justification TEXT,
+      thesis_fit_theme TEXT,
       team_score REAL DEFAULT 0,
       team_weight REAL DEFAULT 20,
       team_justification TEXT,
@@ -175,24 +181,29 @@ function initializeDatabase() {
 
 function importCompanies(companiesJson) {
   const db = getDb();
-  const companies = JSON.parse(companiesJson);
+  const data = JSON.parse(companiesJson);
+
+  // Handle both formats: { companies: [...] } or direct array
+  const companies = Array.isArray(data) ? data : (data.companies || []);
 
   const insertCompany = db.prepare(`
-    INSERT OR REPLACE INTO companies (yc_id, name, slug, one_liner, long_description, batch, industries, subindustry, tags, website, all_locations, team_size, year_founded, logo_url)
-    VALUES (@yc_id, @name, @slug, @one_liner, @long_description, @batch, @industries, @subindustry, @tags, @website, @all_locations, @team_size, @year_founded, @logo_url)
+    INSERT OR REPLACE INTO companies (yc_id, name, slug, one_liner, long_description, batch, source, status, industries, subindustry, tags, website, all_locations, team_size, year_founded, logo_url, pitchbook_url, owner)
+    VALUES (@yc_id, @name, @slug, @one_liner, @long_description, @batch, @source, @status, @industries, @subindustry, @tags, @website, @all_locations, @team_size, @year_founded, @logo_url, @pitchbook_url, @owner)
   `);
 
   const insertFounder = db.prepare(`
-    INSERT OR REPLACE INTO founders (company_id, name, first_name, last_name, title, linkedin, twitter, avatar_url, bio, is_female, is_black, is_hispanic_latino)
-    VALUES (@company_id, @name, @first_name, @last_name, @title, @linkedin, @twitter, @avatar_url, @bio, @is_female, @is_black, @is_hispanic_latino)
+    INSERT OR REPLACE INTO founders (company_id, name, first_name, last_name, title, linkedin, twitter, avatar_url, bio, is_female, is_black, is_hispanic_latino, schools, degrees, prior_employers)
+    VALUES (@company_id, @name, @first_name, @last_name, @title, @linkedin, @twitter, @avatar_url, @bio, @is_female, @is_black, @is_hispanic_latino, @schools, @degrees, @prior_employers)
   `);
 
   const insertCompanyScore = db.prepare(`
-    INSERT OR IGNORE INTO company_scores (company_id) VALUES (?)
+    INSERT OR REPLACE INTO company_scores (company_id, thesis_fit_score, thesis_fit_justification, thesis_fit_theme, team_score, team_justification, product_score, product_justification, business_model_score, business_model_justification, market_score, market_justification, impact_score, impact_justification, traction_score, traction_justification, deal_score, deal_justification, weighted_total)
+    VALUES (@company_id, @thesis_fit_score, @thesis_fit_justification, @thesis_fit_theme, @team_score, @team_justification, @product_score, @product_justification, @business_model_score, @business_model_justification, @market_score, @market_justification, @impact_score, @impact_justification, @traction_score, @traction_justification, @deal_score, @deal_justification, @weighted_total)
   `);
 
   const insertFounderScore = db.prepare(`
-    INSERT OR IGNORE INTO founder_scores (founder_id) VALUES (?)
+    INSERT OR REPLACE INTO founder_scores (founder_id, breakthrough_score, breakthrough_justification, mission_score, mission_justification, achievements_score, achievements_justification, work_ethic_score, work_ethic_justification, grit_score, grit_justification, magnetism_score, magnetism_justification, curiosity_score, curiosity_justification, coachability_score, coachability_justification, team_chemistry_score, team_chemistry_justification, weighted_total)
+    VALUES (@founder_id, @breakthrough_score, @breakthrough_justification, @mission_score, @mission_justification, @achievements_score, @achievements_justification, @work_ethic_score, @work_ethic_justification, @grit_score, @grit_justification, @magnetism_score, @magnetism_justification, @curiosity_score, @curiosity_justification, @coachability_score, @coachability_justification, @team_chemistry_score, @team_chemistry_justification, @weighted_total)
   `);
 
   const transaction = db.transaction(() => {
@@ -204,6 +215,8 @@ function importCompanies(companiesJson) {
         one_liner: company.one_liner || '',
         long_description: company.long_description || company.raw?.long_description || '',
         batch: company.batch || 'Winter 2026',
+        source: company.source || '',
+        status: company.status || 'Not Contacted',
         industries: company.industries || (company.raw?.industries || []).join(', '),
         subindustry: company.subindustry || company.raw?.subindustry || '',
         tags: company.tags || (company.raw?.tags || []).join(', '),
@@ -211,15 +224,37 @@ function importCompanies(companiesJson) {
         all_locations: company.all_locations || company.raw?.all_locations || '',
         team_size: company.team_size || company.raw?.team_size || 0,
         year_founded: company.year_founded || company.raw?.year_founded || null,
-        logo_url: company.logo_url || company.raw?.small_logo_thumb_url || ''
+        logo_url: company.logo_url || company.raw?.small_logo_thumb_url || '',
+        pitchbook_url: company.pitchbook_url || '',
+        owner: company.owner || ''
       });
 
       const companyId = result.lastInsertRowid;
 
-      // Insert company scores placeholder
-      insertCompanyScore.run(companyId);
+      // Insert company scores with actual values
+      insertCompanyScore.run({
+        company_id: companyId,
+        thesis_fit_score: company.thesis_fit_score || 0,
+        thesis_fit_justification: company.thesis_fit_justification || '',
+        thesis_fit_theme: company.thesis_fit_theme || '',
+        team_score: company.team_score || 0,
+        team_justification: company.team_justification || '',
+        product_score: company.product_score || 0,
+        product_justification: company.product_justification || '',
+        business_model_score: company.business_model_score || 0,
+        business_model_justification: company.business_model_justification || '',
+        market_score: company.market_score || 0,
+        market_justification: company.market_justification || '',
+        impact_score: company.impact_score || 0,
+        impact_justification: company.impact_justification || '',
+        traction_score: company.traction_score || 0,
+        traction_justification: company.traction_justification || '',
+        deal_score: company.deal_score || 0,
+        deal_justification: company.deal_justification || '',
+        weighted_total: company.weighted_total || company.company_score || 0
+      });
 
-      // Insert founders
+      // Insert founders with scores
       const founders = company.founders || [];
       for (const founder of founders) {
         const fResult = insertFounder.run({
@@ -234,11 +269,37 @@ function importCompanies(companiesJson) {
           bio: founder.bio || '',
           is_female: founder.is_female ? 1 : 0,
           is_black: founder.is_black ? 1 : 0,
-          is_hispanic_latino: founder.is_hispanic_latino ? 1 : 0
+          is_hispanic_latino: founder.is_hispanic_latino ? 1 : 0,
+          schools: founder.schools || '',
+          degrees: founder.degrees || '',
+          prior_employers: founder.prior_employers || ''
         });
 
-        // Insert founder scores placeholder
-        insertFounderScore.run(fResult.lastInsertRowid);
+        const founderId = fResult.lastInsertRowid;
+
+        // Insert founder scores with actual values
+        insertFounderScore.run({
+          founder_id: founderId,
+          breakthrough_score: founder.breakthrough_score || 0,
+          breakthrough_justification: founder.breakthrough_justification || '',
+          mission_score: founder.mission_score || 0,
+          mission_justification: founder.mission_justification || '',
+          achievements_score: founder.achievements_score || 0,
+          achievements_justification: founder.achievements_justification || '',
+          work_ethic_score: founder.work_ethic_score || 0,
+          work_ethic_justification: founder.work_ethic_justification || '',
+          grit_score: founder.grit_score || 0,
+          grit_justification: founder.grit_justification || '',
+          magnetism_score: founder.magnetism_score || 0,
+          magnetism_justification: founder.magnetism_justification || '',
+          curiosity_score: founder.curiosity_score || 0,
+          curiosity_justification: founder.curiosity_justification || '',
+          coachability_score: founder.coachability_score || 0,
+          coachability_justification: founder.coachability_justification || '',
+          team_chemistry_score: founder.team_chemistry_score || 0,
+          team_chemistry_justification: founder.team_chemistry_justification || '',
+          weighted_total: founder.founder_score || 0
+        });
       }
     }
   });
@@ -247,8 +308,9 @@ function importCompanies(companiesJson) {
 
   const companyCount = db.prepare('SELECT COUNT(*) as count FROM companies').get().count;
   const founderCount = db.prepare('SELECT COUNT(*) as count FROM founders').get().count;
+  const scoredFounders = db.prepare('SELECT COUNT(*) as count FROM founder_scores WHERE weighted_total > 0').get().count;
 
-  console.log(`Imported ${companyCount} companies and ${founderCount} founders`);
+  console.log(`Imported ${companyCount} companies, ${founderCount} founders (${scoredFounders} with scores)`);
 
   db.close();
 }

@@ -537,9 +537,9 @@ function startup() {
   db.close();
 
   if (count === 0) {
-    const dataPath = path.join(__dirname, '..', 'data', 'yc_w26_companies.json');
+    const dataPath = path.join(__dirname, '..', 'data', 'seed-data.json');
     if (fs.existsSync(dataPath)) {
-      console.log('Importing company data...');
+      console.log('Importing company data from seed-data.json...');
       importCompanies(fs.readFileSync(dataPath, 'utf-8'));
     }
   } else {
