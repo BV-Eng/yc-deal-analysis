@@ -2,6 +2,32 @@
 
 This document outlines the process for importing new Deepchecks company batches into the Deal Analysis CRM.
 
+---
+
+## CRITICAL: Architecture Overview
+
+**Production uses Redis, NOT SQLite.**
+
+- `server-redis.js` + `database-redis.js` = Production (Vercel)
+- `server.js` + `database.js` = Local development only
+
+**Data flow:**
+1. All data lives in `data/seed-data.json`
+2. On deploy, Vercel caches seed-data.json in Redis
+3. **Redis cache does NOT auto-update** - you must call `/api/admin/reload-seed`
+4. Local SQLite database (`data/yc_deals.db`) is irrelevant to production
+
+**After ANY change to seed-data.json:**
+```bash
+git add data/seed-data.json
+git commit -m "Description of changes"
+git push origin main
+sleep 30  # Wait for Vercel deploy
+curl -X POST https://yc-deal-analysis.vercel.app/api/admin/reload-seed
+```
+
+---
+
 ## Overview
 
 The import process has two phases:
@@ -90,6 +116,9 @@ This enriches founder records with:
 - Repeat founder flag
 
 ### Step 2.2: Score Founders (Manual with Claude)
+
+**CRITICAL:** Founder scores must be written directly to `seed-data.json`. Do NOT use local SQLite database - it has no effect on production.
+
 Founder scoring requires LLM-based holistic analysis. Claude will:
 
 1. Review each founder's LinkedIn profile data
@@ -108,6 +137,49 @@ Founder scoring requires LLM-based holistic analysis. Claude will:
 4. Update `weighted_total` = 30% company_score + 70% founder_score
 
 **Batch Processing:** Claude processes ~10 founders at a time to manage context.
+
+**Required fields per founder in seed-data.json:**
+```json
+{
+  "name": "Founder Name",
+  "linkedin": "https://linkedin.com/in/...",
+  "breakthrough_score": 7.5,
+  "breakthrough_justification": "...",
+  "mission_score": 8.0,
+  "mission_justification": "...",
+  "achievements_score": 7.0,
+  "achievements_justification": "...",
+  "work_ethic_score": 8.5,
+  "work_ethic_justification": "...",
+  "grit_score": 7.0,
+  "grit_justification": "...",
+  "magnetism_score": 6.5,
+  "magnetism_justification": "...",
+  "curiosity_score": 8.0,
+  "curiosity_justification": "...",
+  "coachability_score": 7.5,
+  "coachability_justification": "...",
+  "team_chemistry_score": 8.0,
+  "team_chemistry_justification": "...",
+  "founder_score": 7.56
+}
+```
+
+**Verification before committing:**
+```bash
+python3 -c "
+import json
+with open('data/seed-data.json') as f:
+    data = json.load(f)
+batch = 'Deepchecks (2/3/26)'  # Change to your batch
+for c in data['companies']:
+    if c.get('source') == batch:
+        for f in c.get('founders', []):
+            score = f.get('founder_score', 0)
+            if score == 0:
+                print(f'MISSING SCORE: {c[\"name\"]} - {f[\"name\"]}')
+"
+```
 
 ### Step 2.3: Import Pitchbook URLs
 User provides the CSV with Pitchbook URLs filled in.
@@ -248,13 +320,39 @@ curl -X POST https://yc-deal-analysis.vercel.app/api/admin/reload-seed
 
 ### Companies not showing up
 1. Check if deployment completed (wait 20+ seconds)
-2. Run the reload-seed endpoint
+2. **Run the reload-seed endpoint** - this is almost always the issue:
+   ```bash
+   curl -X POST https://yc-deal-analysis.vercel.app/api/admin/reload-seed
+   ```
 3. Hard refresh the browser (Cmd+Shift+R)
 
-### Founder scores not displaying
-1. Verify the founder has all 9 score fields populated
-2. Check that `founder_score` is set (average of 9 scores)
-3. Verify `weighted_total` is recalculated
+### Founder scores showing as 0 (MOST COMMON ISSUE)
+**Root cause:** Redis cache wasn't reloaded after pushing seed-data.json
+
+**Fix:**
+```bash
+curl -X POST https://yc-deal-analysis.vercel.app/api/admin/reload-seed
+```
+
+**Prevention:** ALWAYS run reload-seed after pushing. The deploy does NOT auto-reload Redis.
+
+**Verify scores are in seed-data.json before pushing:**
+```bash
+python3 -c "
+import json
+with open('data/seed-data.json') as f:
+    data = json.load(f)
+for c in data['companies'][:5]:
+    if c.get('founders'):
+        f = c['founders'][0]
+        print(f'{c[\"name\"]}: {f[\"name\"]} = {f.get(\"founder_score\", \"MISSING\")}')"
+```
+
+### Scores written to wrong place
+**Problem:** Claude wrote scores to local SQLite database instead of seed-data.json
+**Why it fails:** Production uses Redis, which reads from seed-data.json. Local SQLite is ignored.
+
+**Fix:** Ensure all scoring scripts update `data/seed-data.json` directly, NOT `data/yc_deals.db`
 
 ### Description not rendering properly
 1. Ensure sections use `**SECTION NAME**` format (double asterisks)
@@ -271,33 +369,88 @@ git config user.email "eng@better.vc"
 1. Check `valuation_range` field is populated in seed-data.json
 2. Verify format matches expected patterns ($XM - $YM)
 
+### Claude session froze mid-scoring
+**Recovery:**
+1. Check which founders have scores: run verification script above
+2. Continue scoring only the missing founders
+3. Commit partial progress frequently to avoid losing work
+
+---
+
+## Common Pitfalls to Avoid
+
+### 1. Forgetting to reload Redis
+**Symptom:** Push succeeds, Vercel deploys, but dashboard shows old/missing data
+**Fix:** Always run `curl -X POST .../api/admin/reload-seed` after pushing
+
+### 2. Writing to SQLite instead of seed-data.json
+**Symptom:** Scores work locally but not on production
+**Why:** Production ignores SQLite entirely. Only `seed-data.json` matters.
+**Fix:** All scripts must read/write `data/seed-data.json`
+
+### 3. Missing founder_score field
+**Symptom:** Individual category scores exist but dashboard shows 0
+**Why:** Dashboard reads `founder_score`, not individual scores
+**Fix:** Always calculate and set `founder_score = avg(9 category scores)`
+
+### 4. Session timeout mid-scoring
+**Symptom:** Some founders scored, others missing
+**Fix:** Commit partial progress frequently. Use verification script to find gaps.
+
+### 5. Wrong source filter
+**Symptom:** Can't find companies from new batch
+**Why:** Source field format must match exactly (e.g., "Deepchecks (2/3/26)")
+**Fix:** Check exact source string in seed-data.json
+
 ---
 
 ## Files Reference
 
 | File | Purpose |
 |------|---------|
-| `data/seed-data.json` | Main data file with all companies |
+| `data/seed-data.json` | **THE source of truth** - all data for production |
+| `data/yc_deals.db` | Local SQLite - development only, ignored in production |
 | `scripts/1_extract_from_html.py` | Parse Deepchecks HTML, extract all data |
 | `scripts/3_import_linkedin_and_score.py` | Import LinkedIn data |
 | `scripts/4_import_pitchbook_urls.py` | Import Pitchbook URLs |
 | `frontend/dist/index.html` | Single-file React frontend |
-| `backend/server-redis.js` | Express API server |
+| `backend/server-redis.js` | Production API server (uses Redis) |
+| `backend/server.js` | Local dev server (uses SQLite) |
+| `vercel.json` | Deployment config - points to server-redis.js |
 
 ---
 
 ## Checklist for New Batch
 
+### Phase 1: Import
 - [ ] Save Deepchecks page as HTML
 - [ ] Run extraction script with batch name
 - [ ] Verify company count and valuation ranges
-- [ ] Fill in Pitchbook URLs in generated CSV
+- [ ] Generate lookup CSV for LinkedIn/Pitchbook
+
+### Phase 2: Enrichment
+- [ ] Fill in Pitchbook URLs in CSV
 - [ ] Scrape LinkedIn profiles for founders
-- [ ] Import LinkedIn data
+- [ ] Import LinkedIn data to seed-data.json
 - [ ] Score founders with Claude (10 at a time)
-- [ ] Import Pitchbook URLs
-- [ ] Commit with eng@better.vc email
-- [ ] Push to trigger Vercel deploy
-- [ ] Wait 20+ seconds
-- [ ] Reload seed data
-- [ ] Hard refresh and verify all data displays
+- [ ] Import Pitchbook URLs to seed-data.json
+
+### Phase 3: Verification (BEFORE pushing)
+- [ ] Run verification script to confirm all founders have scores
+- [ ] Spot-check a few founders in seed-data.json manually
+- [ ] Confirm `founder_score` field is populated (not just individual category scores)
+
+### Phase 4: Deployment (CRITICAL)
+- [ ] `git add data/seed-data.json`
+- [ ] `git commit -m "Add [Batch Name] with founder scoring"`
+- [ ] `git push origin main`
+- [ ] **Wait 30+ seconds for Vercel deploy to complete**
+- [ ] **MUST RUN:** `curl -X POST https://yc-deal-analysis.vercel.app/api/admin/reload-seed`
+- [ ] Verify response shows `{"success":true,"companies":XXX}`
+
+### Phase 5: Final Verification
+- [ ] Hard refresh dashboard (Cmd+Shift+R)
+- [ ] Check a company from new batch
+- [ ] Verify founder scores display (not 0)
+- [ ] Verify company scores display
+- [ ] Check weighted_total calculation
