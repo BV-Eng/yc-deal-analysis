@@ -4,6 +4,37 @@ This document outlines the process for importing new Deepchecks company batches 
 
 ---
 
+## Instructions for Claude (READ FIRST)
+
+When helping with Deepchecks imports, follow these rules:
+
+### DO:
+- Write ALL data directly to `data/seed-data.json`
+- Use the exact source format: `"Deepchecks (M/D/YY)"` (e.g., "Deepchecks (2/3/26)")
+- Calculate and set `founder_score` as the average of all 9 category scores
+- Commit partial progress frequently (every 10-15 founders) to avoid losing work
+- Run verification scripts BEFORE pushing to confirm all scores are populated
+- ALWAYS run `curl -X POST https://yc-deal-analysis.vercel.app/api/admin/reload-seed` after pushing
+
+### DON'T:
+- Don't write to SQLite database (`yc_deals.db`) - it's ignored in production
+- Don't assume scores are live after `git push` - Redis must be reloaded
+- Don't skip the `founder_score` field - individual scores alone won't display
+- Don't use `server.js` or `database.js` for production - use `server-redis.js`
+
+### If Session Crashes Mid-Scoring:
+1. Run verification script to find which founders are missing scores
+2. Continue scoring ONLY the missing founders
+3. The seed-data.json file preserves all previous work
+
+### Source Field Format:
+Use this exact format for the `source` field:
+- `"Deepchecks (2/3/26)"` - for Feb 3, 2026 batch
+- `"Deepchecks (2/26/26)"` - for Feb 26, 2026 batch
+- `"YC (Winter 2026)"` - for YC companies
+
+---
+
 ## CRITICAL: Architecture Overview
 
 **Production uses Redis, NOT SQLite.**
@@ -305,7 +336,7 @@ Common formats:
 
 ```bash
 # Extract from HTML (includes valuation, descriptions, deck URLs)
-python3 scripts/1_extract_from_html.py ~/Downloads/deepchecks.html "Deepchecks Apr 2026"
+python3 scripts/1_extract_from_html.py ~/Downloads/deepchecks.html "Deepchecks (4/1/26)"
 
 # Import LinkedIn profiles
 python3 scripts/3_import_linkedin_and_score.py ~/Downloads/linkedin_profiles.json
@@ -313,11 +344,33 @@ python3 scripts/3_import_linkedin_and_score.py ~/Downloads/linkedin_profiles.jso
 # Import Pitchbook URLs
 python3 scripts/4_import_pitchbook_urls.py ~/Downloads/pitchbook_urls.csv
 
-# Deploy
-git add data/seed-data.json && git commit -m "Add batch" && git push origin main
+# Verify all founders have scores before deploying
+python3 -c "
+import json
+with open('data/seed-data.json') as f:
+    data = json.load(f)
+batch = 'Deepchecks (4/1/26)'  # Change to your batch
+missing = []
+for c in data['companies']:
+    if c.get('source') == batch:
+        for f in c.get('founders', []):
+            if not f.get('founder_score'):
+                missing.append(f'{c[\"name\"]} - {f[\"name\"]}')
+if missing:
+    print(f'MISSING SCORES ({len(missing)}):')
+    for m in missing: print(f'  {m}')
+else:
+    print('All founders have scores!')
+"
 
-# Reload production data
-curl -X POST https://yc-deal-analysis.vercel.app/api/admin/reload-seed
+# ONE-COMMAND DEPLOY (copy-paste this entire block)
+git add data/seed-data.json && \
+git commit -m "Add Deepchecks batch with founder scoring" && \
+git push origin main && \
+echo "Waiting 30s for Vercel deploy..." && \
+sleep 30 && \
+curl -X POST https://yc-deal-analysis.vercel.app/api/admin/reload-seed && \
+echo "" && echo "Done! Refresh dashboard to verify."
 ```
 
 ---
@@ -460,3 +513,15 @@ git config user.email "eng@better.vc"
 - [ ] Verify founder scores display (not 0)
 - [ ] Verify company scores display
 - [ ] Check weighted_total calculation
+
+---
+
+## TL;DR - The 3 Things That MUST Happen
+
+1. **All data goes in `seed-data.json`** - not SQLite, not anywhere else
+2. **Every founder needs `founder_score`** - the average of 9 category scores
+3. **Run reload-seed after pushing** - `curl -X POST https://yc-deal-analysis.vercel.app/api/admin/reload-seed`
+
+If founder scores show as 0: run reload-seed.
+If data isn't updating: run reload-seed.
+When in doubt: run reload-seed.
