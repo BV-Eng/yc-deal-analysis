@@ -101,6 +101,10 @@
     function App() {
       const [page, setPage] = useState('dashboard');
       const [selectedCompanyId, setSelectedCompanyId] = useState(null);
+      // Lift sort state to App level so it persists across navigation
+      const [sort, setSort] = useState('id');
+      const [order, setOrder] = useState('DESC');
+      const [filters, setFilters] = useState({ status: '', industry: '', source: '', theme: '', search: '' });
 
       const navigate = useCallback((p, id) => {
         setPage(p);
@@ -134,7 +138,7 @@
           </nav>
 
           <main className="max-w-[1900px] mx-auto px-4 py-4">
-            {page === 'dashboard' && !selectedCompanyId && <Dashboard onSelect={(id) => navigate('detail', id)} />}
+            {page === 'dashboard' && !selectedCompanyId && <Dashboard onSelect={(id) => navigate('detail', id)} sort={sort} setSort={setSort} order={order} setOrder={setOrder} filters={filters} setFilters={setFilters} />}
             {page === 'dashboard' && selectedCompanyId && (
               <CompanyDetail id={selectedCompanyId} onBack={() => { setSelectedCompanyId(null); navigate('dashboard'); }} />
             )}
@@ -151,19 +155,25 @@
     // ==========================================
     // DASHBOARD
     // ==========================================
-    function Dashboard({ onSelect }) {
+    function Dashboard({ onSelect, sort, setSort, order, setOrder, filters, setFilters }) {
       const [companies, setCompanies] = useState([]);
       const [loading, setLoading] = useState(true);
-      const [search, setSearch] = useState('');
-      const [statusFilter, setStatusFilter] = useState('');
-      const [industryFilter, setIndustryFilter] = useState('');
-      const [diversityFilter, setDiversityFilter] = useState('');
-      const [themeFilter, setThemeFilter] = useState('');
-      const [ownerFilter, setOwnerFilter] = useState('');
-      const [sourceFilter, setSourceFilter] = useState('');
-      const [sort, setSort] = useState('id');
-      const [order, setOrder] = useState('DESC');
       const [selectedIds, setSelectedIds] = useState(new Set());
+
+      // Use filters from props (persisted in App)
+      const search = filters.search || '';
+      const statusFilter = filters.status || '';
+      const industryFilter = filters.industry || '';
+      const themeFilter = filters.theme || '';
+      const sourceFilter = filters.source || '';
+      const diversityFilter = '';
+      const ownerFilter = '';
+
+      const setSearch = (v) => setFilters(f => ({...f, search: v}));
+      const setStatusFilter = (v) => setFilters(f => ({...f, status: v}));
+      const setIndustryFilter = (v) => setFilters(f => ({...f, industry: v}));
+      const setThemeFilter = (v) => setFilters(f => ({...f, theme: v}));
+      const setSourceFilter = (v) => setFilters(f => ({...f, source: v}));
 
       const fetchCompanies = useCallback(async () => {
         setLoading(true);
@@ -304,8 +314,8 @@
               className="border rounded-lg px-3 py-1.5 text-sm font-medium"
               style={{ borderColor: sourceFilter ? '#6366f1' : undefined }}>
               <option value="">All Sources</option>
-              <option value="YC">YC W26</option>
-              <option value="Deepchecks">Deepchecks</option>
+              <option value="YC (Winter 2026)">YC (W26)</option>
+              <option value="Deepchecks (2/26/26)">Deepchecks (2/26/26)</option>
             </select>
             {selectedIds.size > 0 && (
               <div className="flex items-center gap-2 ml-auto">
@@ -438,7 +448,7 @@
                       <td className="px-3 py-2 text-xs text-gray-600">{c.industries || '-'}</td>
                       <td className="px-3 py-2 text-xs text-gray-600 whitespace-nowrap">{c.valuation_range || '-'}</td>
                       <td className="px-3 py-2">
-                        <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${c.source === 'Deepchecks' ? 'bg-purple-100 text-purple-700' : 'bg-orange-100 text-orange-700'}`}>
+                        <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${(c.source || '').includes('Deepchecks') ? 'bg-purple-100 text-purple-700' : 'bg-orange-100 text-orange-700'}`}>
                           {c.source || 'YC'}
                         </span>
                       </td>
