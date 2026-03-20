@@ -5,7 +5,7 @@
       "src": "backend/server-redis.js",
       "use": "@vercel/node",
       "config": {
-        "includeFiles": ["data/seed-data.json"]
+        "includeFiles": ["../data/**"]
       }
     },
     {
