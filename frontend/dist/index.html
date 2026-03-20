@@ -358,6 +358,7 @@
                     <th className="px-3 py-2 text-left text-xs font-semibold text-gray-500 uppercase">Email</th>
                     <SortHeader col="industries">Industry</SortHeader>
                     <th className="px-3 py-2 text-left text-xs font-semibold text-gray-500 uppercase">Valuation</th>
+                    <th className="px-3 py-2 text-left text-xs font-semibold text-gray-500 uppercase">Total Raised</th>
                     <th className="px-3 py-2 text-left text-xs font-semibold text-gray-500 uppercase">Source</th>
                     <th className="px-3 py-2 text-left text-xs font-semibold text-gray-500 uppercase">Location</th>
                   </tr>
@@ -448,6 +449,7 @@
                       </td>
                       <td className="px-3 py-2 text-xs text-gray-600">{c.industries || '-'}</td>
                       <td className="px-3 py-2 text-xs text-gray-600 whitespace-nowrap">{c.valuation_range || '-'}</td>
+                      <td className="px-3 py-2 text-xs text-gray-600 whitespace-nowrap">{c.total_raised || '-'}</td>
                       <td className="px-3 py-2 whitespace-nowrap">
                         <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${(c.source || '').includes('Deepchecks') ? 'bg-purple-100 text-purple-700' : 'bg-orange-100 text-orange-700'}`}>
                           {c.source || 'YC'}
@@ -515,9 +517,9 @@
             <div className="flex items-start justify-between">
               <div className="flex items-center gap-4">
                 {company.logo_url && <img src={company.logo_url} className="w-14 h-14 rounded-lg" alt="" />}
-                <div>
+                <div className="flex-1">
                   <h2 className="text-2xl font-bold text-gray-900">{company.name}</h2>
-                  <p className="text-gray-600 mt-0.5">{company.one_liner}</p>
+                  <p className="text-gray-600 mt-0.5 max-w-3xl">{company.one_liner}</p>
                   <div className="flex items-center gap-3 mt-2 text-sm text-gray-500">
                     {company.website && <a href={company.website} target="_blank" className="text-indigo-600 hover:underline">Website</a>}
                     {company.deck_url && <a href={company.deck_url} target="_blank" className="text-indigo-600 hover:underline flex items-center gap-1">📊 Deck</a>}
@@ -654,6 +656,7 @@
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between"><span className="text-gray-500">Batch</span><span>{company.batch}</span></div>
                 <div className="flex justify-between"><span className="text-gray-500">Valuation</span><span className="font-medium text-green-700">{company.valuation_range || '-'}</span></div>
+                <div className="flex justify-between"><span className="text-gray-500">Total Raised</span><span className="font-medium text-blue-700">{company.total_raised || '-'}</span></div>
                 <div className="flex justify-between"><span className="text-gray-500">Team Size</span><span>{company.team_size || 'Unknown'}</span></div>
                 <div className="flex justify-between"><span className="text-gray-500">Founded</span><span>{company.year_founded || 'Unknown'}</span></div>
                 <div className="flex justify-between"><span className="text-gray-500">Industry</span><span>{company.industries || '-'}</span></div>
