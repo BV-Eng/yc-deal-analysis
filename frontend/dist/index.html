@@ -317,6 +317,8 @@
               <option value="YC (Winter 2026)">YC (W26)</option>
               <option value="Deepchecks (2/3/26)">Deepchecks (2/3/26)</option>
               <option value="Deepchecks (2/26/26)">Deepchecks (2/26/26)</option>
+              <option value="DealBot (March 2026)">DealBot (Mar 26)</option>
+              <option value="AcceleratorBot (March 2026)">AcceleratorBot (Mar 26)</option>
             </select>
             {selectedIds.size > 0 && (
               <div className="flex items-center gap-2 ml-auto">
@@ -451,7 +453,12 @@
                       <td className="px-3 py-2 text-xs text-gray-600 whitespace-nowrap">{c.valuation_range || '-'}</td>
                       <td className="px-3 py-2 text-xs text-gray-600 whitespace-nowrap">{c.total_raised || '-'}</td>
                       <td className="px-3 py-2 whitespace-nowrap">
-                        <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${(c.source || '').includes('Deepchecks') ? 'bg-purple-100 text-purple-700' : 'bg-orange-100 text-orange-700'}`}>
+                        <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${
+                          (c.source || '').includes('Deepchecks') ? 'bg-purple-100 text-purple-700' :
+                          (c.source || '').includes('DealBot') ? 'bg-blue-100 text-blue-700' :
+                          (c.source || '').includes('AcceleratorBot') ? 'bg-teal-100 text-teal-700' :
+                          'bg-orange-100 text-orange-700'
+                        }`}>
                           {c.source || 'YC'}
                         </span>
                       </td>
@@ -1478,8 +1485,8 @@
           <div className="bg-white rounded-lg border p-6">
             <h3 className="font-semibold text-gray-900 mb-4">About</h3>
             <p className="text-sm text-gray-600">
-              Better Ventures Deal Analysis CRM. Track and score companies from YC, Plug and Play, Deepchecks,
-              and other accelerators with thesis alignment scoring, interaction tracking, and analytics.
+              Better Ventures Deal Analysis CRM. Track and score companies from YC, Deepchecks,
+              DealBot, AcceleratorBot, and other sources with thesis alignment scoring, interaction tracking, and analytics.
             </p>
           </div>
         </div>
