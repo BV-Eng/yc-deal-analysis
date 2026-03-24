@@ -319,6 +319,7 @@
               <option value="Deepchecks (2/26/26)">Deepchecks (2/26/26)</option>
               <option value="DealBot (March 2026)">DealBot (Mar 26)</option>
               <option value="AcceleratorBot (March 2026)">AcceleratorBot (Mar 26)</option>
+              <option value="StealthBot (March 2026)">StealthBot (Mar 26)</option>
             </select>
             {selectedIds.size > 0 && (
               <div className="flex items-center gap-2 ml-auto">
@@ -457,6 +458,7 @@
                           (c.source || '').includes('Deepchecks') ? 'bg-purple-100 text-purple-700' :
                           (c.source || '').includes('DealBot') ? 'bg-blue-100 text-blue-700' :
                           (c.source || '').includes('AcceleratorBot') ? 'bg-teal-100 text-teal-700' :
+                          (c.source || '').includes('StealthBot') ? 'bg-orange-100 text-orange-700' :
                           'bg-orange-100 text-orange-700'
                         }`}>
                           {c.source || 'YC'}
