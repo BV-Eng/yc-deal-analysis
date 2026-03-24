@@ -19,7 +19,7 @@ app.use(express.static(path.join(__dirname, '..', 'frontend', 'dist')));
 app.get('/api/companies', (req, res) => {
   const db = getDb();
   try {
-    const { status, industry, location, search, minScore, maxScore, diversity, sort, order, tag } = req.query;
+    const { status, industry, location, search, minScore, maxScore, diversity, sort, order, tag, source } = req.query;
 
     let sql = `
       SELECT c.*,
@@ -53,8 +53,8 @@ app.get('/api/companies', (req, res) => {
       params.push(`%${location}%`);
     }
     if (search) {
-      sql += ` AND (c.name LIKE ? OR c.one_liner LIKE ? OR c.long_description LIKE ?)`;
-      params.push(`%${search}%`, `%${search}%`, `%${search}%`);
+      sql += ` AND (c.name LIKE ? OR c.one_liner LIKE ? OR c.long_description LIKE ? OR c.contact_email LIKE ? OR EXISTS (SELECT 1 FROM founders f WHERE f.company_id = c.id AND (f.name LIKE ? OR f.email LIKE ?)))`;
+      params.push(`%${search}%`, `%${search}%`, `%${search}%`, `%${search}%`, `%${search}%`, `%${search}%`);
     }
     if (tag) {
       sql += ` AND (c.tags LIKE ? OR c.custom_tags LIKE ?)`;
@@ -91,9 +91,15 @@ app.get('/api/companies', (req, res) => {
       }
     }
 
+    // Source filter
+    if (source) {
+      sql += ` AND c.source = ?`;
+      params.push(source);
+    }
+
     const sortCol = sort || 'company_score';
     const sortOrder = order || 'DESC';
-    const validSorts = ['name', 'company_score', 'status', 'industries', 'all_locations', 'last_interaction_date', 'avg_founder_score', 'team_score', 'product_score', 'market_score', 'thesis_fit_score', 'impact_score', 'owner'];
+    const validSorts = ['name', 'company_score', 'status', 'industries', 'all_locations', 'last_interaction_date', 'avg_founder_score', 'team_score', 'product_score', 'market_score', 'thesis_fit_score', 'impact_score', 'owner', 'weighted_total'];
     if (validSorts.includes(sortCol)) {
       sql += ` ORDER BY ${sortCol} ${sortOrder === 'ASC' ? 'ASC' : 'DESC'}`;
     } else {
@@ -146,7 +152,7 @@ app.get('/api/companies/:id', (req, res) => {
 app.put('/api/companies/:id', (req, res) => {
   const db = getDb();
   try {
-    const { status, next_action, custom_tags, b2b_b2c, technology_type, business_model, owner } = req.body;
+    const { status, next_action, custom_tags, b2b_b2c, technology_type, business_model, owner, contact_email } = req.body;
     db.prepare(`
       UPDATE companies SET
         status = COALESCE(?, status),
@@ -156,9 +162,10 @@ app.put('/api/companies/:id', (req, res) => {
         technology_type = COALESCE(?, technology_type),
         business_model = COALESCE(?, business_model),
         owner = COALESCE(?, owner),
+        contact_email = COALESCE(?, contact_email),
         updated_at = CURRENT_TIMESTAMP
       WHERE id = ?
-    `).run(status, next_action, custom_tags, b2b_b2c, technology_type, business_model, owner, req.params.id);
+    `).run(status, next_action, custom_tags, b2b_b2c, technology_type, business_model, owner, contact_email, req.params.id);
     res.json({ success: true });
   } finally {
     db.close();

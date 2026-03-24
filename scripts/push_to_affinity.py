@@ -61,6 +61,7 @@ class Company:
     investor: Optional[str] = None
     ranking: int = 0
     date_last_updated: str = ""
+    thesis_fit_theme: Optional[str] = None
 
 
 def get_data_path() -> str:
@@ -144,6 +145,13 @@ def fetch_companies(source_filter: Optional[str] = None, limit: Optional[int] = 
             if len(parts) >= 3:
                 contact_email = parts[2] or contact_email
 
+        # Build description with thesis fit theme
+        one_liner = row.get('one_liner') or ''
+        thesis_theme = row.get('thesis_fit_theme') or ''
+        description = one_liner
+        if thesis_theme and thesis_theme not in ('Neutral', 'Off-Thesis'):
+            description = f"[{thesis_theme}] {one_liner}"
+
         company = Company(
             company_name=row.get('name'),
             company_url=row.get('website'),
@@ -151,7 +159,7 @@ def fetch_companies(source_filter: Optional[str] = None, limit: Optional[int] = 
             contact_email=contact_email,
             contact_position=contact_position,
             contact_linkedin=contact_linkedin,
-            description=row.get('one_liner'),
+            description=description,
             batch_name=batch or "W26",
             year_season=year_season,
             accelerator=accelerator,
@@ -159,6 +167,7 @@ def fetch_companies(source_filter: Optional[str] = None, limit: Optional[int] = 
             investor=investor,
             ranking=ranking,
             date_last_updated=datetime.now().strftime("%m-%d-%Y"),
+            thesis_fit_theme=thesis_theme,
         )
         companies.append(company)
 

@@ -38,7 +38,10 @@ function initializeDatabase() {
       next_action TEXT,
       custom_tags TEXT,
       owner TEXT,
+      contact_email TEXT,
       pitchbook_url TEXT,
+      valuation_range TEXT,
+      total_raised TEXT,
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
       updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
     );
@@ -187,8 +190,8 @@ function importCompanies(companiesJson) {
   const companies = Array.isArray(data) ? data : (data.companies || []);
 
   const insertCompany = db.prepare(`
-    INSERT OR REPLACE INTO companies (yc_id, name, slug, one_liner, long_description, batch, source, status, industries, subindustry, tags, website, all_locations, team_size, year_founded, logo_url, pitchbook_url, owner)
-    VALUES (@yc_id, @name, @slug, @one_liner, @long_description, @batch, @source, @status, @industries, @subindustry, @tags, @website, @all_locations, @team_size, @year_founded, @logo_url, @pitchbook_url, @owner)
+    INSERT OR REPLACE INTO companies (yc_id, name, slug, one_liner, long_description, batch, source, status, industries, subindustry, tags, website, all_locations, team_size, year_founded, logo_url, pitchbook_url, owner, contact_email, valuation_range, total_raised)
+    VALUES (@yc_id, @name, @slug, @one_liner, @long_description, @batch, @source, @status, @industries, @subindustry, @tags, @website, @all_locations, @team_size, @year_founded, @logo_url, @pitchbook_url, @owner, @contact_email, @valuation_range, @total_raised)
   `);
 
   const insertFounder = db.prepare(`
@@ -226,7 +229,10 @@ function importCompanies(companiesJson) {
         year_founded: company.year_founded || company.raw?.year_founded || null,
         logo_url: company.logo_url || company.raw?.small_logo_thumb_url || '',
         pitchbook_url: company.pitchbook_url || '',
-        owner: company.owner || ''
+        owner: company.owner || '',
+        contact_email: company.contact_email || '',
+        valuation_range: company.valuation_range || '',
+        total_raised: company.total_raised || ''
       });
 
       const companyId = result.lastInsertRowid;
