@@ -33147,8 +33147,8 @@
       "custom_tags": null,
       "created_at": "2026-03-20T08:11:39.764-07:00",
       "updated_at": "2026-03-20T08:11:39.764-07:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Tomorrow's Workforce",
+      "owner": "Lyndsey",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Jeremy Bhatia. Team size: 16.",
@@ -33224,7 +33224,8 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 6.4
+      "avg_founder_score": 6.4,
+      "contact_email": "lyndsey@better.vc"
     },
     {
       "id": 289,
@@ -33250,8 +33251,8 @@
       "custom_tags": null,
       "created_at": "2026-03-20T08:10:43.436-07:00",
       "updated_at": "2026-03-20T08:10:43.436-07:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Sustainable Industry",
+      "owner": "Rick",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Brett Buchanan. Team size: 14.",
@@ -33327,7 +33328,8 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 6.2
+      "avg_founder_score": 6.2,
+      "contact_email": "rick@better.vc"
     },
     {
       "id": 290,
@@ -33353,8 +33355,8 @@
       "custom_tags": null,
       "created_at": "2026-03-20T08:10:41.146-07:00",
       "updated_at": "2026-03-20T08:10:41.146-07:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Sustainable Industry",
+      "owner": "Rick",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Sravanth Gadikota. Team size: 18.",
@@ -33430,7 +33432,8 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 6.1
+      "avg_founder_score": 6.1,
+      "contact_email": "rick@better.vc"
     },
     {
       "id": 291,
@@ -33456,8 +33459,8 @@
       "custom_tags": null,
       "created_at": "2026-03-20T08:09:53.255-07:00",
       "updated_at": "2026-03-20T08:09:53.255-07:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Human Health",
+      "owner": "Wes",
       "team_score": 5,
       "team_weight": 15,
       "team_justification": "Contact: Unknown. Team size: 16.",
@@ -33484,7 +33487,8 @@
       "thesis_fit_justification": "Requires manual review for thesis alignment.",
       "company_score": 5.16,
       "founders": [],
-      "source": "DealBot (March 2026)"
+      "source": "DealBot (March 2026)",
+      "contact_email": "wes@better.vc"
     },
     {
       "id": 292,
@@ -33510,8 +33514,8 @@
       "custom_tags": null,
       "created_at": "2026-03-20T08:02:22.171-07:00",
       "updated_at": "2026-03-20T08:02:22.171-07:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Neutral",
+      "owner": "Lyndsey",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Matthew Schlicht. Team size: 16.",
@@ -33587,7 +33591,8 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 7.5
+      "avg_founder_score": 7.5,
+      "contact_email": "lyndsey@better.vc"
     },
     {
       "id": 293,
@@ -33613,8 +33618,8 @@
       "custom_tags": null,
       "created_at": "2026-03-20T08:02:19.906-07:00",
       "updated_at": "2026-03-20T08:02:19.906-07:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Tomorrow's Workforce",
+      "owner": "Lyndsey",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Paul Baier. Team size: 16.",
@@ -33690,7 +33695,8 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 8.1
+      "avg_founder_score": 8.1,
+      "contact_email": "lyndsey@better.vc"
     },
     {
       "id": 294,
@@ -33716,8 +33722,8 @@
       "custom_tags": null,
       "created_at": "2026-03-20T08:02:17.964-07:00",
       "updated_at": "2026-03-20T08:02:17.964-07:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Human Health",
+      "owner": "Lyndsey",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Mary Nader. Team size: 16.",
@@ -33793,7 +33799,8 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 6.2
+      "avg_founder_score": 6.2,
+      "contact_email": "lyndsey@better.vc"
     },
     {
       "id": 295,
@@ -33819,8 +33826,8 @@
       "custom_tags": null,
       "created_at": "2026-03-20T08:02:16.013-07:00",
       "updated_at": "2026-03-20T08:02:16.013-07:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Tomorrow's Workforce",
+      "owner": "Lyndsey",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Esosa Ohonba. Team size: 16.",
@@ -33896,7 +33903,8 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 6.0
+      "avg_founder_score": 6.0,
+      "contact_email": "lyndsey@better.vc"
     },
     {
       "id": 296,
@@ -33922,8 +33930,8 @@
       "custom_tags": null,
       "created_at": "2026-03-20T08:02:14.029-07:00",
       "updated_at": "2026-03-20T08:02:14.029-07:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Human Health",
+      "owner": "Wes",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Akul Penugonda. Team size: 14.",
@@ -33999,7 +34007,8 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 6.4
+      "avg_founder_score": 6.4,
+      "contact_email": "wes@better.vc"
     },
     {
       "id": 297,
@@ -34025,8 +34034,8 @@
       "custom_tags": null,
       "created_at": "2026-03-20T08:02:10.122-07:00",
       "updated_at": "2026-03-20T08:02:10.122-07:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Tomorrow's Workforce",
+      "owner": "Wes",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Dana Klisanin. Team size: 14.",
@@ -34102,7 +34111,8 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 7.4
+      "avg_founder_score": 7.4,
+      "contact_email": "wes@better.vc"
     },
     {
       "id": 298,
@@ -34128,8 +34138,8 @@
       "custom_tags": null,
       "created_at": "2026-03-20T08:02:07.709-07:00",
       "updated_at": "2026-03-20T08:02:07.709-07:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Human Health",
+      "owner": "Wes",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Robert Glenn. Team size: 14.",
@@ -34205,7 +34215,8 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 5.6
+      "avg_founder_score": 5.6,
+      "contact_email": "wes@better.vc"
     },
     {
       "id": 299,
@@ -34231,8 +34242,8 @@
       "custom_tags": null,
       "created_at": "2026-03-20T08:02:05.789-07:00",
       "updated_at": "2026-03-20T08:02:05.789-07:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Neutral",
+      "owner": "Lyndsey",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Anthony DiValerio. Team size: 16.",
@@ -34308,7 +34319,8 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 8.0
+      "avg_founder_score": 8.0,
+      "contact_email": "lyndsey@better.vc"
     },
     {
       "id": 300,
@@ -34334,8 +34346,8 @@
       "custom_tags": null,
       "created_at": "2026-03-20T08:02:04.407-07:00",
       "updated_at": "2026-03-20T08:02:04.407-07:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Sustainable Industry",
+      "owner": "Lyndsey",
       "team_score": 5,
       "team_weight": 15,
       "team_justification": "Contact: Unknown. Team size: 16.",
@@ -34362,7 +34374,8 @@
       "thesis_fit_justification": "Requires manual review for thesis alignment.",
       "company_score": 5.16,
       "founders": [],
-      "source": "DealBot (March 2026)"
+      "source": "DealBot (March 2026)",
+      "contact_email": "lyndsey@better.vc"
     },
     {
       "id": 301,
@@ -34388,8 +34401,8 @@
       "custom_tags": null,
       "created_at": "2026-03-20T08:02:01.921-07:00",
       "updated_at": "2026-03-20T08:02:01.921-07:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Human Health",
+      "owner": "Wes",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Timothy Kassis. Team size: 14.",
@@ -34465,7 +34478,8 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 6.3
+      "avg_founder_score": 6.3,
+      "contact_email": "wes@better.vc"
     },
     {
       "id": 302,
@@ -34491,8 +34505,8 @@
       "custom_tags": null,
       "created_at": "2026-03-20T08:00:24.537-07:00",
       "updated_at": "2026-03-20T08:00:24.537-07:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Sustainable Industry",
+      "owner": "Rick",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Gabriel Cerasale. Team size: 7.",
@@ -34566,7 +34580,8 @@
           "founder_score": 5
         }
       ],
-      "source": "DealBot (March 2026)"
+      "source": "DealBot (March 2026)",
+      "contact_email": "rick@better.vc"
     },
     {
       "id": 303,
@@ -34592,8 +34607,8 @@
       "custom_tags": null,
       "created_at": "2026-03-20T08:00:16.250-07:00",
       "updated_at": "2026-03-20T08:00:16.250-07:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Neutral",
+      "owner": "Lyndsey",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Utkarsh Marwaha. Team size: 15.",
@@ -34669,7 +34684,9 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 6.5
+      "avg_founder_score": 6.5,
+      "contact_email": "lyndsey@better.vc",
+      "total_raised": "$1.0M"
     },
     {
       "id": 304,
@@ -34695,8 +34712,8 @@
       "custom_tags": null,
       "created_at": "2026-03-20T07:46:39.100-07:00",
       "updated_at": "2026-03-20T07:46:39.100-07:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Sustainable Industry",
+      "owner": "Wes",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Simon Hill. Team size: 8.",
@@ -34772,7 +34789,8 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 6.8
+      "avg_founder_score": 6.8,
+      "contact_email": "wes@better.vc"
     },
     {
       "id": 305,
@@ -34798,8 +34816,8 @@
       "custom_tags": null,
       "created_at": "2026-03-20T07:46:34.602-07:00",
       "updated_at": "2026-03-20T07:46:34.602-07:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Sustainable Industry",
+      "owner": "Wes",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Steve Heckeroth. Team size: 9.",
@@ -34875,7 +34893,8 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 6.4
+      "avg_founder_score": 6.4,
+      "contact_email": "wes@better.vc"
     },
     {
       "id": 306,
@@ -34901,8 +34920,8 @@
       "custom_tags": null,
       "created_at": "2026-03-20T07:46:29.917-07:00",
       "updated_at": "2026-03-20T07:46:29.917-07:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Neutral",
+      "owner": "Rick",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Skyler Chan. Team size: 14.",
@@ -34978,7 +34997,9 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 7.6
+      "avg_founder_score": 7.6,
+      "contact_email": "rick@better.vc",
+      "total_raised": "$600K"
     },
     {
       "id": 307,
@@ -35004,8 +35025,8 @@
       "custom_tags": null,
       "created_at": "2026-03-20T07:46:23.527-07:00",
       "updated_at": "2026-03-20T07:46:23.527-07:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Human Health",
+      "owner": "Rick",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Roni Cantor-Balan. Team size: 16.",
@@ -35081,7 +35102,9 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 7.4
+      "avg_founder_score": 7.4,
+      "contact_email": "rick@better.vc",
+      "total_raised": "$250K"
     },
     {
       "id": 308,
@@ -35107,8 +35130,8 @@
       "custom_tags": null,
       "created_at": "2026-03-20T07:46:18.830-07:00",
       "updated_at": "2026-03-20T07:46:18.830-07:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Sustainable Industry",
+      "owner": "Rick",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Diandian Zhao. Team size: 18.",
@@ -35184,7 +35207,8 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 7.4
+      "avg_founder_score": 7.4,
+      "contact_email": "rick@better.vc"
     },
     {
       "id": 309,
@@ -35210,8 +35234,8 @@
       "custom_tags": null,
       "created_at": "2026-03-20T07:46:14.576-07:00",
       "updated_at": "2026-03-20T07:46:14.576-07:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Human Health",
+      "owner": "Rick",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Chetan Parikh. Team size: 21.",
@@ -35287,7 +35311,8 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 7.2
+      "avg_founder_score": 7.2,
+      "contact_email": "rick@better.vc"
     },
     {
       "id": 310,
@@ -35313,8 +35338,8 @@
       "custom_tags": null,
       "created_at": "2026-03-20T07:46:10.177-07:00",
       "updated_at": "2026-03-20T07:46:10.177-07:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Human Health",
+      "owner": "Wes",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Choi So-yi. Team size: 21.",
@@ -35390,7 +35415,9 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 7.1
+      "avg_founder_score": 7.1,
+      "contact_email": "wes@better.vc",
+      "total_raised": "$1.0M"
     },
     {
       "id": 311,
@@ -35416,8 +35443,8 @@
       "custom_tags": null,
       "created_at": "2026-03-14T10:22:03.653-07:00",
       "updated_at": "2026-03-14T10:22:03.653-07:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Tomorrow's Workforce",
+      "owner": "Lyndsey",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Mohnish Mohanty. Team size: 8.",
@@ -35493,7 +35520,9 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 7.5
+      "avg_founder_score": 7.5,
+      "contact_email": "lyndsey@better.vc",
+      "total_raised": "$250K"
     },
     {
       "id": 312,
@@ -35519,8 +35548,8 @@
       "custom_tags": null,
       "created_at": "2026-03-14T10:22:01.275-07:00",
       "updated_at": "2026-03-14T10:22:01.275-07:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Human Health",
+      "owner": "Lyndsey",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Becky Holden. Team size: 8.",
@@ -35596,7 +35625,9 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 5.9
+      "avg_founder_score": 5.9,
+      "contact_email": "lyndsey@better.vc",
+      "total_raised": "$220K"
     },
     {
       "id": 313,
@@ -35622,8 +35653,8 @@
       "custom_tags": null,
       "created_at": "2026-03-14T10:21:56.945-07:00",
       "updated_at": "2026-03-14T10:21:56.945-07:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Tomorrow's Workforce",
+      "owner": "Lyndsey",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Haakam Aujla. Team size: 8.",
@@ -35699,7 +35730,9 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 7.5
+      "avg_founder_score": 7.5,
+      "contact_email": "lyndsey@better.vc",
+      "total_raised": "$500K"
     },
     {
       "id": 314,
@@ -35725,8 +35758,8 @@
       "custom_tags": null,
       "created_at": "2026-03-14T09:38:03.073-07:00",
       "updated_at": "2026-03-14T09:38:03.073-07:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Sustainable Industry",
+      "owner": "Wes",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Marie Eric. Team size: 8.",
@@ -35802,7 +35835,9 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 8.1
+      "avg_founder_score": 8.1,
+      "contact_email": "wes@better.vc",
+      "total_raised": "$10K"
     },
     {
       "id": 315,
@@ -35828,8 +35863,8 @@
       "custom_tags": null,
       "created_at": "2026-03-14T09:37:59.400-07:00",
       "updated_at": "2026-03-14T09:37:59.400-07:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Sustainable Industry",
+      "owner": "Rick",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Catherine Anthony. Team size: 8.",
@@ -35905,7 +35940,9 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 7.0
+      "avg_founder_score": 7.0,
+      "contact_email": "rick@better.vc",
+      "total_raised": "$220K"
     },
     {
       "id": 316,
@@ -35931,8 +35968,8 @@
       "custom_tags": null,
       "created_at": "2026-03-14T09:37:56.116-07:00",
       "updated_at": "2026-03-14T09:37:56.116-07:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Sustainable Industry",
+      "owner": "Rick",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Christopher Churchill. Team size: 9.",
@@ -36008,7 +36045,9 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 7.0
+      "avg_founder_score": 7.0,
+      "contact_email": "rick@better.vc",
+      "total_raised": "$690K"
     },
     {
       "id": 317,
@@ -36034,8 +36073,8 @@
       "custom_tags": null,
       "created_at": "2026-03-14T09:37:46.426-07:00",
       "updated_at": "2026-03-14T09:37:46.426-07:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Human Health",
+      "owner": "Wes",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Kent Rapp. Team size: 14.",
@@ -36111,7 +36150,9 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 7.5
+      "avg_founder_score": 7.5,
+      "contact_email": "wes@better.vc",
+      "total_raised": "$220K"
     },
     {
       "id": 318,
@@ -36137,8 +36178,8 @@
       "custom_tags": null,
       "created_at": "2026-03-14T09:37:40.064-07:00",
       "updated_at": "2026-03-14T09:37:40.064-07:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Human Health",
+      "owner": "Wes",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Rhett Barker. Team size: 14.",
@@ -36214,7 +36255,9 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 7.0
+      "avg_founder_score": 7.0,
+      "contact_email": "wes@better.vc",
+      "total_raised": "$110K"
     },
     {
       "id": 319,
@@ -36240,8 +36283,8 @@
       "custom_tags": null,
       "created_at": "2026-03-14T09:37:36.076-07:00",
       "updated_at": "2026-03-14T09:37:36.076-07:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Tomorrow's Workforce",
+      "owner": "Lyndsey",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Abigail Cheek. Team size: 14.",
@@ -36317,7 +36360,9 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 5.1
+      "avg_founder_score": 5.1,
+      "contact_email": "lyndsey@better.vc",
+      "total_raised": "$250K"
     },
     {
       "id": 320,
@@ -36343,8 +36388,8 @@
       "custom_tags": null,
       "created_at": "2026-03-14T09:37:32.278-07:00",
       "updated_at": "2026-03-14T09:37:32.278-07:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Human Health",
+      "owner": "Rick",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Tyler Cantrell. Team size: 14.",
@@ -36420,7 +36465,9 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 8.1
+      "avg_founder_score": 8.1,
+      "contact_email": "rick@better.vc",
+      "total_raised": "$1.5M"
     },
     {
       "id": 321,
@@ -36446,8 +36493,8 @@
       "custom_tags": null,
       "created_at": "2026-03-14T09:37:28.777-07:00",
       "updated_at": "2026-03-14T09:37:28.777-07:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Human Health",
+      "owner": "Lyndsey",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Brandy Archie. Team size: 14.",
@@ -36523,7 +36570,9 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 7.5
+      "avg_founder_score": 7.5,
+      "contact_email": "lyndsey@better.vc",
+      "total_raised": "$1.3M"
     },
     {
       "id": 322,
@@ -36549,8 +36598,8 @@
       "custom_tags": null,
       "created_at": "2026-03-14T09:37:24.868-07:00",
       "updated_at": "2026-03-14T09:37:24.868-07:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Sustainable Industry",
+      "owner": "Rick",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Maksim Rukosuev. Team size: 16.",
@@ -36626,7 +36675,9 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 4.0
+      "avg_founder_score": 4.0,
+      "contact_email": "rick@better.vc",
+      "total_raised": "$370K"
     },
     {
       "id": 323,
@@ -36652,8 +36703,8 @@
       "custom_tags": null,
       "created_at": "2026-03-14T09:37:21.305-07:00",
       "updated_at": "2026-03-14T09:37:21.305-07:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Human Health",
+      "owner": "Rick",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Eshan Vishwakarma. Team size: 16.",
@@ -36729,7 +36780,9 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 7.9
+      "avg_founder_score": 7.9,
+      "contact_email": "rick@better.vc",
+      "total_raised": "$270K"
     },
     {
       "id": 324,
@@ -36755,8 +36808,8 @@
       "custom_tags": null,
       "created_at": "2026-03-14T09:37:17.393-07:00",
       "updated_at": "2026-03-14T09:37:17.393-07:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Human Health",
+      "owner": "Wes",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Aabid Shariff. Team size: 16.",
@@ -36832,7 +36885,9 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 7.5
+      "avg_founder_score": 7.5,
+      "contact_email": "wes@better.vc",
+      "total_raised": "$230K"
     },
     {
       "id": 325,
@@ -36858,8 +36913,8 @@
       "custom_tags": null,
       "created_at": "2026-03-14T09:37:14.211-07:00",
       "updated_at": "2026-03-14T09:37:14.211-07:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Sustainable Industry",
+      "owner": "Rick",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Robin Atkinson. Team size: 16.",
@@ -36935,7 +36990,9 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 7.1
+      "avg_founder_score": 7.1,
+      "contact_email": "rick@better.vc",
+      "total_raised": "$100K"
     },
     {
       "id": 326,
@@ -36961,8 +37018,8 @@
       "custom_tags": null,
       "created_at": "2026-03-14T09:37:10.617-07:00",
       "updated_at": "2026-03-14T09:37:10.617-07:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Sustainable Industry",
+      "owner": "Rick",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Carla Pinzon. Team size: 16.",
@@ -37038,7 +37095,9 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 8.0
+      "avg_founder_score": 8.0,
+      "contact_email": "rick@better.vc",
+      "total_raised": "$1.5M"
     },
     {
       "id": 327,
@@ -37064,8 +37123,8 @@
       "custom_tags": null,
       "created_at": "2026-03-14T09:37:06.883-07:00",
       "updated_at": "2026-03-14T09:37:06.883-07:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Human Health",
+      "owner": "Rick",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Maria Navas-Moreno. Team size: 18.",
@@ -37141,7 +37200,9 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 7.8
+      "avg_founder_score": 7.8,
+      "contact_email": "rick@better.vc",
+      "total_raised": "$220K"
     },
     {
       "id": 328,
@@ -37167,8 +37228,8 @@
       "custom_tags": null,
       "created_at": "2026-03-14T09:37:03.190-07:00",
       "updated_at": "2026-03-14T09:37:03.190-07:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Human Health",
+      "owner": "Wes",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Conner Herman. Team size: 21.",
@@ -37244,7 +37305,9 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 7.1
+      "avg_founder_score": 7.1,
+      "contact_email": "wes@better.vc",
+      "total_raised": "$220K"
     },
     {
       "id": 329,
@@ -37270,8 +37333,8 @@
       "custom_tags": null,
       "created_at": "2026-03-14T09:36:59.758-07:00",
       "updated_at": "2026-03-14T09:36:59.758-07:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Human Health",
+      "owner": "Wes",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Brock Predovich. Team size: 21.",
@@ -37347,7 +37410,9 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 7.0
+      "avg_founder_score": 7.0,
+      "contact_email": "wes@better.vc",
+      "total_raised": "$300K"
     },
     {
       "id": 330,
@@ -37373,8 +37438,8 @@
       "custom_tags": null,
       "created_at": "2026-03-14T09:36:56.968-07:00",
       "updated_at": "2026-03-14T09:36:56.968-07:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Human Health",
+      "owner": "Rick",
       "team_score": 5,
       "team_weight": 15,
       "team_justification": "Contact: Unknown. Team size: 21.",
@@ -37401,7 +37466,9 @@
       "thesis_fit_justification": "Requires manual review for thesis alignment.",
       "company_score": 5.65,
       "founders": [],
-      "source": "DealBot (March 2026)"
+      "source": "DealBot (March 2026)",
+      "contact_email": "rick@better.vc",
+      "total_raised": "$220K"
     },
     {
       "id": 331,
@@ -37427,8 +37494,8 @@
       "custom_tags": null,
       "created_at": "2026-03-14T09:36:52.790-07:00",
       "updated_at": "2026-03-14T09:36:52.790-07:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Neutral",
+      "owner": "Rick",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Andrew Jiranek. Team size: 21.",
@@ -37504,7 +37571,9 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 6.8
+      "avg_founder_score": 6.8,
+      "contact_email": "rick@better.vc",
+      "total_raised": "$50K"
     },
     {
       "id": 332,
@@ -37530,8 +37599,8 @@
       "custom_tags": null,
       "created_at": "2026-03-14T09:36:47.511-07:00",
       "updated_at": "2026-03-14T09:36:47.511-07:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Tomorrow's Workforce",
+      "owner": "Lyndsey",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Tian Lan. Team size: 21.",
@@ -37607,7 +37676,9 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 6.4
+      "avg_founder_score": 6.4,
+      "contact_email": "lyndsey@better.vc",
+      "total_raised": "$220K"
     },
     {
       "id": 333,
@@ -37633,8 +37704,8 @@
       "custom_tags": null,
       "created_at": "2026-03-14T09:36:43.971-07:00",
       "updated_at": "2026-03-14T09:36:43.971-07:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Tomorrow's Workforce",
+      "owner": "Rick",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Akhil Chakravarti. Team size: 21.",
@@ -37710,7 +37781,9 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 7.6
+      "avg_founder_score": 7.6,
+      "contact_email": "rick@better.vc",
+      "total_raised": "$220K"
     },
     {
       "id": 334,
@@ -37736,8 +37809,8 @@
       "custom_tags": null,
       "created_at": "2026-03-14T09:36:40.432-07:00",
       "updated_at": "2026-03-14T09:36:40.432-07:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Human Health",
+      "owner": "Wes",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Andy Nappin. Team size: 24.",
@@ -37813,7 +37886,9 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 5.0
+      "avg_founder_score": 5.0,
+      "contact_email": "wes@better.vc",
+      "total_raised": "$1.2M"
     },
     {
       "id": 335,
@@ -37839,8 +37914,8 @@
       "custom_tags": null,
       "created_at": "2026-03-06T08:08:25.134-08:00",
       "updated_at": "2026-03-06T08:08:25.134-08:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Sustainable Industry",
+      "owner": "Lyndsey",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Justin Brach. Team size: 14.",
@@ -37916,7 +37991,8 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 7.5
+      "avg_founder_score": 7.5,
+      "contact_email": "lyndsey@better.vc"
     },
     {
       "id": 336,
@@ -37942,8 +38018,8 @@
       "custom_tags": null,
       "created_at": "2026-03-06T08:08:24.238-08:00",
       "updated_at": "2026-03-06T08:08:24.238-08:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Human Health",
+      "owner": "Wes",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Julie Zhang. Team size: 7.",
@@ -38019,7 +38095,8 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 9.0
+      "avg_founder_score": 9.0,
+      "contact_email": "wes@better.vc"
     },
     {
       "id": 337,
@@ -38045,8 +38122,8 @@
       "custom_tags": null,
       "created_at": "2026-03-06T08:08:22.661-08:00",
       "updated_at": "2026-03-06T08:08:22.661-08:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Tomorrow's Workforce",
+      "owner": "Rick",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Nick Khormaei. Team size: 7.",
@@ -38122,7 +38199,8 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 8.125
+      "avg_founder_score": 8.125,
+      "contact_email": "myofficemailbox786@writeme.com"
     },
     {
       "id": 338,
@@ -38148,8 +38226,8 @@
       "custom_tags": null,
       "created_at": "2026-03-06T08:08:21.635-08:00",
       "updated_at": "2026-03-06T08:08:21.635-08:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Tomorrow's Workforce",
+      "owner": "Lyndsey",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Zohar Atkins. Team size: 21.",
@@ -38225,7 +38303,8 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 8.25
+      "avg_founder_score": 8.25,
+      "contact_email": "lyndsey@better.vc"
     },
     {
       "id": 339,
@@ -38251,8 +38330,8 @@
       "custom_tags": null,
       "created_at": "2026-03-06T08:08:20.400-08:00",
       "updated_at": "2026-03-06T08:08:20.400-08:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Human Health",
+      "owner": "Lyndsey",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Kunal Mehta. Team size: 16.",
@@ -38326,7 +38405,8 @@
           "founder_score": 5
         }
       ],
-      "source": "DealBot (March 2026)"
+      "source": "DealBot (March 2026)",
+      "contact_email": "lyndsey@better.vc"
     },
     {
       "id": 340,
@@ -38352,8 +38432,8 @@
       "custom_tags": null,
       "created_at": "2026-03-06T07:45:44.454-08:00",
       "updated_at": "2026-03-06T07:45:44.454-08:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Human Health",
+      "owner": "Wes",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Catalina Casta\u00f1eda. Team size: 7.",
@@ -38429,7 +38509,8 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 7.5
+      "avg_founder_score": 7.5,
+      "contact_email": "wes@better.vc"
     },
     {
       "id": 341,
@@ -38455,8 +38536,8 @@
       "custom_tags": null,
       "created_at": "2026-03-06T07:45:41.170-08:00",
       "updated_at": "2026-03-06T07:45:41.170-08:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Neutral",
+      "owner": "Rick",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: James Baughman. Team size: 7.",
@@ -38530,7 +38611,9 @@
           "founder_score": 5
         }
       ],
-      "source": "DealBot (March 2026)"
+      "source": "DealBot (March 2026)",
+      "contact_email": "rick@better.vc",
+      "total_raised": "$1.5M"
     },
     {
       "id": 342,
@@ -38556,8 +38639,8 @@
       "custom_tags": null,
       "created_at": "2026-03-06T07:45:37.097-08:00",
       "updated_at": "2026-03-06T07:45:37.097-08:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Sustainable Industry",
+      "owner": "Rick",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Luca Pandolfi. Team size: 8.",
@@ -38633,7 +38716,9 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 7.2
+      "avg_founder_score": 7.2,
+      "contact_email": "rick@better.vc",
+      "total_raised": "$270K"
     },
     {
       "id": 343,
@@ -38659,8 +38744,8 @@
       "custom_tags": null,
       "created_at": "2026-03-06T07:45:33.787-08:00",
       "updated_at": "2026-03-06T07:45:33.787-08:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Human Health",
+      "owner": "Wes",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Misha Nasrollahzadeh. Team size: 14.",
@@ -38736,7 +38821,8 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 7.8
+      "avg_founder_score": 7.8,
+      "contact_email": "wes@better.vc"
     },
     {
       "id": 344,
@@ -38762,8 +38848,8 @@
       "custom_tags": null,
       "created_at": "2026-03-06T07:45:30.482-08:00",
       "updated_at": "2026-03-06T07:45:30.482-08:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Human Health",
+      "owner": "Rick",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Steve Zanette. Team size: 14.",
@@ -38839,7 +38925,8 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 7.8
+      "avg_founder_score": 7.8,
+      "contact_email": "rick@better.vc"
     },
     {
       "id": 345,
@@ -38865,8 +38952,8 @@
       "custom_tags": null,
       "created_at": "2026-03-06T07:45:26.121-08:00",
       "updated_at": "2026-03-06T07:45:26.121-08:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Human Health",
+      "owner": "Lyndsey",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Riley Reynolds. Team size: 14.",
@@ -38942,7 +39029,9 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 7.5
+      "avg_founder_score": 7.5,
+      "contact_email": "lyndsey@better.vc",
+      "total_raised": "$20K"
     },
     {
       "id": 346,
@@ -38968,8 +39057,8 @@
       "custom_tags": null,
       "created_at": "2026-03-06T07:45:21.193-08:00",
       "updated_at": "2026-03-06T07:45:21.193-08:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Human Health",
+      "owner": "Lyndsey",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Viraj Shah. Team size: 14.",
@@ -39045,7 +39134,9 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 7.5
+      "avg_founder_score": 7.5,
+      "contact_email": "lyndsey@better.vc",
+      "total_raised": "$1.8M"
     },
     {
       "id": 347,
@@ -39071,8 +39162,8 @@
       "custom_tags": null,
       "created_at": "2026-03-06T07:45:17.813-08:00",
       "updated_at": "2026-03-06T07:45:17.813-08:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Human Health",
+      "owner": "Rick",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Joshua Hanson. Team size: 14.",
@@ -39148,7 +39239,9 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 7.9
+      "avg_founder_score": 7.9,
+      "contact_email": "rick@better.vc",
+      "total_raised": "$1.0M"
     },
     {
       "id": 348,
@@ -39174,8 +39267,8 @@
       "custom_tags": null,
       "created_at": "2026-03-06T07:45:14.666-08:00",
       "updated_at": "2026-03-06T07:45:14.666-08:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Human Health",
+      "owner": "Rick",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Nicholas Hu. Team size: 14.",
@@ -39249,7 +39342,8 @@
           "founder_score": 5
         }
       ],
-      "source": "DealBot (March 2026)"
+      "source": "DealBot (March 2026)",
+      "contact_email": "rick@better.vc"
     },
     {
       "id": 349,
@@ -39275,8 +39369,8 @@
       "custom_tags": null,
       "created_at": "2026-03-06T07:45:10.482-08:00",
       "updated_at": "2026-03-06T07:45:10.482-08:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Human Health",
+      "owner": "Rick",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Paul Phillips. Team size: 16.",
@@ -39352,7 +39446,9 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 7.6
+      "avg_founder_score": 7.6,
+      "contact_email": "rick@better.vc",
+      "total_raised": "$50K"
     },
     {
       "id": 350,
@@ -39378,8 +39474,8 @@
       "custom_tags": null,
       "created_at": "2026-03-06T07:45:06.462-08:00",
       "updated_at": "2026-03-06T07:45:06.462-08:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Sustainable Industry",
+      "owner": "Rick",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Daniel Kelly. Team size: 16.",
@@ -39455,7 +39551,9 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 8.25
+      "avg_founder_score": 8.25,
+      "contact_email": "rick@better.vc",
+      "total_raised": "$100K"
     },
     {
       "id": 351,
@@ -39481,8 +39579,8 @@
       "custom_tags": null,
       "created_at": "2026-03-06T07:45:03.165-08:00",
       "updated_at": "2026-03-06T07:45:03.165-08:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Human Health",
+      "owner": "Wes",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Edward Larkin. Team size: 16.",
@@ -39558,7 +39656,8 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 7.2
+      "avg_founder_score": 7.2,
+      "contact_email": "wes@better.vc"
     },
     {
       "id": 352,
@@ -39584,8 +39683,8 @@
       "custom_tags": null,
       "created_at": "2026-03-06T07:44:59.429-08:00",
       "updated_at": "2026-03-06T07:44:59.429-08:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Human Health",
+      "owner": "Wes",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Manny Manzel. Team size: 16.",
@@ -39661,7 +39760,9 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 7.5
+      "avg_founder_score": 7.5,
+      "contact_email": "wes@better.vc",
+      "total_raised": "$60K"
     },
     {
       "id": 353,
@@ -39687,8 +39788,8 @@
       "custom_tags": null,
       "created_at": "2026-03-06T07:44:55.675-08:00",
       "updated_at": "2026-03-06T07:44:55.675-08:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Human Health",
+      "owner": "Rick",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Greg Bosch. Team size: 16.",
@@ -39764,7 +39865,9 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 8.2
+      "avg_founder_score": 8.2,
+      "contact_email": "rick@better.vc",
+      "total_raised": "$1.6M"
     },
     {
       "id": 354,
@@ -39790,8 +39893,8 @@
       "custom_tags": null,
       "created_at": "2026-03-06T07:44:52.094-08:00",
       "updated_at": "2026-03-06T07:44:52.094-08:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Sustainable Industry",
+      "owner": "Wes",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Shrijit Singh. Team size: 21.",
@@ -39867,7 +39970,9 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 7.8
+      "avg_founder_score": 7.8,
+      "contact_email": "wes@better.vc",
+      "total_raised": "$600K"
     },
     {
       "id": 355,
@@ -39893,8 +39998,8 @@
       "custom_tags": null,
       "created_at": "2026-03-06T07:44:48.414-08:00",
       "updated_at": "2026-03-06T07:44:48.414-08:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Human Health",
+      "owner": "Rick",
       "team_score": 5,
       "team_weight": 15,
       "team_justification": "Contact: Unknown. Team size: 21.",
@@ -39921,7 +40026,8 @@
       "thesis_fit_justification": "Requires manual review for thesis alignment.",
       "company_score": 5.58,
       "founders": [],
-      "source": "DealBot (March 2026)"
+      "source": "DealBot (March 2026)",
+      "contact_email": "rick@better.vc"
     },
     {
       "id": 356,
@@ -39947,8 +40053,8 @@
       "custom_tags": null,
       "created_at": "2026-03-06T07:44:42.741-08:00",
       "updated_at": "2026-03-06T07:44:42.741-08:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Human Health",
+      "owner": "Rick",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Thomas Griffiths. Team size: 21.",
@@ -40024,7 +40130,9 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 7.8
+      "avg_founder_score": 7.8,
+      "contact_email": "rick@better.vc",
+      "total_raised": "$200K"
     },
     {
       "id": 357,
@@ -40050,8 +40158,8 @@
       "custom_tags": null,
       "created_at": "2026-03-06T07:44:37.878-08:00",
       "updated_at": "2026-03-06T07:44:37.878-08:00",
-      "thesis_fit_theme": "",
-      "owner": "",
+      "thesis_fit_theme": "Human Health",
+      "owner": "Rick",
       "team_score": 5.5,
       "team_weight": 15,
       "team_justification": "Contact: Yusif Gurbanli. Team size: 24.",
@@ -40127,7 +40235,9 @@
         }
       ],
       "source": "DealBot (March 2026)",
-      "avg_founder_score": 7.0
+      "avg_founder_score": 7.0,
+      "contact_email": "rick@better.vc",
+      "total_raised": "$10K"
     },
     {
       "id": 358,
@@ -40136,7 +40246,7 @@
       "one_liner": "Ninacare is Italy's leading AI-powered platform connecting healthcare professionals and organizations, cutting hiring time by 75%.",
       "long_description": "Ninacare is Italy's leading AI-powered platform connecting healthcare professionals and organizations, cutting hiring time by 75%.",
       "batch": "PNP Health Tech Mar 2026",
-      "source": "PNP (3/20/26), AcceleratorBot (March 2026)",
+      "source": "AcceleratorBot (March 2026)",
       "status": "Not Contacted",
       "industries": "Health Tech",
       "subindustry": "Health Tech",
@@ -40248,7 +40358,7 @@
       "one_liner": "Smart workforce solution for healthcare.",
       "long_description": "Smart workforce solution for healthcare.",
       "batch": "PNP Health Tech Mar 2026",
-      "source": "PNP (3/20/26), AcceleratorBot (March 2026)",
+      "source": "AcceleratorBot (March 2026)",
       "status": "Not Contacted",
       "industries": "Health Tech",
       "subindustry": "Health Tech",
@@ -40360,7 +40470,7 @@
       "one_liner": "Mora Health is an AI platform that recruits, trains, and places Latin American nurses in U.S. hospitals through TN visas. It automates screening, education, and placement to scale cross-border staffin...",
       "long_description": "Mora Health is an AI platform that recruits, trains, and places Latin American nurses in U.S. hospitals through TN visas. It automates screening, education, and placement to scale cross-border staffing efficiently. The company partners with top U.S. staffing agencies to power global nurse mobility.",
       "batch": "PNP Health Tech Mar 2026",
-      "source": "PNP (3/20/26), AcceleratorBot (March 2026)",
+      "source": "AcceleratorBot (March 2026)",
       "status": "Not Contacted",
       "industries": "Health Tech",
       "subindustry": "Health Tech",
@@ -40472,7 +40582,7 @@
       "one_liner": "Obesity is rising globally, yet traditional weight-loss methods have a long-term success rate of less than 1%. Lumina is a comprehensive digital clinic using GLP-1 medications as a tool to enable last...",
       "long_description": "Obesity is rising globally, yet traditional weight-loss methods have a long-term success rate of less than 1%. Lumina is a comprehensive digital clinic using GLP-1 medications as a tool to enable lasting lifestyle changes and sustainable weight loss.",
       "batch": "PNP Health Tech Mar 2026",
-      "source": "PNP (3/20/26), AcceleratorBot (March 2026)",
+      "source": "AcceleratorBot (March 2026)",
       "status": "Not Contacted",
       "industries": "Digital Health",
       "subindustry": "Digital Health",
@@ -40584,7 +40694,7 @@
       "one_liner": "THIER the AI Enabled Mobile Platform for the Prevention of Lifestyle Diseases.",
       "long_description": "THIER the AI Enabled Mobile Platform for the Prevention of Lifestyle Diseases.",
       "batch": "PNP Health Tech Mar 2026",
-      "source": "PNP (3/20/26), AcceleratorBot (March 2026)",
+      "source": "AcceleratorBot (March 2026)",
       "status": "Not Contacted",
       "industries": "Digital Health",
       "subindustry": "Digital Health",
@@ -40650,7 +40760,7 @@
       "one_liner": "SolidHealth.AI is a care continuity concierge that consolidates fragmented consumer EHR data into a health profile, enriched with wearables and ambient sensor data to reduce care gaps and improve outc...",
       "long_description": "SolidHealth.AI is a care continuity concierge that consolidates fragmented consumer EHR data into a health profile, enriched with wearables and ambient sensor data to reduce care gaps and improve outcomes.",
       "batch": "PNP Health Tech Mar 2026",
-      "source": "PNP (3/20/26), AcceleratorBot (March 2026)",
+      "source": "AcceleratorBot (March 2026)",
       "status": "Not Contacted",
       "industries": "Digital Health",
       "subindustry": "Digital Health",
@@ -40762,7 +40872,7 @@
       "one_liner": "Vayo is an AI-powered patient management and coordination SaaS platform that streamlines access to support resources for both individuals and organizations.",
       "long_description": "Vayo is an AI-powered patient management and coordination SaaS platform that streamlines access to support resources for both individuals and organizations.",
       "batch": "PNP Health Tech Mar 2026",
-      "source": "PNP (3/20/26), AcceleratorBot (March 2026)",
+      "source": "AcceleratorBot (March 2026)",
       "status": "Not Contacted",
       "industries": "Digital Health",
       "subindustry": "Digital Health",
@@ -40874,7 +40984,7 @@
       "one_liner": "We are patient focused medical app to help schedule appointments, share medical documents and track health.",
       "long_description": "We are patient focused medical app to help schedule appointments, share medical documents and track health.",
       "batch": "PNP Health Tech Mar 2026",
-      "source": "PNP (3/20/26), AcceleratorBot (March 2026)",
+      "source": "AcceleratorBot (March 2026)",
       "status": "Not Contacted",
       "industries": "Digital Health",
       "subindustry": "Digital Health",
@@ -40986,7 +41096,7 @@
       "one_liner": "Paperbox is building gaming solution to allow early identification of neurodevelopmental issues, providing early and preventive intervention.",
       "long_description": "Paperbox is building gaming solution to allow early identification of neurodevelopmental issues, providing early and preventive intervention.",
       "batch": "PNP Health Tech Mar 2026",
-      "source": "PNP (3/20/26), AcceleratorBot (March 2026)",
+      "source": "AcceleratorBot (March 2026)",
       "status": "Not Contacted",
       "industries": "Digital Health",
       "subindustry": "Digital Health",
@@ -41052,7 +41162,7 @@
       "one_liner": "Software as a service, Radiology.",
       "long_description": "Software as a service, Radiology.",
       "batch": "PNP Health Tech Mar 2026",
-      "source": "PNP (3/20/26), AcceleratorBot (March 2026)",
+      "source": "AcceleratorBot (March 2026)",
       "status": "Not Contacted",
       "industries": "Health Tech",
       "subindustry": "Health Tech",
@@ -41164,7 +41274,7 @@
       "one_liner": "Fermeate pioneers optogenetics (light) and photomolecular gene circuits to control microbial fermentation. Essentially, software-like level of control, and on-demand on/off switching that allows biolo...",
       "long_description": "Fermeate pioneers optogenetics (light) and photomolecular gene circuits to control microbial fermentation. Essentially, software-like level of control, and on-demand on/off switching that allows biology to live up to the ideal of 'programmability'.",
       "batch": "PNP Health Tech Mar 2026",
-      "source": "PNP (3/20/26), AcceleratorBot (March 2026)",
+      "source": "AcceleratorBot (March 2026)",
       "status": "Not Contacted",
       "industries": "Biotech",
       "subindustry": "Biotech",
@@ -41276,7 +41386,7 @@
       "one_liner": "OwnaHealth is a clinically-proven, tech-enabled service that combines medical supervision, one-on-one coaching, continuous health tracking, and therapeutic nutrition to drive real, lasting results in ...",
       "long_description": "OwnaHealth is a clinically-proven, tech-enabled service that combines medical supervision, one-on-one coaching, continuous health tracking, and therapeutic nutrition to drive real, lasting results in patients with type 2 diabetes \u2014 even in the hardest-to-treat populations.",
       "batch": "PNP Health Tech Mar 2026",
-      "source": "PNP (3/20/26), AcceleratorBot (March 2026)",
+      "source": "AcceleratorBot (March 2026)",
       "status": "Not Contacted",
       "industries": "Digital Health",
       "subindustry": "Digital Health",
@@ -41388,7 +41498,7 @@
       "one_liner": "Avacina Diagnostics delivers integrated hardware and software solutions for diabetes care. Our proprietary Senna platform combines novel glucose testing hardware (SennaOne), clinical decision support ...",
       "long_description": "Avacina Diagnostics delivers integrated hardware and software solutions for diabetes care. Our proprietary Senna platform combines novel glucose testing hardware (SennaOne), clinical decision support for physicians (SennaMD), and population health analytics for insurers (SennaEnterprise).",
       "batch": "PNP Health Tech Mar 2026",
-      "source": "PNP (3/20/26), AcceleratorBot (March 2026)",
+      "source": "AcceleratorBot (March 2026)",
       "status": "Not Contacted",
       "industries": "Medtech",
       "subindustry": "Medtech",
@@ -41500,7 +41610,7 @@
       "one_liner": "Data intelligence for regenerative agriculture. We transform complex field & climate data to actionable insights.",
       "long_description": "Data intelligence for regenerative agriculture. We transform complex field & climate data to actionable insights.",
       "batch": "PNP Health Tech Mar 2026",
-      "source": "PNP (3/20/26), AcceleratorBot (March 2026)",
+      "source": "AcceleratorBot (March 2026)",
       "status": "Not Contacted",
       "industries": "AgTech",
       "subindustry": "AgTech",
@@ -41612,7 +41722,7 @@
       "one_liner": "Birdoo is a HESaaS precision farming platform for broilers. We use advanced vision intelligence and planning tools to help integrators manage flock growth with real time interventions and align the wh...",
       "long_description": "Birdoo is a HESaaS precision farming platform for broilers. We use advanced vision intelligence and planning tools to help integrators manage flock growth with real time interventions and align the whole value chain.",
       "batch": "PNP Health Tech Mar 2026",
-      "source": "PNP (3/20/26), AcceleratorBot (March 2026)",
+      "source": "AcceleratorBot (March 2026)",
       "status": "Not Contacted",
       "industries": "AgTech",
       "subindustry": "AgTech",
@@ -41724,7 +41834,7 @@
       "one_liner": "Weddell Technologies is developing a semiconductor chip sensor technology for accurate and portable DNA sequencing for wellness and healthcare applications. The company has proof of concept data for t...",
       "long_description": "Weddell Technologies is developing a semiconductor chip sensor technology for accurate and portable DNA sequencing for wellness and healthcare applications. The company has proof of concept data for the technology through non-dilutive grants, and is raising funding for system integration.",
       "batch": "PNP Health Tech Mar 2026",
-      "source": "PNP (3/20/26), AcceleratorBot (March 2026)",
+      "source": "AcceleratorBot (March 2026)",
       "status": "Not Contacted",
       "industries": "Medtech (Hardware)",
       "subindustry": "Medtech (Hardware)",
@@ -41836,7 +41946,7 @@
       "one_liner": "Lambda is building the physical intelligence layer for surgery. Our proprietary LiDAR-based platform improves precision in minimally invasive procedures and unlocks the missing ingredient for surgical...",
       "long_description": "Lambda is building the physical intelligence layer for surgery. Our proprietary LiDAR-based platform improves precision in minimally invasive procedures and unlocks the missing ingredient for surgical autonomy: an adaptive world model of the operative field that can learn from human surgeons.",
       "batch": "PNP Health Tech Mar 2026",
-      "source": "PNP (3/20/26), AcceleratorBot (March 2026)",
+      "source": "AcceleratorBot (March 2026)",
       "status": "Not Contacted",
       "industries": "Medtech (Hardware)",
       "subindustry": "Medtech (Hardware)",
@@ -41902,7 +42012,7 @@
       "one_liner": "Siloton is a MedTech-DeepTech start up solving capacity and access challenges in ophthalmology with an innovative new diagnostic imaging device. Using optical chip technology paired with AI, Siloton u...",
       "long_description": "Siloton is a MedTech-DeepTech start up solving capacity and access challenges in ophthalmology with an innovative new diagnostic imaging device. Using optical chip technology paired with AI, Siloton unlocks greater efficiency for providers and improved care for patients.",
       "batch": "PNP Health Tech Mar 2026",
-      "source": "PNP (3/20/26), AcceleratorBot (March 2026)",
+      "source": "AcceleratorBot (March 2026)",
       "status": "Not Contacted",
       "industries": "Medtech (Hardware)",
       "subindustry": "Medtech (Hardware)",
@@ -42014,7 +42124,7 @@
       "one_liner": "Wosler Corp. delivers remote robotic ultrasound and AI-powered admin automation to solve sonographer shortages and reduce imaging clinic costs. Its flagship SonoSystem enables diagnostic-quality scans...",
       "long_description": "Wosler Corp. delivers remote robotic ultrasound and AI-powered admin automation to solve sonographer shortages and reduce imaging clinic costs. Its flagship SonoSystem enables diagnostic-quality scans without patient-side staff, expanding access to care in underserved regions.",
       "batch": "PNP Health Tech Mar 2026",
-      "source": "PNP (3/20/26), AcceleratorBot (March 2026)",
+      "source": "AcceleratorBot (March 2026)",
       "status": "Not Contacted",
       "industries": "Medtech (Hardware)",
       "subindustry": "Medtech (Hardware)",
@@ -42126,7 +42236,7 @@
       "one_liner": "GelSana is developing innovative polymer wound dressings to generate better clinical outcomes. Our product Cleragel is the only wound care solution with potential to address all major challenges of th...",
       "long_description": "GelSana is developing innovative polymer wound dressings to generate better clinical outcomes. Our product Cleragel is the only wound care solution with potential to address all major challenges of the wound healing cascade by reducing inflammation, repelling bacteria, and balancing moisture.",
       "batch": "PNP Health Tech Mar 2026",
-      "source": "PNP (3/20/26), AcceleratorBot (March 2026)",
+      "source": "AcceleratorBot (March 2026)",
       "status": "Not Contacted",
       "industries": "Medtech",
       "subindustry": "Medtech",
@@ -42238,7 +42348,7 @@
       "one_liner": "We help saving babies before they are born by tackling premature birth following in-utero surgeries.",
       "long_description": "We help saving babies before they are born by tackling premature birth following in-utero surgeries.",
       "batch": "PNP Health Tech Mar 2026",
-      "source": "PNP (3/20/26), AcceleratorBot (March 2026)",
+      "source": "AcceleratorBot (March 2026)",
       "status": "Not Contacted",
       "industries": "Medtech (Hardware)",
       "subindustry": "Medtech (Hardware)",
@@ -42350,7 +42460,7 @@
       "one_liner": "Forage Evolution is building the next-generation workhorse for biotech discovery, a variant of the fastest growing organism on Earth that we engineered with the first molecular DNA data port. Our flag...",
       "long_description": "Forage Evolution is building the next-generation workhorse for biotech discovery, a variant of the fastest growing organism on Earth that we engineered with the first molecular DNA data port. Our flagship Forager-1 cuts hands-on processing by 85% and accelerates timelines >3 fold.",
       "batch": "PNP Health Tech Mar 2026",
-      "source": "PNP (3/20/26), AcceleratorBot (March 2026)",
+      "source": "AcceleratorBot (March 2026)",
       "status": "Not Contacted",
       "industries": "Biotech",
       "subindustry": "Biotech",
@@ -42462,7 +42572,7 @@
       "one_liner": "BioPhenyx has invented CRISPR-Select, your Truth Detector in Drug Development and Use, Improving Success-Rates from Targets to Patients.",
       "long_description": "BioPhenyx has invented CRISPR-Select, your Truth Detector in Drug Development and Use, Improving Success-Rates from Targets to Patients.",
       "batch": "PNP Health Tech Mar 2026",
-      "source": "PNP (3/20/26), AcceleratorBot (March 2026)",
+      "source": "AcceleratorBot (March 2026)",
       "status": "Not Contacted",
       "industries": "Biotech",
       "subindustry": "Biotech",
@@ -42528,7 +42638,7 @@
       "one_liner": "We are developing the world's first brain signal-based non-invasive glucose monitor for metabolic health management. Our system provides actionable daily guidance related to glucose fluctuations, slee...",
       "long_description": "We are developing the world's first brain signal-based non-invasive glucose monitor for metabolic health management. Our system provides actionable daily guidance related to glucose fluctuations, sleep quality, stress and activity levels to guide lifestyle decisions.",
       "batch": "PNP Health Tech Mar 2026",
-      "source": "PNP (3/20/26), AcceleratorBot (March 2026)",
+      "source": "AcceleratorBot (March 2026)",
       "status": "Not Contacted",
       "industries": "Medtech (Hardware)",
       "subindustry": "Medtech (Hardware)",
@@ -42594,7 +42704,7 @@
       "one_liner": "Orange Biomed provides an at-home HbA1c monitoring system that delivers lab-quality results in minutes. Our microfluidic technology makes routine A1c tracking simple, accurate, and accessible for peop...",
       "long_description": "Orange Biomed provides an at-home HbA1c monitoring system that delivers lab-quality results in minutes. Our microfluidic technology makes routine A1c tracking simple, accurate, and accessible for people with diabetes.",
       "batch": "PNP Health Tech Mar 2026",
-      "source": "PNP (3/20/26), AcceleratorBot (March 2026)",
+      "source": "AcceleratorBot (March 2026)",
       "status": "Not Contacted",
       "industries": "Medtech (Hardware)",
       "subindustry": "Medtech (Hardware)",
@@ -42706,7 +42816,7 @@
       "one_liner": "We Provide the Ultimate Liquid Biopsy Platform for Early Cancer Detection.",
       "long_description": "We Provide the Ultimate Liquid Biopsy Platform for Early Cancer Detection.",
       "batch": "PNP Health Tech Mar 2026",
-      "source": "PNP (3/20/26), AcceleratorBot (March 2026)",
+      "source": "AcceleratorBot (March 2026)",
       "status": "Not Contacted",
       "industries": "Biotech",
       "subindustry": "Biotech",
@@ -42818,7 +42928,7 @@
       "one_liner": "Azalea Vision is a health-tech company developing the first intelligent, lens-embedded system that senses, adapts, and connects in real time to improve vision and monitor eye health. Our lens integrat...",
       "long_description": "Azalea Vision is a health-tech company developing the first intelligent, lens-embedded system that senses, adapts, and connects in real time to improve vision and monitor eye health. Our lens integrates adaptive optics, microelectronics, and connectivity. It can measure biomarkers like glucose.",
       "batch": "PNP Health Tech Mar 2026",
-      "source": "PNP (3/20/26), AcceleratorBot (March 2026)",
+      "source": "AcceleratorBot (March 2026)",
       "status": "Not Contacted",
       "industries": "Medtech (Hardware)",
       "subindustry": "Medtech (Hardware)",
@@ -42930,7 +43040,7 @@
       "one_liner": "Ilico Genetics pioneers early gastric cancer detection with a patented liquid biopsy test using methylated DNA biomarkers and a ML algorithm. Our minimally invasive solution enables accurate, cost-eff...",
       "long_description": "Ilico Genetics pioneers early gastric cancer detection with a patented liquid biopsy test using methylated DNA biomarkers and a ML algorithm. Our minimally invasive solution enables accurate, cost-effective screening, improving survival rates and reducing healthcare costs.",
       "batch": "PNP Health Tech Mar 2026",
-      "source": "PNP (3/20/26), AcceleratorBot (March 2026)",
+      "source": "AcceleratorBot (March 2026)",
       "status": "Not Contacted",
       "industries": "Biotech",
       "subindustry": "Biotech",
@@ -43042,7 +43152,7 @@
       "one_liner": "iOrganBio's (iOB) CellForge\u2122 Platform brings precision engineering to the creation of human cells and organoids with unmatched reproducible, scalable, and AI-guided cell manufacturing for in vitro mod...",
       "long_description": "iOrganBio's (iOB) CellForge\u2122 Platform brings precision engineering to the creation of human cells and organoids with unmatched reproducible, scalable, and AI-guided cell manufacturing for in vitro modeling and cell therapies.",
       "batch": "PNP Health Tech Mar 2026",
-      "source": "PNP (3/20/26), AcceleratorBot (March 2026)",
+      "source": "AcceleratorBot (March 2026)",
       "status": "Not Contacted",
       "industries": "Biotech",
       "subindustry": "Biotech",
@@ -43154,7 +43264,7 @@
       "one_liner": "Grannus therapeutics is a biotech company focused on the development of a new therapeutic option for patients with ovarian, prostate, breast, and pancreatic cancers. Our lead program leverages synthet...",
       "long_description": "Grannus therapeutics is a biotech company focused on the development of a new therapeutic option for patients with ovarian, prostate, breast, and pancreatic cancers. Our lead program leverages synthetic lethality to increase the number of patients eligible for PARPi by inducing 'BRCAness'.",
       "batch": "PNP Health Tech Mar 2026",
-      "source": "PNP (3/20/26), AcceleratorBot (March 2026)",
+      "source": "AcceleratorBot (March 2026)",
       "status": "Not Contacted",
       "industries": "Biotech",
       "subindustry": "Biotech",
@@ -43266,7 +43376,7 @@
       "one_liner": "LiVeritas is building the agentic AI Lab Operating System for biopharma, automating regulated testing and FDA submissions with compliance-grade intelligence and structured, traceable data.",
       "long_description": "LiVeritas is building the agentic AI Lab Operating System for biopharma, automating regulated testing and FDA submissions with compliance-grade intelligence and structured, traceable data.",
       "batch": "PNP Health Tech Mar 2026",
-      "source": "PNP (3/20/26), AcceleratorBot (March 2026)",
+      "source": "AcceleratorBot (March 2026)",
       "status": "Not Contacted",
       "industries": "Biotech/AI",
       "subindustry": "Biotech/AI",
@@ -43332,7 +43442,7 @@
       "one_liner": "Amplified Sciences is revolutionizing disease detection with a commercial stage test that helps physicians more accurately detect risk for pancreatic cancer built on their ultra-sensitive optical repo...",
       "long_description": "Amplified Sciences is revolutionizing disease detection with a commercial stage test that helps physicians more accurately detect risk for pancreatic cancer built on their ultra-sensitive optical reporter platform.",
       "batch": "PNP Health Tech Mar 2026",
-      "source": "PNP (3/20/26), AcceleratorBot (March 2026)",
+      "source": "AcceleratorBot (March 2026)",
       "status": "Not Contacted",
       "industries": "Biotech",
       "subindustry": "Biotech",
@@ -43398,7 +43508,7 @@
       "one_liner": "Foundation model for small molecule drug discovery.",
       "long_description": "Foundation model for small molecule drug discovery.",
       "batch": "PNP Health Tech Mar 2026",
-      "source": "PNP (3/20/26), AcceleratorBot (March 2026)",
+      "source": "AcceleratorBot (March 2026)",
       "status": "Not Contacted",
       "industries": "Biotech/AI",
       "subindustry": "Biotech/AI",
@@ -43510,7 +43620,7 @@
       "one_liner": "Hill Research developed TriClick, a multi-agent AI platform that helps pharmaceutical and biotech companies automate clinical data analysis and reporting. By reducing programming errors by 45%, TriCli...",
       "long_description": "Hill Research developed TriClick, a multi-agent AI platform that helps pharmaceutical and biotech companies automate clinical data analysis and reporting. By reducing programming errors by 45%, TriClick improves efficiency, accuracy, and regulatory compliance in clinical submissions.",
       "batch": "PNP Health Tech Mar 2026",
-      "source": "PNP (3/20/26), AcceleratorBot (March 2026)",
+      "source": "AcceleratorBot (March 2026)",
       "status": "Not Contacted",
       "industries": "Biotech/AI",
       "subindustry": "Biotech/AI",
