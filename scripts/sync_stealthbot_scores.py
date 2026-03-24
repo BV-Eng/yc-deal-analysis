@@ -248,20 +248,9 @@ def main():
             else:
                 company["owner"] = owner.split()[0] if owner else None
 
-        # Recalculate company score
-        weights = {
-            "team_score": company.get("team_weight", 15),
-            "product_score": company.get("product_weight", 10),
-            "business_model_score": company.get("business_model_weight", 10),
-            "market_score": company.get("market_weight", 10),
-            "impact_score": company.get("impact_weight", 20),
-            "traction_score": company.get("traction_weight", 5),
-            "deal_score": company.get("deal_weight", 5),
-            "thesis_fit_score": company.get("thesis_fit_weight", 25),
-        }
-        total_weight = sum(weights.values())
-        weighted_sum = sum((company.get(f, 0) or 0) * w for f, w in weights.items())
-        company["company_score"] = round(weighted_sum / total_weight, 2)
+        # For StealthBot (person-based entries), company_score = founder_score
+        # since there's no company data, only founder data
+        company["company_score"] = founder_score
 
         updated += 1
         if company.get("founders"):
