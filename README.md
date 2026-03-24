@@ -48,7 +48,68 @@ The `/api/admin/reload-seed` endpoint:
 
 **To preserve UI edits:** First export current data, merge changes, then reload.
 
-## Adding Founder Data
+## Syncing Data from Affinity
+
+### Quick Reference
+
+Export a CSV from Affinity, then run the appropriate sync script:
+
+```bash
+# DealBot companies (thesis scores, founder scores, owner, email, raised)
+python3 scripts/sync_dealbot_enrichment.py
+
+# AcceleratorBot companies (thesis scores, themes, owner)
+python3 scripts/sync_acceleratorbot_scores.py
+
+# StealthBot people (founder scores across 9 criteria, thesis themes)
+python3 scripts/sync_stealthbot_scores.py
+
+# Then commit, push, and reload production
+git add data/seed-data.json && git commit -m "Sync from Affinity"
+git push origin main
+curl -X POST https://bv-deal-analysis.vercel.app/api/admin/reload-seed
+```
+
+### CSV Export Locations
+
+Update the CSV paths in each script, or copy your exports to these default locations:
+- DealBot: `/Users/Ryan/Downloads/Dealbot_unsaved_view__export_Mar-24-2026.csv`
+- AcceleratorBot: `/Users/Ryan/Downloads/AcceleratorBot_unsaved_view__export_Mar-24-2026.csv`
+- StealthBot: `/Users/Ryan/Downloads/StealthBot_Outreach_unsaved_view__export_Mar-24-2026.csv`
+
+### What Each Script Syncs
+
+| Script | Source | Fields Synced |
+|--------|--------|---------------|
+| `sync_dealbot_enrichment.py` | DealBot CSV | thesis_fit_score (BV Rank ÷3), thesis_fit_theme, owner, email, total_raised, all 9 founder scores |
+| `sync_acceleratorbot_scores.py` | AcceleratorBot CSV | thesis_fit_score (ranking), thesis_fit_theme (from industry), owner |
+| `sync_stealthbot_scores.py` | StealthBot CSV | founder_score, all 9 criteria scores, thesis_fit_theme, company_score |
+
+### Field Mapping (Affinity → Dashboard)
+
+**DealBot/AcceleratorBot:**
+| Affinity Column | Dashboard Field | Transform |
+|-----------------|-----------------|-----------|
+| BV Rank 1-30 | thesis_fit_score | ÷ 3 |
+| ranking | thesis_fit_score | direct |
+| Owners | owner, contact_email | parse "Name <email>" |
+| Pb Total Raised | total_raised | format as $XM |
+| industry | thesis_fit_theme | keyword classify |
+
+**Founder Scores:**
+| Affinity Column | Dashboard Field |
+|-----------------|-----------------|
+| Founder Score Total | founder_score |
+| Founder Breakthrough | breakthrough_score |
+| Founder Mission | mission_score |
+| Founder Achievements | achievements_score |
+| Founder Execution | work_ethic_score |
+| Founder Grit | grit_score |
+| Founder Magnetism | magnetism_score |
+| Founder Coachability | coachability_score |
+| Founder Team | team_chemistry_score |
+
+## Adding Founder Data (PhantomBuster)
 
 ### Recommended Workflow
 
