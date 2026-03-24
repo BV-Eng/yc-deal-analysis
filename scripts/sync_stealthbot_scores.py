@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 """
 Sync StealthBot companies with individual scores and thesis fit from CSV.
-Distributes founder_score across individual criteria and classifies thesis fit
-based on methodology text.
+Estimates all 9 founder criteria based on methodology text and founder_score.
 """
 
 import csv
@@ -19,31 +18,78 @@ THESIS_KEYWORDS = {
         "climate", "carbon", "energy", "renewable", "solar", "battery", "grid",
         "sustainability", "green", "cleantech", "manufacturing", "materials",
         "agriculture", "farming", "food production", "circular", "recycling",
-        "industrial", "construction", "infrastructure", "mining", "chemicals"
+        "industrial", "construction", "infrastructure", "mining", "chemicals",
+        "electrification", "ev", "hydrogen", "biomass", "waste"
     ],
     "Human Health": [
         "health", "healthcare", "medical", "medicine", "clinical", "patient",
         "biotech", "therapeutics", "drug", "pharma", "diagnostics", "cancer",
         "disease", "hospital", "wellness", "nutrition", "mental health",
-        "longevity", "genomics", "personalized medicine", "medtech"
+        "longevity", "genomics", "personalized medicine", "medtech", "surgical",
+        "physician", "doctor", "md", "nurse", "dental", "ortho"
     ],
     "Tomorrow's Workforce": [
         "education", "learning", "training", "workforce", "hr", "talent",
         "productivity", "ai assistant", "automation", "smb", "small business",
-        "enterprise", "coaching", "career", "skill", "reskilling"
+        "enterprise", "coaching", "career", "skill", "reskilling", "edtech",
+        "hiring", "recruiting", "saas", "b2b software"
     ]
 }
 
-# Score criteria and their typical weight in methodology mentions
-SCORE_CRITERIA = [
-    ("breakthrough", ["innovative", "breakthrough", "novel", "contrarian", "unique", "pioneering"]),
-    ("mission", ["mission", "purpose", "passion", "authentic", "personal connection", "motivated"]),
-    ("achievements", ["award", "achievement", "exit", "published", "phd", "prestigious", "elite", "stanford", "harvard", "mit", "yc"]),
-    ("work_ethic", ["execution", "shipped", "built", "launched", "track record", "delivered", "experience"]),
-    ("grit", ["resilient", "grit", "perseverance", "overcome", "adversity", "persistent"]),
-    ("magnetism", ["network", "connections", "leadership", "charisma", "attract", "talent"]),
-    ("coachability", ["coachable", "learn", "adapt", "growth mindset", "self-aware", "feedback"]),
-    ("team_chemistry", ["team", "co-founder", "collaborate", "complementary", "chemistry"])
+# All 9 criteria with positive signal keywords (boosts score)
+CRITERIA_POSITIVE = {
+    "breakthrough": [
+        "innovative", "breakthrough", "novel", "contrarian", "unique", "pioneering",
+        "first", "revolutionary", "disruptive", "cutting-edge", "advanced", "new approach",
+        "patent", "invention", "research", "phd", "scientist", "r&d"
+    ],
+    "mission": [
+        "mission", "purpose", "passion", "authentic", "personal connection", "motivated",
+        "driven", "committed", "dedicated", "believes in", "cares about", "impact",
+        "solve", "problem", "vision", "why"
+    ],
+    "achievements": [
+        "award", "achievement", "exit", "published", "phd", "prestigious", "elite",
+        "stanford", "harvard", "mit", "yc", "founder", "ceo", "vp", "director",
+        "raised", "revenue", "growth", "scaled", "led", "built", "launched",
+        "mba", "md", "jd", "top", "best", "recognized", "notable"
+    ],
+    "work_ethic": [
+        "execution", "shipped", "built", "launched", "track record", "delivered",
+        "experience", "years", "managed", "led", "implemented", "developed",
+        "founded", "started", "created", "established", "grew", "scaled"
+    ],
+    "grit": [
+        "resilient", "grit", "perseverance", "overcome", "adversity", "persistent",
+        "determined", "tenacious", "challenges", "difficult", "tough", "survived",
+        "bootstrapped", "self-funded", "pivoted", "rebuilt"
+    ],
+    "curiosity": [
+        "curious", "learn", "research", "explore", "diverse", "multiple", "various",
+        "phd", "academic", "studied", "degree", "education", "continuous learning",
+        "self-taught", "breadth", "interests", "versatile"
+    ],
+    "magnetism": [
+        "network", "connections", "leadership", "charisma", "attract", "talent",
+        "influence", "presence", "community", "followers", "team", "hired",
+        "recruited", "built team", "relationships", "well-connected", "advisor"
+    ],
+    "coachability": [
+        "coachable", "learn", "adapt", "growth mindset", "self-aware", "feedback",
+        "humble", "open", "flexible", "willing", "collaborative", "listens",
+        "mentor", "advised", "improved", "evolved"
+    ],
+    "team_chemistry": [
+        "team", "co-founder", "collaborate", "complementary", "chemistry",
+        "partner", "together", "working with", "joined", "built team",
+        "cross-functional", "diverse team", "leadership team"
+    ]
+}
+
+# Negative signals (reduces score slightly)
+NEGATIVE_SIGNALS = [
+    "lacks", "no evidence", "limited", "unclear", "insufficient", "missing",
+    "weak", "concern", "risk", "question", "doubt", "unknown", "unproven"
 ]
 
 def classify_thesis_fit(methodology: str) -> str:
@@ -57,36 +103,53 @@ def classify_thesis_fit(methodology: str) -> str:
                 scores[theme] += 1
 
     best = max(scores, key=scores.get)
-    return best if scores[best] >= 2 else "Neutral"
+    return best if scores[best] >= 1 else "Neutral"
 
-def distribute_scores(founder_score: float, methodology: str) -> dict:
+def estimate_criteria_scores(founder_score: float, methodology: str) -> dict:
     """
-    Distribute founder_score across individual criteria based on methodology mentions.
-    Uses base score with adjustments based on keyword presence.
+    Estimate all 9 criteria scores based on founder_score and methodology.
+    Uses founder_score as baseline with adjustments based on keyword signals.
     """
     text = methodology.lower()
-    base_score = founder_score
+    base = founder_score
+
+    # Count overall positive/negative tone
+    negative_count = sum(1 for neg in NEGATIVE_SIGNALS if neg in text)
+    is_negative_heavy = negative_count >= 3
 
     scores = {}
-    for criterion, keywords in SCORE_CRITERIA:
+    for criterion, positive_keywords in CRITERIA_POSITIVE.items():
         # Start with base score
-        score = base_score
+        score = base
 
-        # Check for positive mentions
-        positive_count = sum(1 for kw in keywords if kw in text)
-        if positive_count >= 2:
-            score = min(10, base_score + 1.5)
-        elif positive_count == 1:
-            score = min(10, base_score + 0.5)
+        # Check for positive mentions - boost score
+        positive_count = sum(1 for kw in positive_keywords if kw in text)
 
-        # Check for negative mentions
-        if "lacks" in text and any(kw in text[text.find("lacks"):text.find("lacks")+50] for kw in keywords):
-            score = max(1, base_score - 1.5)
-        elif "no evidence" in text and any(kw in text[text.find("no evidence"):text.find("no evidence")+50] for kw in keywords):
-            score = max(1, base_score - 1)
-        elif "limited" in text and any(kw in text[text.find("limited"):text.find("limited")+50] for kw in keywords):
-            score = max(1, base_score - 0.5)
+        if positive_count >= 3:
+            score = min(10, base + 2.0)
+        elif positive_count >= 2:
+            score = min(10, base + 1.5)
+        elif positive_count >= 1:
+            score = min(10, base + 0.5)
 
+        # Only penalize if there's specific negative mention for this criterion
+        criterion_mentioned_negatively = False
+        for neg in ["lacks", "no evidence", "limited", "weak"]:
+            if neg in text:
+                # Check if negative is near any of our keywords
+                neg_pos = text.find(neg)
+                context = text[neg_pos:neg_pos+80]
+                if any(kw in context for kw in positive_keywords[:5]):
+                    criterion_mentioned_negatively = True
+                    break
+
+        if criterion_mentioned_negatively:
+            score = max(base - 1.0, score - 1.5)
+
+        # Ensure reasonable bounds (don't go below 3 or above 10)
+        score = max(3.0, min(10.0, score))
+
+        # Round to 1 decimal
         scores[f"{criterion}_score"] = round(score, 1)
 
     return scores
@@ -124,6 +187,21 @@ def main():
         csv_row = csv_data.get(name_key)
 
         if not csv_row:
+            # Still estimate scores for those not in CSV using existing bio
+            if company.get("founders"):
+                founder = company["founders"][0]
+                existing_score = founder.get("founder_score", 5.0) or 5.0
+                bio = founder.get("bio", "")
+                if bio:
+                    individual_scores = estimate_criteria_scores(existing_score, bio)
+                    for field, score in individual_scores.items():
+                        founder[field] = score
+                    # Classify thesis from bio
+                    thesis_theme = classify_thesis_fit(bio)
+                    company["thesis_fit_theme"] = thesis_theme
+                    thesis_counts[thesis_theme] += 1
+                    print(f"  {company['name']} (from bio): score={existing_score}, theme={thesis_theme}")
+                    updated += 1
             not_found += 1
             continue
 
@@ -144,12 +222,12 @@ def main():
             founder = company["founders"][0]
             founder["founder_score"] = founder_score
 
-            # Distribute scores across criteria
-            individual_scores = distribute_scores(founder_score, methodology)
+            # Estimate all 9 criteria scores
+            individual_scores = estimate_criteria_scores(founder_score, methodology)
             for field, score in individual_scores.items():
                 founder[field] = score
 
-            # Update bio with methodology if different
+            # Update bio with methodology
             if methodology:
                 founder["bio"] = methodology
 
@@ -164,7 +242,6 @@ def main():
         # Set owner from CSV if available
         owner = csv_row.get("Owners", "").strip()
         if owner:
-            # Parse "Name <email>" format
             match = re.match(r'(.+?)\s*<', owner)
             if match:
                 company["owner"] = match.group(1).strip().split()[0]
@@ -189,7 +266,8 @@ def main():
         updated += 1
         if company.get("founders"):
             f = company["founders"][0]
-            print(f"  {company['name']}: score={founder_score}, theme={thesis_theme}, breakthrough={f.get('breakthrough_score')}")
+            print(f"  {company['name']}: score={founder_score}, theme={thesis_theme}, "
+                  f"break={f.get('breakthrough_score')}, curiosity={f.get('curiosity_score')}")
 
     # Write back
     with open(SEED_DATA_PATH, "w") as f:
@@ -198,7 +276,7 @@ def main():
     print()
     print(f"Summary:")
     print(f"  Updated: {updated}")
-    print(f"  Not found in CSV: {not_found}")
+    print(f"  Not found in CSV (used bio): {not_found}")
     print(f"  Thesis fit distribution:")
     for theme, count in thesis_counts.items():
         print(f"    {theme}: {count}")
