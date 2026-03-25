@@ -84,6 +84,8 @@ Update the CSV paths in each script, or copy your exports to these default locat
 | `sync_dealbot_enrichment.py` | DealBot CSV | thesis_fit_score (BV Rank ÷3), thesis_fit_theme, owner, email, total_raised, all 9 founder scores |
 | `sync_acceleratorbot_scores.py` | AcceleratorBot CSV | thesis_fit_score (ranking), thesis_fit_theme (from industry), owner |
 | `sync_stealthbot_scores.py` | StealthBot CSV | founder_score, all 9 criteria scores, thesis_fit_theme, company_score |
+| `assign_owners_fast.py` | None | owner (based on thesis theme + keywords) |
+| `enrich_stealthbot_founders.py` | LinkedIn CSV | All 9 founder scores + justifications from LinkedIn data |
 
 ### Field Mapping (Affinity → Dashboard)
 
@@ -108,6 +110,58 @@ Update the CSV paths in each script, or copy your exports to these default locat
 | Founder Magnetism | magnetism_score |
 | Founder Coachability | coachability_score |
 | Founder Team | team_chemistry_score |
+
+## Common Workflows
+
+### ⚠️ CRITICAL: Always Reload After Updating seed-data.json
+
+Any script that modifies `data/seed-data.json` requires THREE steps:
+
+```bash
+# 1. Run your script (updates seed-data.json locally)
+python3 scripts/your_script.py
+
+# 2. Commit and push to GitHub
+git add data/seed-data.json
+git commit -m "Description of changes"
+git push origin main
+
+# 3. RELOAD PRODUCTION (this is the step that actually updates the dashboard!)
+curl -X POST https://bv-deal-analysis.vercel.app/api/admin/reload-seed
+```
+
+**If you skip step 3, the dashboard will show stale data!**
+
+### Auto-Assign Owners to Companies
+
+```bash
+# Assigns owners based on thesis theme + keyword matching
+python3 scripts/assign_owners_fast.py
+
+# Commit, push, reload
+git add data/seed-data.json && git commit -m "Auto-assign owners" && git push origin main
+curl -X POST https://bv-deal-analysis.vercel.app/api/admin/reload-seed
+```
+
+### Enrich StealthBot Founders from LinkedIn Data
+
+```bash
+# Requires LinkedIn CSV export (from PhantomBuster or similar)
+# Update CSV path in script, then run:
+python3 scripts/enrich_stealthbot_founders.py
+
+# Commit, push, reload
+git add data/seed-data.json && git commit -m "Enrich StealthBot founders" && git push origin main
+curl -X POST https://bv-deal-analysis.vercel.app/api/admin/reload-seed
+```
+
+**What it does:**
+- Matches founders to LinkedIn profiles by name
+- Generates scores based on: education prestige, previous companies, credentials (PhD/MD/MBA), followers, domain alignment
+- Generates justifications for all 9 founder scoring criteria
+- Updates company_score = founder_score for person-based entries
+
+---
 
 ## Adding Founder Data (PhantomBuster)
 
