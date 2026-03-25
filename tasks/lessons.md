@@ -43,6 +43,7 @@
 | `import_stealthbot_march.py` | Initial StealthBot import | StealthBot JSON |
 | `pull_from_affinity.py` | Pull data directly from Affinity API | None (uses API) |
 | `push_to_affinity.py` | Push updates back to Affinity | None (uses API) |
+| `assign_owners_llm.py` | Auto-assign owners using Claude | None (uses API) |
 
 ---
 
@@ -98,6 +99,36 @@ AcceleratorBot import (commit d6e5d46) overwrote 34 properly enriched PnP compan
 - [ ] For person-based sources, use `company_score = founder_score`
 - [ ] Test with `--dry-run` if available
 - [ ] Verify scores in dashboard after reload
+
+---
+
+## 2026-03-24: Auto-Assign Owners with LLM
+
+### Script
+`scripts/assign_owners_llm.py` - Uses Claude Haiku to classify companies to Rick, Wes, or Lyndsey based on their investor focus areas.
+
+### Usage
+```bash
+# Set API key first
+export ANTHROPIC_API_KEY="sk-ant-..."
+
+# Dry run to preview assignments
+python3 scripts/assign_owners_llm.py --dry-run
+
+# Limit to N companies for testing
+python3 scripts/assign_owners_llm.py --dry-run --limit 10
+
+# Run actual assignment
+python3 scripts/assign_owners_llm.py
+```
+
+### Investor Focus Areas
+- **Rick**: Health AI, Electrification, Buildings, Quantum, No-code AI
+- **Wes**: Agriculture, Food, Nutrition, Metabolic health, Longevity, GLP-1
+- **Lyndsey**: Education, Workforce, Circular economy, SMBs, Skilled trades
+
+### Fallback Logic
+Companies classified as "None" are assigned to the investor with the fewest current assignments (load balancing).
 
 ---
 
