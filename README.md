@@ -126,11 +126,16 @@ git add data/seed-data.json
 git commit -m "Description of changes"
 git push origin main
 
-# 3. RELOAD PRODUCTION (this is the step that actually updates the dashboard!)
+# 3. Wait ~10 seconds for Vercel to deploy the new commit
+sleep 10
+
+# 4. RELOAD PRODUCTION (this is the step that actually updates the dashboard!)
 curl -X POST https://bv-deal-analysis.vercel.app/api/admin/reload-seed
 ```
 
-**If you skip step 3, the dashboard will show stale data!**
+**If you skip step 4, the dashboard will show stale data!**
+
+**If you reload too fast**, Vercel may not have deployed the latest commit yet, and the reload will read the old seed-data.json. Wait for Vercel deployment to complete before reloading.
 
 ### Auto-Assign Owners to Companies
 
