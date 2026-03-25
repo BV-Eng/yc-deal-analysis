@@ -132,6 +132,30 @@ Companies classified as "None" are assigned to the investor with the fewest curr
 
 ---
 
+## 2026-03-24: StealthBot Founder Enrichment
+
+### Problem
+StealthBot founders had scores but no justifications for the 9 criteria.
+
+### Solution
+Used LinkedIn profile data from CSV scrapes to generate both scores and justifications.
+
+### Script
+`scripts/enrich_stealthbot_founders.py` - Rule-based scoring from LinkedIn data:
+- Education prestige (Stanford, MIT, Harvard, etc.)
+- Previous companies (FAANG, unicorns, consulting)
+- Credentials (PhD, MD, MBA, DDS)
+- LinkedIn metrics (followers, connections)
+- Domain alignment (health, climate, workforce)
+- Career signals (repeat founder, senior titles)
+
+### Data Source
+CSV with LinkedIn scrapes: `~/Downloads/result (19).csv`
+- Filter by `refreshedAt` for date ranges
+- Match by normalized name to founders
+
+---
+
 ## Troubleshooting
 
 ### Scores showing as 0 or very low
