@@ -57139,11 +57139,11 @@
       "id": 534,
       "name": "Integrated Dynamics",
       "one_liner": "Firm enabling high-temperature production of solvents from biomass",
-      "long_description": "**DESCRIPTION**\nWe&#x27;re making biomanufacturing for bulk chemicals cheaper than oil by using naturally rugged, fast-growing, and flexible microbes. We have an LOI from an ethanol plant to scale, an LOS from ExxonMobil, and are selling our products through Chem-Impex this quarter.\u00a0\n\nWe all get our hands dirty at ID.",
+      "long_description": "**DESCRIPTION**\nIntegrated Dynamics uses rugged, heat-loving microbes to convert agricultural waste into bulk chemicals and fuels more cheaply than oil. By retrofitting struggling ethanol plants with this technology, they revitalize domestic manufacturing while securing high margins against foreign imports.\n\n- Instead of using fragile yeast, they use wild microbes that thrive in extreme heat, making the process faster and preventing contamination.\n- The company plans to buy struggling ethanol plants at a discount and upgrade them, avoiding the massive cost of building new facilities.\n- Their process uses cheap biomass instead of expensive corn, cutting material costs by over 50% while running twice as fast as traditional methods.\n- They have secured a letter of intent from an ethanol plant, a letter of support from ExxonMobil, and are already selling products through a distributor.\n- The leadership team combines technical expertise from top universities with advice from industry veterans who have built and run major bio-refineries.\n\n**FOUNDER'S PITCH**\nWe're making biomanufacturing for bulk chemicals cheaper than oil by using naturally rugged, fast-growing, and flexible microbes. We have an LOI from an ethanol plant to scale, an LOS from ExxonMobil, and are selling our products through Chem-Impex this quarter. We all get our hands dirty at ID.\n\n**FOUNDER'S WORK & EDUCATION**\nPalantir Technologies, Information Trust Institute, EY, University of Illinois Urbana-Champaign, Latin School of Chicago",
       "batch": "Deepchecks Mar 2026",
       "source": "Deepchecks",
       "status": "Not Contacted",
-      "industries": "Biotech, Industrial",
+      "industries": "Biotech",
       "subindustry": "",
       "tags": "Deep Tech",
       "website": "https://int-dyn.com/",
@@ -57228,17 +57228,18 @@
         }
       ],
       "interactions": [],
-      "notes": []
+      "notes": [],
+      "valuation": "$16M - $20M"
     },
     {
       "id": 535,
       "name": "Lumindt",
       "one_liner": "Hydrogen storage company enabling grid-scale emission-free power",
-      "long_description": "**DESCRIPTION**\nLumindt specializes in refining a domestic and abundant waste ore into solid state hydrogen storage. We have found recent customer traction in the form of a $2M pipeline with Air Products, ECL, and more. I helped build the first full stack of Starship in 2021. Incredible grit all around.",
+      "long_description": "**DESCRIPTION**\nLumindt turns cheap domestic waste ore into solid-state hydrogen storage materials that hold energy like a sponge. This technology offers a safer, longer-lasting, and much cheaper alternative to lithium-ion batteries for powering data centers and industrial sites.\n\n- The company uses dirt found in California to make storage material that costs just $10 per kilowatt-hour, which is much cheaper than standard battery materials.\n- Their system packs ten times more energy into a lighter design than regular batteries and lasts five times longer without any risk of catching fire.\n- They have already lined up $2 million in potential sales with big industrial clients like Air Products and have a pilot system up and running.\n- The technology works like a clean generator that can keep power stored forever and skips the hard-to-get permits needed for other hydrogen methods.\n- The team is led by engineers from SpaceX and Rolls-Royce who have real experience building difficult hardware like the Starship rocket.\n\n**FOUNDER'S PITCH**\nLumindt specializes in refining a domestic and abundant waste ore into solid state hydrogen storage. We have found recent customer traction in the form of a $2M pipeline with Air Products, ECL, and more. I helped build the first full stack of Starship in 2021. Incredible grit all around.\n\n**FOUNDER'S WORK & EDUCATION**\nSpaceX, SSL (Space Systems Loral), Logitech, Georgia Institute of Technology, University of Colorado Boulder",
       "batch": "Deepchecks Mar 2026",
       "source": "Deepchecks",
       "status": "Not Contacted",
-      "industries": "Clean Energy, Climate Tech",
+      "industries": "Hardware, Clean Energy",
       "subindustry": "",
       "tags": "Deep Tech",
       "website": "https://lumindt.com/",
@@ -57323,17 +57324,19 @@
         }
       ],
       "interactions": [],
-      "notes": []
+      "notes": [],
+      "valuation": "$16M - $20M",
+      "raise_amount": "$1M - $2M"
     },
     {
       "id": 536,
       "name": "Tuplet",
       "one_liner": "Neuromodulation device compressing sleep",
-      "long_description": "**DESCRIPTION**\nTuplet is building a wearable neurotech system to compress a full night&#x27;s sleep into 4-5 hours using closed-loop neural stimulation. We&#x27;ve assembled early prototype hardware + software and launched our first pilot sleep study. Team includes an experienced hardware founder + a PhD neuroscientist.\n\n**FOUNDER'S WORK & EDUCATION**\nAmazon, Sick Sequence, Techstars, Stanford University, The University of Texas at Dallas",
+      "long_description": "**DESCRIPTION**\nTuplet is developing a wearable device that uses closed-loop neural stimulation to condense a full night's rest into just four to five hours. By amplifying the brain waves responsible for restorative sleep, the system aims to give busy professionals hours of extra productive time without sacrificing cognitive performance.\n\n- While most sleep gadgets just track your rest, this device actively stimulates brain waves to make sleep more efficient.\n- The founders combine deep technical expertise, pairing a hardware veteran who sold a previous business with a PhD neuroscientist.\n- Their scientific advisor invented the method of using timed sounds to boost deep sleep rhythms, a technique proven to help with memory.\n- Instead of trying to sell to everyone, they are focusing first on surgeons and executives who are willing to pay for extra waking hours.\n- The team has already built working prototypes and is running a pilot study to show that users can sleep less while keeping their memory sharp.\n\n**FOUNDER'S PITCH**\nTuplet is building a wearable neurotech system to compress a full night's sleep into 4-5 hours using closed-loop neural stimulation. We've assembled early prototype hardware + software and launched our first pilot sleep study. Team includes an experienced hardware founder + a PhD neuroscientist.\n\n**FOUNDER'S WORK & EDUCATION**\nAmazon, Sick Sequence, Techstars, Stanford University, The University of Texas at Dallas",
       "batch": "Deepchecks Mar 2026",
       "source": "Deepchecks",
       "status": "Not Contacted",
-      "industries": "Neurotech, Construction Tech",
+      "industries": "Medtech, Hardware",
       "subindustry": "",
       "tags": "Deep Tech",
       "website": "https://tuplet.co/",
@@ -57418,17 +57421,19 @@
         }
       ],
       "interactions": [],
-      "notes": []
+      "notes": [],
+      "valuation": "$11M - $15M",
+      "raise_amount": "$2M - $4M"
     },
     {
       "id": 537,
       "name": "Anuba Technologies, Inc.",
       "one_liner": "Infrastructure enabling drive-thru vehicle recognition",
-      "long_description": "**DESCRIPTION**\nAnuba Technologies is building the perception infrastructure for the physical world, starting with QSR drive-thrus where real-time edge AI synchronizes vehicle detection, ordering, and kitchen workflows to increase throughput and revenue. The platform operates directly on-site with zero cloud depend\n\n**FOUNDER'S WORK & EDUCATION**\nStanford Health Care, Pollen Mobile, The George Washington University, Stanford University",
+      "long_description": "**DESCRIPTION**\nAnuba Technologies builds on-site AI infrastructure for drive-thrus that identifies vehicles and coordinates kitchen workflows in real-time. By recognizing returning customers and alerting staff early, the platform speeds up service and increases revenue without relying on cloud connections.\n\n- The software runs completely on local hardware, so it stays fast and functional even if the internet goes out.\n- Cameras recognize returning cars to automatically show their favorite orders and greet drivers by name.\n- Restaurants can install the system quickly without replacing their current cash registers or IT setup.\n- Kitchen crews see orders coming before the driver speaks, allowing them to start cooking sooner and serve more people.\n- Major brands like Wienerschnitzel are already using the tech, which is also designed to guide autonomous delivery robots.\n\n**FOUNDER'S PITCH**\nAnuba Technologies is building the perception infrastructure for the physical world, starting with QSR drive-thrus where real-time edge AI synchronizes vehicle detection, ordering, and kitchen workflows to increase throughput and revenue. The platform operates directly on-site with zero cloud depend\n\n**FOUNDER'S WORK & EDUCATION**\nStanford Health Care, Pollen Mobile, The George Washington University, Stanford University",
       "batch": "Deepchecks Mar 2026",
       "source": "Deepchecks",
       "status": "Not Contacted",
-      "industries": "Healthcare, Construction Tech",
+      "industries": "AI/ML, Logistics",
       "subindustry": "",
       "tags": "Deep Tech",
       "website": "https://anubatechnologies.com/",
@@ -57513,13 +57518,15 @@
         }
       ],
       "interactions": [],
-      "notes": []
+      "notes": [],
+      "valuation": "$21M - $25M",
+      "raise_amount": "$2M - $4M"
     },
     {
       "id": 538,
       "name": "RoBuildX Inc",
       "one_liner": "Housing automation enabling on-site robotic construction",
-      "long_description": "**DESCRIPTION**\nAt RobuildX, we build houses using physical AI. We are ready to prototype at a MIT facility. We have a LOI and another company that wants to sign a LOI. We are specialist in robotics, construction and homebuilding; every professional in the management has 20+ years of experience",
+      "long_description": "**DESCRIPTION**\nRobuildX automates residential construction using on-site robotic micro-factories and physical AI to build homes four times faster than traditional methods. This approach significantly lowers costs and energy usage to help solve the global shortage of affordable housing.\n\n- The company sends mobile factories and robotic systems directly to building sites to assemble homes automatically.\n- Their process reduces construction costs by over 20% and cuts energy consumption in half compared to standard building techniques.\n- They have already signed a $9 million letter of intent to build 374 apartment units for a real estate capital group.\n- The management team is made up of industry veterans who each have more than 20 years of experience in robotics, construction, and development.\n- Instead of just pre-making parts offsite, they are developing autonomous robot swarms that can frame houses right on the lot.\n\n**FOUNDER'S PITCH**\nAt RobuildX, we build houses using physical AI. We are ready to prototype at a MIT facility. We have a LOI and another company that wants to sign a LOI. We are specialist in robotics, construction and homebuilding; every professional in the management has 20+ years of experience\n\n**FOUNDER'S WORK & EDUCATION**\nNEO Capital Group, Venture Cooperative, Pacific Holding S.A., MIT Sloan School of Management, Universidad ESAN, National University of Engineering",
       "batch": "Deepchecks Mar 2026",
       "source": "Deepchecks",
       "status": "Not Contacted",
@@ -57608,17 +57615,19 @@
         }
       ],
       "interactions": [],
-      "notes": []
+      "notes": [],
+      "valuation": "$26M+",
+      "raise_amount": "$1M - $2M"
     },
     {
       "id": 539,
       "name": "Symphony Space",
       "one_liner": "Platform enabling on-orbit payload hosting via modular bus",
-      "long_description": "**DESCRIPTION**\nSymphony Space delivers Space-as-a-Service via a modular reusable orbital platform \u2014 rapid access to space at 1/4 the cost, no spacecraft required. Demo mission is nearly booked out ahead of Q4 2027 launch. Founded by patent-holding former White House tech lead and 25-yr space systems engineer.",
+      "long_description": "**DESCRIPTION**\nSymphony Space provides a reusable orbital platform that allows customers to launch and operate payloads without building their own satellites. This shared infrastructure drastically reduces the cost of accessing space, enabling smaller nations and companies to deploy technology quickly.\n\n- The company is led by a former White House technology lead and a veteran space systems engineer with deep connections to international space agencies.\n- Instead of building expensive custom spacecraft, customers rent slots on a modular platform that handles power, communications, and temperature control.\n- The platform features robotic arms and swappable pods, allowing equipment to be upgraded or replaced in orbit rather than becoming space junk.\n- Their upcoming demo mission is already nearly fully booked, proving strong demand from researchers and commercial partners.\n- By lowering costs by up to 25 times, the service opens the door for countries without launch programs to establish a sovereign presence in space.\n\n**FOUNDER'S PITCH**\nSymphony Space delivers Space-as-a-Service via a modular reusable orbital platform \u2014 rapid access to space at 1/4 the cost, no spacecraft required. Demo mission is nearly booked out ahead of Q4 2027 launch. Founded by patent-holding former White House tech lead and 25-yr space systems engineer.\n\n**FOUNDER'S WORK & EDUCATION**\nWhite House Office of Science and Technology Policy, U.S. Department of State, US Embassy Paris, University of Michigan College of Engineering, University of Michigan",
       "batch": "Deepchecks Mar 2026",
       "source": "Deepchecks",
       "status": "Not Contacted",
-      "industries": "Construction Tech, Space Tech",
+      "industries": "Space Tech",
       "subindustry": "",
       "tags": "Deep Tech",
       "website": "https://symphony-space.com/",
@@ -57703,17 +57712,19 @@
         }
       ],
       "interactions": [],
-      "notes": []
+      "notes": [],
+      "valuation": "$26M+",
+      "raise_amount": "$4M+"
     },
     {
       "id": 540,
       "name": "DarkHaul",
       "one_liner": "Delivery overlay enabling autonomous curb-to-door handoffs",
-      "long_description": "**DESCRIPTION**\nDarkHaul is building a lights-out, autonomy-native 3PL that sells curb-to-door autonomous delivery capacity into existing last-mile networks, with the core breakthrough of reliably automating the un-instrumented final 20 meters from curb to verified doorstep through a single orchestration platform.\n\n**FOUNDER'S WORK & EDUCATION**\nOPUS, Vissibl, UNSW, Adelaide University, Peking University, Startmate",
+      "long_description": "**DESCRIPTION**\nDarkHaul automates the final 20 meters of delivery by integrating robotic systems into existing logistics networks to handle the trip from the curb to the doorstep. This approach solves the most expensive bottleneck in shipping, allowing major carriers to cut costs and labor requirements without replacing their current fleets.\n\n- The company focuses entirely on the final 20 meters of delivery, which is currently the most expensive and inefficient part of the shipping process due to parking, walking, and stair-climbing.\n- Instead of building its own robots, the platform connects with various types of existing robots\u2014whether they have legs or wheels\u2014to pick the best machine for each specific delivery route.\n- The service operates as a neutral partner for major shipping companies, allowing them to add autonomous delivery to their routes without having to develop the technology themselves.\n- The founders bring serious experience, including a former Air Force pilot who scaled drone logistics and a NASA engineer who led robotic missions to the moon.\n- By replacing human drivers for the walk to the door, the system aims to cut delivery costs by over 70% while operating around the clock to smooth out peak demand times like Black Friday.\n\n**FOUNDER'S PITCH**\nDarkHaul is building a lights-out, autonomy-native 3PL that sells curb-to-door autonomous delivery capacity into existing last-mile networks, with the core breakthrough of reliably automating the un-instrumented final 20 meters from curb to verified doorstep through a single orchestration platform.\n\n**FOUNDER'S WORK & EDUCATION**\nOPUS, Vissibl, UNSW, Adelaide University, Peking University, Startmate",
       "batch": "Deepchecks Mar 2026",
       "source": "Deepchecks",
       "status": "Not Contacted",
-      "industries": "Robotics, Construction Tech",
+      "industries": "Robotics, Logistics",
       "subindustry": "",
       "tags": "Deep Tech",
       "website": "https://darkhaul.com/",
@@ -57798,17 +57809,19 @@
         }
       ],
       "interactions": [],
-      "notes": []
+      "notes": [],
+      "valuation": "$11M - $15M",
+      "raise_amount": "$2M - $4M"
     },
     {
       "id": 541,
       "name": "Earnest Agriculture",
       "one_liner": "Biostimulants improving nutrient use efficiency in crops",
-      "long_description": "**DESCRIPTION**\nEarnest Agriculture uses AI to design prairie-derived microbial consortia delivered as probiotic seed coating, Prairie Power. Validated in multi-year trials; 14 paid pilots in 2025 (14 states; 1,000+ acres). Led by Dr. Gabe Price + Eddy Mejia.",
+      "long_description": "**DESCRIPTION**\nEarnest Agriculture creates probiotic seed coatings made from native prairie microbes that replace synthetic chemicals and boost crop yields. By restoring natural soil ecosystems, the company helps farmers increase their profits while reducing their reliance on expensive fertilizers.\n\n- Instead of relying on single-strain bacteria like many competitors, they use a diverse mix of native prairie microbes to create a more resilient soil environment.\n- The product is already being used on real farms, with paid pilot programs expanding to 14 states and covering more than 1,000 acres in 2025.\n- Farmers see a clear financial win, earning a 3.5x return on investment by saving money on fertilizer and harvesting more crops per acre.\n- The founders bring a mix of practical and scientific expertise, led by a repeat entrepreneur and a specialist with a PhD in microbial ecology.\n- Field tests show the product consistently outperforms standard chemical treatments, delivering yield increases of up to 7% on large commercial farms.\n\n**FOUNDER'S PITCH**\nEarnest Agriculture uses AI to design prairie-derived microbial consortia delivered as probiotic seed coating, Prairie Power. Validated in multi-year trials; 14 paid pilots in 2025 (14 states; 1,000+ acres). Led by Dr. Gabe Price + Eddy Mejia.\n\n**FOUNDER'S WORK & EDUCATION**\nIntel Corporation, DisplayInfinity, Mega Service Solutions, Gies College of Business - University of Illinois Urbana-Champaign, University of Illinois Chicago, Central Texas College",
       "batch": "Deepchecks Mar 2026",
       "source": "Deepchecks",
       "status": "Not Contacted",
-      "industries": "Biotech, Clean Energy",
+      "industries": "AgTech, Biotech",
       "subindustry": "",
       "tags": "Deep Tech",
       "website": "https://earnest.ag/",
@@ -57893,21 +57906,23 @@
         }
       ],
       "interactions": [],
-      "notes": []
+      "notes": [],
+      "valuation": "$5M - $10M",
+      "raise_amount": "$250K - $1M"
     },
     {
       "id": 542,
       "name": "Brett",
       "one_liner": "Battery imaging enabling inline defect detection and yield",
-      "long_description": "**DESCRIPTION**\nWe have developed a proprietary diagnostic method for batteries using ultrasound. We have commercial systems deployed with Tier 1 Auto OEM and battery manufacturing customers. Dan Brett and Paul Shearing are the most published electrochemical engineers in EU.\n\n**FOUNDER'S WORK & EDUCATION**\nSention Technologies Limited, Haixi Institutes, Chinese Academy of Sciences, Prosemino",
+      "long_description": "**DESCRIPTION**\nSention uses ultrasound technology and machine learning to diagnose battery health and detect defects without taking the cells apart. This helps manufacturers reduce waste, prevent dangerous fires, and avoid costly recalls by identifying internal flaws early in the production process.\n\n- The technology works like a medical ultrasound for batteries, listening to sound waves to create 3D maps of the inside of a cell to spot hidden problems.\n- Battery makers currently lose billions due to high scrap rates and safety recalls, but this system catches errors early to prevent wasted materials and dangerous fires.\n- The company is already generating revenue and has pilot programs running with major car manufacturers and battery factories.\n- The founding team includes some of the most published experts in the field who have previously built multiple companies and led major research initiatives.\n- Their diagnostic tools are designed to scale from small research labs all the way up to massive gigafactories, covering the entire battery lifecycle.\n\n**FOUNDER'S PITCH**\nWe have developed a proprietary diagnostic method for batteries using ultrasound. We have commercial systems deployed with Tier 1 Auto OEM and battery manufacturing customers. Dan Brett and Paul Shearing are the most published electrochemical engineers in EU.\n\n**FOUNDER'S WORK & EDUCATION**\nSention Technologies Limited, Haixi Institutes, Chinese Academy of Sciences, Prosemino",
       "batch": "Deepchecks Mar 2026",
       "source": "Deepchecks",
       "status": "Not Contacted",
-      "industries": "Clean Energy, Healthcare",
+      "industries": "Batteries, Clean Energy",
       "subindustry": "",
       "tags": "Deep Tech",
       "website": "https://sention.io/",
-      "all_locations": "United States",
+      "all_locations": "Europe",
       "team_size": 0,
       "year_founded": null,
       "logo_url": "",
@@ -57988,17 +58003,19 @@
         }
       ],
       "interactions": [],
-      "notes": []
+      "notes": [],
+      "valuation": "$21M - $25M",
+      "raise_amount": "$1M - $2M"
     },
     {
       "id": 543,
       "name": "REON Technology",
       "one_liner": "Battery energy storage platform improving lifespan and capacity",
-      "long_description": "**DESCRIPTION**\nREON repowers the world by enabling Virtual Power Plants through next-generation energy storage and microgrid systems plus EMS software. We are revenue generating since 2024 with plan to hit EBITDA breakeven this year.\u00a0\u00a0Experienced founding team of industry veterans with over 10GW batteries deployed",
+      "long_description": "**DESCRIPTION**\nREON builds integrated battery and energy management systems that optimize power storage for commercial and industrial sites. This platform extends battery lifespan and connects distributed energy resources to stabilize the grid against the surging power demands of AI and renewables.\n\n- Their software works with any battery chemistry, including new sodium-ion or used batteries, and manages individual cells to make them last years longer than standard systems.\n- The technology unlocks up to three times more usable capacity from storage assets, preventing the waste and cost associated with retiring batteries too early.\n- By linking solar panels, batteries, and EV chargers into virtual power plants, the system allows businesses to sell excess power back to the grid when it is needed most.\n- The company is already generating revenue with over 100 systems operating in eight countries and has a project pipeline worth around $60 million.\n- The founders are industry experts who previously built a $250 million battery business at Schneider Electric and have deployed massive energy systems worldwide.\n\n**FOUNDER'S PITCH**\nREON repowers the world by enabling Virtual Power Plants through next-generation energy storage and microgrid systems plus EMS software. We are revenue generating since 2024 with plan to hit EBITDA breakeven this year. Experienced founding team of industry veterans with over 10GW batteries deployed\n\n**FOUNDER'S WORK & EDUCATION**\nNaviX Solutions, Schneider Electric, Questrom School of Business, Boston University, Syracuse University, Southeast University",
       "batch": "Deepchecks Mar 2026",
       "source": "Deepchecks",
       "status": "Not Contacted",
-      "industries": "Clean Energy, SaaS",
+      "industries": "Batteries, Clean Energy",
       "subindustry": "",
       "tags": "Deep Tech",
       "website": "https://reoncorp.com/",
@@ -58083,21 +58100,23 @@
         }
       ],
       "interactions": [],
-      "notes": []
+      "notes": [],
+      "valuation": "$26M+",
+      "raise_amount": "$4M+"
     },
     {
       "id": 544,
       "name": "Cervolve",
       "one_liner": "Brain lipid modeling platform enabling targeted drug design",
-      "long_description": "**DESCRIPTION**\nCervolve is building the NeuroLipid Foundation model to cure neurodegenerative disease. Our team collectively has 30 years of neuroscience and AI research, and we are building the industry defining NeuroLipid dataset and model.\n\n**FOUNDER'S WORK & EDUCATION**\nMcGill University, Cactus Communications, Aquila BioMedical, The University of Edinburgh, University of Galway",
+      "long_description": "**DESCRIPTION**\nCervolve is developing a specialized AI model to map brain lipids and discover new treatments for neurodegenerative diseases like Alzheimer's. By targeting these essential fat molecules\u2014which comprise half the brain's mass but are often overlooked\u2014the company aims to unlock effective therapies where others have failed.\n\n- While lipids make up half of the brain's mass, most drug developers ignore them, leaving a huge opportunity to find treatments for diseases like Parkinson's.\n- The company is building a massive database of human brain lipids to train AI models that can predict exactly how to repair damaged brain function.\n- Doctors already use lipid-based drugs to treat heart disease successfully, and this team is applying that same proven logic to fix brain health.\n- The founders combine deep scientific knowledge with top-tier AI experience from leading research institutions, bringing thirty years of collective expertise.\n- They have already started making money through research services and have secured early partnerships with biotech companies.\n\n**FOUNDER'S PITCH**\nCervolve is building the NeuroLipid Foundation model to cure neurodegenerative disease. Our team collectively has 30 years of neuroscience and AI research, and we are building the industry defining NeuroLipid dataset and model.\n\n**FOUNDER'S WORK & EDUCATION**\nMcGill University, Cactus Communications, Aquila BioMedical, The University of Edinburgh, University of Galway",
       "batch": "Deepchecks Mar 2026",
       "source": "Deepchecks",
       "status": "Not Contacted",
-      "industries": "Healthcare, Neurotech",
+      "industries": "Biotech, Healthcare",
       "subindustry": "",
       "tags": "Deep Tech",
       "website": "https://cervolve.com/",
-      "all_locations": "United States",
+      "all_locations": "Canada",
       "team_size": 0,
       "year_founded": null,
       "logo_url": "",
@@ -58178,17 +58197,19 @@
         }
       ],
       "interactions": [],
-      "notes": []
+      "notes": [],
+      "valuation": "$5M - $10M",
+      "raise_amount": "$1M - $2M"
     },
     {
       "id": 545,
       "name": "CasNx",
       "one_liner": "Organ editing platform improving donor graft viability",
-      "long_description": "**DESCRIPTION**\nCasNx is the first CRISPR platform that reprograms transplant organs during machine perfusion to reduce graft failure and improve longevity.\n\n**FOUNDER'S WORK & EDUCATION**\nUniversity of Florida, National Chemical Laboratory, Cipla BioTec, Birla Institute of Technology and Science, Pilani",
+      "long_description": "**DESCRIPTION**\nCasNx uses a gene-editing tool to upgrade donor organs while they are on pumping machines outside the body. This process silences genes that cause rejection, helping organs last longer without exposing patients to the risks of internal gene therapy.\n\n- Half of all transplanted organs fail within ten years, so this technology fixes the organ before surgery to stop the genes that cause damage.\n- Unlike other gene therapies that need viruses or complex chemicals to work, this method uses a simple DNA guide that works on its own.\n- The editing happens entirely outside the patient, which means there is zero risk of accidental genetic changes or immune reactions inside the person receiving the organ.\n- They plan to sell single-use kits directly to hospitals, which fits easily into current surgery routines and saves money by preventing expensive organ failures.\n- The founding team includes a surgeon and a professor who have already proven this works by successfully editing human kidney tissue more than 90% of the time.\n\n**FOUNDER'S PITCH**\nCasNx is the first CRISPR platform that reprograms transplant organs during machine perfusion to reduce graft failure and improve longevity.\n\n**FOUNDER'S WORK & EDUCATION**\nUniversity of Florida, National Chemical Laboratory, Cipla BioTec, Birla Institute of Technology and Science, Pilani",
       "batch": "Deepchecks Mar 2026",
       "source": "Deepchecks",
       "status": "Not Contacted",
-      "industries": "Construction Tech, Materials",
+      "industries": "Biotech, Healthcare",
       "subindustry": "",
       "tags": "Deep Tech",
       "website": "https://gmail.com/",
@@ -58273,17 +58294,19 @@
         }
       ],
       "interactions": [],
-      "notes": []
+      "notes": [],
+      "valuation": "Under $5M",
+      "raise_amount": "$250K - $1M"
     },
     {
       "id": 546,
       "name": "HEXAspec Inc",
       "one_liner": "Chip packaging composites improving heat dissipation",
-      "long_description": "**DESCRIPTION**\nOver 10\u00d7 thermal performance for all chips; no changes to current tools\nNDAs&MTAs secured with a leading semiconductor materials company; accepted into an Arizona accelerator partnered with Amkor, Cadence, and TSMC (w/ investment)\nAll-PhD founders with experience at TSMC, PTI, and Neuralink\n\n**FOUNDER'S WORK & EDUCATION**\nRice University, University of Illinois Urbana-Champaign, Technical University of Munich",
+      "long_description": "**DESCRIPTION**\nHEXAspec produces a specialized chip packaging material that releases heat ten times faster than current standards. This innovation allows data centers to significantly reduce cooling costs and run AI workloads more efficiently without requiring new manufacturing equipment.\n\n- Heat is the biggest problem slowing down AI right now, and this material removes that roadblock to boost computing power by about 28%.\n- Data centers currently spend nearly half their electricity just on cooling, but this product helps chips stay cool on their own to lower those energy bills.\n- The material works with the machines factories already have, so manufacturers can switch to it without buying expensive new tools.\n- The company was started by three PhD experts who have worked at major industry leaders like TSMC and Neuralink.\n- They have already signed agreements with big semiconductor companies to test the material and have secured money to start production.\n\n**FOUNDER'S PITCH**\nOver 10\u00d7 thermal performance for all chips; no changes to current tools NDAs&MTAs secured with a leading semiconductor materials company; accepted into an Arizona accelerator partnered with Amkor, Cadence, and TSMC (w/ investment) All-PhD founders with experience at TSMC, PTI, and Neuralink\n\n**FOUNDER'S WORK & EDUCATION**\nRice University, University of Illinois Urbana-Champaign, Technical University of Munich",
       "batch": "Deepchecks Mar 2026",
       "source": "Deepchecks",
       "status": "Not Contacted",
-      "industries": "Neurotech, Materials",
+      "industries": "Hardware, Semiconductors",
       "subindustry": "",
       "tags": "Deep Tech",
       "website": "https://hexaspec.com/",
@@ -58368,21 +58391,23 @@
         }
       ],
       "interactions": [],
-      "notes": []
+      "notes": [],
+      "valuation": "$5M - $10M",
+      "raise_amount": "$1M - $2M"
     },
     {
       "id": 547,
       "name": "SkoneLabs",
       "one_liner": "IoT and B2B SaaS platform reducing produce waste",
-      "long_description": "**DESCRIPTION**\n3 large customer with ACV 1.2M EUR in pipeline and F1 score of 95% with prediction\n14 pilots and paid with largest chains in dach region, 1M+ datapoints collected\nNish is a generalist and ability to learn things fast. Sid loves product and strategy with 7 years research experience.\n\n**FOUNDER'S WORK & EDUCATION**\nPreGenic Solutions, Antler, NGeneR, Copenhagen Business School, University of Mannheim",
+      "long_description": "**DESCRIPTION**\nSkoneLabs uses smart sensors and AI to monitor environmental conditions like temperature and air quality throughout the fresh-food supply chain. By predicting spoilage risks early, the platform helps producers and supermarkets significantly reduce food waste and improve profit margins.\n\n- The system tracks temperature, humidity, and gases in real-time to spot problems like mold or equipment failure before food is ruined.\n- Customers using the platform have cut their food loss by at least 30 percent, proving the technology works in real-world settings.\n- The company is working with major retail partners and has a sales pipeline with potential account values exceeding 1 million euros.\n- Instead of just showing raw data, the software analyzes trends to give clear advice on how to save energy or fix specific storage rooms.\n- The leadership team combines deep technical research experience with practical knowledge from the food industry to build highly accurate prediction models.\n\n**FOUNDER'S PITCH**\n3 large customer with ACV 1.2M EUR in pipeline and F1 score of 95% with prediction 14 pilots and paid with largest chains in dach region, 1M+ datapoints collected Nish is a generalist and ability to learn things fast. Sid loves product and strategy with 7 years research experience.\n\n**FOUNDER'S WORK & EDUCATION**\nPreGenic Solutions, Antler, NGeneR, Copenhagen Business School, University of Mannheim",
       "batch": "Deepchecks Mar 2026",
       "source": "Deepchecks",
       "status": "Not Contacted",
-      "industries": "AI/ML, SaaS",
+      "industries": "Climate Tech, SaaS",
       "subindustry": "",
       "tags": "Deep Tech",
       "website": "https://skonelabs.com/",
-      "all_locations": "United States",
+      "all_locations": "Europe",
       "team_size": 0,
       "year_founded": null,
       "logo_url": "",
@@ -58463,17 +58488,19 @@
         }
       ],
       "interactions": [],
-      "notes": []
+      "notes": [],
+      "valuation": "$5M - $10M",
+      "raise_amount": "$2M - $4M"
     },
     {
       "id": 548,
       "name": "DRAGON",
       "one_liner": "AR glasses enabling peripheral HUD for tactical operations",
-      "long_description": "**DESCRIPTION**\nDRAGON builds ultralight AR heads-up displays for defense and performance. We are piloting with Navy SEALs and 75th RR, as well as USRowing and USATriathlon, with pro cycling pilots next. Our peripheral-first architecture reduces cognitive load and integrates with ATAK. Harvard founded.\n\n**FOUNDER'S WORK & EDUCATION**\nLaconia, Harvard University, ALIENANT",
+      "long_description": "**DESCRIPTION**\nDRAGON builds ultralight augmented reality eyewear that projects essential data into the user's peripheral vision. This allows elite athletes and soldiers to receive navigation and command signals without looking down or losing focus on their surroundings.\n\n- The glasses weigh just 36 grams, making them feel like normal sunglasses rather than heavy, bulky tech gear.\n- Information appears in the corner of the eye only when needed, so users don't have to look down at a phone or watch and lose focus on what is in front of them.\n- The system is designed for both combat and sports, allowing special forces to communicate silently while giving elite athletes real-time stats without breaking their stride.\n- They are already running pilot programs with elite groups like the Navy SEALs, Army Rangers, and Olympic-level rowing and triathlon teams.\n- The leadership team combines combat experience from the 75th Ranger Regiment with engineering backgrounds from major tech companies like Google and Magic Leap.\n\n**FOUNDER'S PITCH**\nDRAGON builds ultralight AR heads-up displays for defense and performance. We are piloting with Navy SEALs and 75th RR, as well as USRowing and USATriathlon, with pro cycling pilots next. Our peripheral-first architecture reduces cognitive load and integrates with ATAK. Harvard founded.\n\n**FOUNDER'S WORK & EDUCATION**\nLaconia, Harvard University, ALIENANT",
       "batch": "Deepchecks Mar 2026",
       "source": "Deepchecks",
       "status": "Not Contacted",
-      "industries": "Neurotech, Defense",
+      "industries": "Defense, Hardware",
       "subindustry": "",
       "tags": "Deep Tech",
       "website": "https://dragonenterprises.co/",
@@ -58558,17 +58585,19 @@
         }
       ],
       "interactions": [],
-      "notes": []
+      "notes": [],
+      "valuation": "$16M - $20M",
+      "raise_amount": "$2M - $4M"
     },
     {
       "id": 549,
       "name": "CI-PHER",
       "one_liner": "Perception fabric enabling real-time autonomous curbside deliveries",
-      "long_description": "**DESCRIPTION**\nCI-PHER is building AI-enabled air dominance for denied environments. We have booked over $2M in revenue with traction across DIU, INDOPACOM, CENTCOM, and the U.S. Army. Our team brings deep operator, aerospace, and manufacturing experience with a track record of fielding defense systems.",
+      "long_description": "**DESCRIPTION**\nCI-PHER manufactures low-cost, mass-producible autonomous drones and a decentralized command system to enable large-scale aerial swarms. This platform provides the military with affordable, expendable airpower that can be deployed in high volumes to overwhelm adversaries.\n\n- The company has already made over $2 million in sales and signed contracts with major defense groups like the U.S. Army.\n- Their manufacturing process cuts costs by 90% and speeds up work, allowing them to build hundreds of drones a month while others struggle to keep up.\n- They built a software network that lets swarms of drones talk to each other and work together on missions without needing a human to control every move.\n- The team is led by former Special Operations veterans and engineers from big aerospace companies who know exactly what soldiers need.\n- Unlike many defense startups that are just concepts, they have already built and tested their hardware in the field and are ready for mass production.\n\n**FOUNDER'S PITCH**\nCI-PHER is building AI-enabled air dominance for denied environments. We have booked over $2M in revenue with traction across DIU, INDOPACOM, CENTCOM, and the U.S. Army. Our team brings deep operator, aerospace, and manufacturing experience with a track record of fielding defense systems.\n\n**FOUNDER'S WORK & EDUCATION**\nCROSS\u2022AERO, RapidFlight, LLC, Indigo Industries, Embry-Riddle Aeronautical University, Stanford University",
       "batch": "Deepchecks Mar 2026",
       "source": "Deepchecks",
       "status": "Not Contacted",
-      "industries": "Robotics, Construction Tech",
+      "industries": "Defense, Robotics",
       "subindustry": "",
       "tags": "Deep Tech",
       "website": "https://ci-pher.tech/",
@@ -58653,17 +58682,19 @@
         }
       ],
       "interactions": [],
-      "notes": []
+      "notes": [],
+      "valuation": "$21M - $25M",
+      "raise_amount": "$4M+"
     },
     {
       "id": 550,
       "name": "Orion Edge",
       "one_liner": "RF disruption platforms enabling covert electronic attack",
-      "long_description": "**DESCRIPTION**\nAt Orion Edge, we deliver autonomous electronic attack systems to the DoW\u2019s platoon and lower formations to keep soldiers alive on the battlefield. We are delivering systems to the U.S. Army in March and April, and forecast to cross $2m in revenue in CY 2026.",
+      "long_description": "**DESCRIPTION**\nOrion Edge builds autonomous, wearable electronic attack systems that protect soldiers from enemy signals without requiring manual operation. By shrinking powerful jamming technology into a stealthy, affordable package, they provide critical defense for small infantry units that traditional heavy equipment cannot reach.\n\n- The company is already delivering systems to the U.S. Army and forecasts over $2 million in revenue for 2026.\n- Their devices work completely on their own without needing a network or a human operator to manage them.\n- While most jamming gear is easy for enemies to spot, this system uses stealth technology to block signals without giving away the soldier's position.\n- The founders are military veterans who tested existing products in the field, found them ineffective, and designed a solution that actually works for front-line troops.\n- The equipment costs less than a third of the price of the closest competitor and is flexible enough to be worn by a soldier or mounted on a vehicle.\n\n**FOUNDER'S PITCH**\nAt Orion Edge, we deliver autonomous electronic attack systems to the DoW's platoon and lower formations to keep soldiers alive on the battlefield. We are delivering systems to the U.S. Army in March and April, and forecast to cross $2m in revenue in CY 2026.\n\n**FOUNDER'S WORK & EDUCATION**\nLockheed Martin, US Army, The George Washington University - School of Engineering & Applied Science, University of Colorado Colorado Springs, United States Military Academy at West Point",
       "batch": "Deepchecks Mar 2026",
       "source": "Deepchecks",
       "status": "Not Contacted",
-      "industries": "Robotics, SaaS",
+      "industries": "Defense, Hardware",
       "subindustry": "",
       "tags": "Deep Tech",
       "website": "https://orionedgegroup.com/",
@@ -58748,17 +58779,19 @@
         }
       ],
       "interactions": [],
-      "notes": []
+      "notes": [],
+      "valuation": "$21M - $25M",
+      "raise_amount": "$2M - $4M"
     },
     {
       "id": 551,
       "name": "Mithril Technologies",
       "one_liner": "Antennas enabling multi-orbit space domain awareness",
-      "long_description": "**DESCRIPTION**\n1. World&#x27;s first technology with no moving parts to enable adaptive long-range radar (in space or on ground)\n 2. None yet, but 9 letters of support from primes\n 3. Nainika declined Harvard to work on Mithril; Scarlett&#x27;s professor became an astronaut and was kept alive in orbit by a valve she qualified",
+      "long_description": "**DESCRIPTION**\nMithril Technologies builds shape-shifting radar antennas that use static electricity instead of heavy motors to track objects in space. This technology eliminates blind spots in orbit monitoring, helping to prevent satellite collisions and detect potential threats that current ground stations miss.\n\n- The antennas change shape using static electricity rather than mechanical parts, which makes them lighter, cheaper, and longer-lasting than standard dishes.\n- Current tracking systems leave large gaps in coverage, but this radar fills those blind spots to protect satellites from space junk and hostile activity.\n- The founders have worked at SpaceX, NASA, and MIT, and one co-founder previously tested a critical valve that kept an astronaut alive in orbit.\n- Major defense contractors and government agencies have already sent nine letters of support, showing a strong need for better space surveillance tools.\n- Their software uses artificial intelligence to automatically steer the radar and stay locked on moving targets, even if someone tries to jam the signal.\n\n**FOUNDER'S PITCH**\n1. World's first technology with no moving parts to enable adaptive long-range radar (in space or on ground) 2. None yet, but 9 letters of support from primes 3. Nainika declined Harvard to work on Mithril; Scarlett's professor became an astronaut and was kept alive in orbit by a valve she qualified\n\n**FOUNDER'S WORK & EDUCATION**\nMagellan Jets, GLIN Impact Capital, Schwarzman Scholars, University of Tennessee, Knoxville, Haslam College of Business at the University of Tennessee, Harvard Business School",
       "batch": "Deepchecks Mar 2026",
       "source": "Deepchecks",
       "status": "Not Contacted",
-      "industries": "Space Tech, AI/ML",
+      "industries": "Defense, Space Tech",
       "subindustry": "",
       "tags": "Deep Tech",
       "website": "https://mithril.space/",
@@ -58843,17 +58876,19 @@
         }
       ],
       "interactions": [],
-      "notes": []
+      "notes": [],
+      "valuation": "$5M - $10M",
+      "raise_amount": "$1M - $2M"
     },
     {
       "id": 552,
       "name": "Sonibel Instruments",
       "one_liner": "Welding defect detection platform enabling real-time feedback",
-      "long_description": "**DESCRIPTION**\nInspired by CPO&#x27;s experience as a shipyard Reliability Engineer, Sonibel cuts downtime for welders so urgent infrastructure is un-bottlenecked. We do this by providing real-time quality control alerts to welders based on the sound of the arc during welding, captured by our edge devices.",
+      "long_description": "**DESCRIPTION**\nSonibel Instruments uses AI sensors to analyze the sound of welding arcs and detect defects in real-time. This immediate feedback allows fabricators to fix errors instantly, preventing the massive costs and delays associated with repairing welds after a project is finished.\n\n- Fixing a bad weld after inspection costs ten times more than fixing it immediately, and defects currently eat up nearly a third of project budgets.\n- The company's device mounts directly to the welding torch and uses machine learning to listen for flaws, giving welders a simple visual alert the moment a mistake happens.\n- Demand is already high with a $15 million waitlist, driven by a massive labor shortage and a backlog of construction work that needs to be done faster.\n- They make money in two ways: selling the hardware unit upfront for a high profit margin, and charging an annual fee for software updates and data tracking.\n- The founding team combines business and engineering expertise with direct industry experience, including a CPO who previously worked at a major shipyard.\n\n**FOUNDER'S PITCH**\nInspired by CPO's experience as a shipyard Reliability Engineer, Sonibel cuts downtime for welders so urgent infrastructure is un-bottlenecked. We do this by providing real-time quality control alerts to welders based on the sound of the arc during welding, captured by our edge devices.\n\n**FOUNDER'S WORK & EDUCATION**\nVision2Reality Foundation, Matcha UBC, UBC Sauder School of Business, National University of Singapore, International Baccalaureate",
       "batch": "Deepchecks Mar 2026",
       "source": "Deepchecks",
       "status": "Not Contacted",
-      "industries": "Construction Tech, SaaS",
+      "industries": "Industrial, Hardware",
       "subindustry": "",
       "tags": "Deep Tech",
       "website": "https://sonibelinstruments.com/",
@@ -58938,17 +58973,19 @@
         }
       ],
       "interactions": [],
-      "notes": []
+      "notes": [],
+      "valuation": "$5M - $10M",
+      "raise_amount": "$1M - $2M"
     },
     {
       "id": 553,
       "name": "ARCHANGEL ATOMICS LLC",
       "one_liner": "Fuel fabrication enabling Gen IV reactors and hyperscalers",
-      "long_description": "**DESCRIPTION**\nARCHANGEL ATOMICS is building a novel, carbon nanostructure based nuclear fuel to supply the AI data center electricity demand. We are pre-revenue, however we have a proof of concept nanostructures already developed. The founder&#x27;s research expertise is in the chemistry of space environments.\n\n**FOUNDER'S WORK & EDUCATION**\nUniversity of Arizona",
+      "long_description": "**DESCRIPTION**\nArchangel Atomics develops nanoscale nuclear fuel designed to power the advanced reactors needed for AI data centers. By shrinking fuel architecture a trillion times smaller than current standards, they aim to provide a safer and more efficient energy source for the world's growing electricity needs.\n\n- The fuel uses carbon structures a trillion times smaller than standard particles, which makes the fuel safer and better at handling heat.\n- The founder discovered this technology by accident while studying how stars form carbon in space, noticing the lab shapes looked like tiny nuclear fuel.\n- While billions are being spent building new nuclear reactors for AI, almost nobody is working on new fuel to run them, creating a huge opportunity.\n- Instead of building expensive factories, the company plans to license its designs to existing manufacturers to scale quickly without high costs.\n- The team has already made proof-of-concept samples in the lab and secured patents to protect the invention before moving to testing.\n\n**FOUNDER'S PITCH**\nARCHANGEL ATOMICS is building a novel, carbon nanostructure based nuclear fuel to supply the AI data center electricity demand. We are pre-revenue, however we have a proof of concept nanostructures already developed. The founder's research expertise is in the chemistry of space environments.\n\n**FOUNDER'S WORK & EDUCATION**\nUniversity of Arizona",
       "batch": "Deepchecks Mar 2026",
       "source": "Deepchecks",
       "status": "Not Contacted",
-      "industries": "Climate Tech, Construction Tech",
+      "industries": "Clean Energy, Deep Tech",
       "subindustry": "",
       "tags": "Deep Tech",
       "website": "https://archangelatomics.com/",
@@ -59033,17 +59070,19 @@
         }
       ],
       "interactions": [],
-      "notes": []
+      "notes": [],
+      "valuation": "Under $5M",
+      "raise_amount": "$250K - $1M"
     },
     {
       "id": 554,
       "name": "Mirra",
       "one_liner": "Plant-based colorants replacing synthetic food dyes",
-      "long_description": "**DESCRIPTION**\nMirra is commercializing a novel class of food dye engineered to match the brightness, opacity, and stability of artificial dyes and titanium dioxide through a proprietary method of structuring natural pigments within a protective protein matrix. We are currently running pilots with food giants.\n\n**FOUNDER'S WORK & EDUCATION**\nPratt Institute, Brimstone , OurCarbon, Spring Hill College, The New School",
+      "long_description": "**DESCRIPTION**\nMirra creates high-performance natural food dyes by structuring pigments within a protein matrix to mimic the vibrancy and stability of artificial colors. This technology allows food manufacturers to replace controversial synthetic additives and titanium dioxide without sacrificing the visual appeal consumers expect.\n\n- Natural food colors are notorious for fading and looking dull, but this startup has engineered a way to make them just as vibrant and stable as artificial dyes.\n- The technology wraps natural pigments in a protective protein shell, using physics rather than chemical additives to create bright colors that withstand heat and light.\n- Food companies are scrambling to find alternatives to titanium dioxide, a common whitening agent that is facing bans, and this is one of the few viable natural replacements.\n- The team is already running pilot programs with some of the world's largest food manufacturers, proving that the industry is ready to adopt this new standard.\n- By solving the stability issues of natural dyes, the platform allows brands to clean up their ingredient labels without changing the look of their popular snacks and candies.\n\n**FOUNDER'S PITCH**\nMirra is commercializing a novel class of food dye engineered to match the brightness, opacity, and stability of artificial dyes and titanium dioxide through a proprietary method of structuring natural pigments within a protective protein matrix. We are currently running pilots with food giants.\n\n**FOUNDER'S WORK & EDUCATION**\nPratt Institute, Brimstone, OurCarbon, Spring Hill College, The New School",
       "batch": "Deepchecks Mar 2026",
       "source": "Deepchecks",
       "status": "Not Contacted",
-      "industries": "Biotech, Climate Tech",
+      "industries": "Food Tech, Biotech",
       "subindustry": "",
       "tags": "Deep Tech",
       "website": "https://mirra.earth/",
@@ -59128,17 +59167,19 @@
         }
       ],
       "interactions": [],
-      "notes": []
+      "notes": [],
+      "valuation": "$5M - $10M",
+      "raise_amount": "$250K - $1M"
     },
     {
       "id": 555,
       "name": "Sunchem",
       "one_liner": "Metal recovery using hydrometallurgy from e-waste",
-      "long_description": "**DESCRIPTION**\nSunchem deploys precision separation technologies across the critical metal value chain. Our position is unique. We have access to over $8 million worth of instruments at the Lawrence Berkeley National Laboratory to perform advanced testing and an 11,400 sq ft facility to run multiple pilot plants.",
+      "long_description": "**DESCRIPTION**\nSunchem recovers critical metals like gold and copper from electronic waste and mining scraps using a precise, water-based filtration process. This technology replaces toxic smelting with a cleaner, more efficient method that secures essential materials for the global economy.\n\n- Most gold recovery today relies on dirty smelting or toxic cyanide, but this startup uses a clean filtration process that is far more efficient.\n- Their technology recovers 99% of metals from electronic waste and mining scraps, producing gold that is verified to be 99.999% pure.\n- They have already proved the science works by running pilots with major industry players to recover copper and silver from things like old solar panels.\n- The team has a unique advantage with access to $8 million in high-tech testing gear at a national lab and a large new facility to run their operations.\n- Led by expert scientists, they have secured government funding and partnerships to help solve the shortage of critical metals needed for electronics and data centers.\n\n**FOUNDER'S PITCH**\nSunchem deploys precision separation technologies across the critical metal value chain. Our position is unique. We have access to over $8 million worth of instruments at the Lawrence Berkeley National Laboratory to perform advanced testing and an 11,400 sq ft facility to run multiple pilot plants.\n\n**FOUNDER'S WORK & EDUCATION**\nActivate, Sylvatex (SVX), Loyola Marymount University, EPFL, University of California, Berkeley - School of Law, University of Arizona",
       "batch": "Deepchecks Mar 2026",
       "source": "Deepchecks",
       "status": "Not Contacted",
-      "industries": "AI/ML",
+      "industries": "Materials, Clean Energy",
       "subindustry": "",
       "tags": "Deep Tech",
       "website": "https://sunchem.io/",
@@ -59223,21 +59264,23 @@
         }
       ],
       "interactions": [],
-      "notes": []
+      "notes": [],
+      "valuation": "$21M - $25M",
+      "raise_amount": "$2M - $4M"
     },
     {
       "id": 556,
       "name": "Neural Pusle",
       "one_liner": "Seizure forecasting and preemptive neuromodulation using implants",
-      "long_description": "**DESCRIPTION**\nNeuralPulse is a neurotechnology company spun out of King\u2019s College London that is building an implant-embedded control layer to turn neuromodulation devices from reactive into predictive and preventive systems. Its core breakthrough is a closed-loop algorithm that probes the brain, estimates seizure risk in real time, and delivers preemptive stimulation before seizures begin, with a first-in-human study already completed.",
+      "long_description": "**DESCRIPTION**\nNeuralPulse builds intelligent software for brain implants that actively probes neural activity to predict and stop seizures before they begin. This technology transforms standard devices into proactive systems, offering new hope for millions of patients with drug-resistant epilepsy.\n\n- Most brain implants only react after a seizure starts or fire on a set schedule, but this system checks brain activity constantly to stop seizures before they strike.\n- In a study with eight patients, the technology successfully predicted seizure risk better than standard methods, proving that active brain probing works in real people.\n- Instead of building a whole new implant, the company creates a smart control layer that works with existing devices from major manufacturers.\n- The founders are leading researchers from King's College London who have published their results in the world's top epilepsy journal and are advised by former executives from major medical device companies.\n- While starting with epilepsy, the underlying method of tracking and adjusting brain states could eventually treat other conditions like depression and anxiety.\n\n**FOUNDER'S PITCH**\nNeuralPulse is a neurotechnology company spun out of King's College London that is building an implant-embedded control layer to turn neuromodulation devices from reactive into predictive and preventive systems. Its core breakthrough is a closed-loop algorithm that probes the brain, estimates seizure risk in real time, and delivers preemptive stimulation before seizures begin, with a first-in-human study already completed.\n\n**FOUNDER'S WORK & EDUCATION**\nKing's College London, MEGI Health, Universitat Pompeu Fabra, Aristotle University of Thessaloniki (AUTH)",
       "batch": "Deepchecks Mar 2026",
       "source": "Deepchecks",
       "status": "Not Contacted",
-      "industries": "Neurotech, Construction Tech",
+      "industries": "Medtech, Healthcare",
       "subindustry": "",
       "tags": "Deep Tech",
       "website": "https://neural-pulse.com/",
-      "all_locations": "United States",
+      "all_locations": "Europe",
       "team_size": 0,
       "year_founded": null,
       "logo_url": "",
@@ -59318,17 +59361,18 @@
         }
       ],
       "interactions": [],
-      "notes": []
+      "notes": [],
+      "valuation": "$16M - $20M"
     },
     {
       "id": 557,
       "name": "MICSI",
-      "one_liner": "",
-      "long_description": "**DESCRIPTION**\nMICSI builds vendor-neutral software that improves clinical image quality, starting with our FDA-cleared MRI enhancement (MICSI-RMT) for noise and artifact reduction, enabling faster scans and better performance on low-end or aging MRI scanners. Our next product focuses on PET imaging (targeting FDA clearance in Q2 2026). We use the patient\u2019s prior MRI to reduce noise and recover resolution in PET across vendors, enabling lower-dose scans and extending the useful life of existing scanners. We acquire customers via champion-led pilots that expand into scaled deployments, amplified by reference sites and conferences.",
+      "one_liner": "Vendor-neutral software improving clinical image quality",
+      "long_description": "**DESCRIPTION**\nMICSI builds vendor-neutral software that improves clinical image quality, starting with FDA-cleared MRI enhancement for noise and artifact reduction. This enables faster scans and better performance on low-end or aging MRI scanners, with expansion into PET imaging targeting FDA clearance.\n\n- Their FDA-cleared MRI enhancement (MICSI-RMT) reduces noise and artifacts, enabling faster scans and better performance on low-end or aging MRI scanners.\n- Their next product focuses on PET imaging, using the patient's prior MRI to reduce noise and recover resolution across vendors.\n- The technology enables lower-dose scans and extends the useful life of existing scanners.\n- They acquire customers via champion-led pilots that expand into scaled deployments, amplified by reference sites and conferences.\n- The platform works across vendors, making it a flexible solution for hospitals with mixed equipment.\n\n**FOUNDER'S PITCH**\nMICSI builds vendor-neutral software that improves clinical image quality, starting with our FDA-cleared MRI enhancement (MICSI-RMT) for noise and artifact reduction, enabling faster scans and better performance on low-end or aging MRI scanners. Our next product focuses on PET imaging (targeting FDA clearance in Q2 2026). We use the patient's prior MRI to reduce noise and recover resolution in PET across vendors, enabling lower-dose scans and extending the useful life of existing scanners. We acquire customers via champion-led pilots that expand into scaled deployments, amplified by reference sites and conferences.\n\n**FOUNDER'S WORK & EDUCATION**\nNYU Langone Health, NYU School of Medicine",
       "batch": "Deepchecks Mar 2026",
       "source": "Deepchecks",
       "status": "Not Contacted",
-      "industries": "Healthcare, SaaS",
+      "industries": "Medtech, Healthcare",
       "subindustry": "",
       "tags": "Deep Tech",
       "website": "https://micsi.com/",
@@ -59413,17 +59457,18 @@
         }
       ],
       "interactions": [],
-      "notes": []
+      "notes": [],
+      "valuation": "$21M - $25M"
     },
     {
       "id": 558,
       "name": "Calaris Diagnostics",
       "one_liner": "Diagnostics company enabling saliva-based liver disease screening",
-      "long_description": "**DESCRIPTION**\nUp to 100M Americans are estimated to have fatty liver disease (MASLD), and clinical guidelines from the AASLD, AACE, AGA, and ADA now recommend that primary care physicians screen high-risk patients for liver fibrosis using non-invasive tests - with the AGA&#x27;s latest Clinical Care Pathway calling for repeat screening every 1\u20132 years - but no point-of-care test exists. Calaris Diagnostics is developing SALCheck\u2122 Liver, the first saliva-based rapid test for liver fibrosis triage, powered by a proprietary, peer-reviewed algorithm (AUROC up to 0.97) exclusively licensed from our university research partner. Our go-to-market targets the 200,000+ US primary care and endocrinology sites where these patients are already being seen but not screened, with a $12-$15 disposable test strip and a ~$2,500 reader (razor-razorblade model). SALCheck Liver is our flagship with intent to expand into other cardiometabolic products.\n\n**FOUNDER'S WORK & EDUCATION**\nOptiGenix, Cercle, Innovative Health Diagnostics, University of Sydney, UNSW",
+      "long_description": "**DESCRIPTION**\nCalaris Diagnostics is developing the first rapid, saliva-based test to screen for liver fibrosis directly in primary care offices. This tool addresses the lack of accessible point-of-care options for the millions of patients at risk of fatty liver disease, enabling earlier detection and better management.\n\n- Millions of people have fatty liver disease, but current screening methods are often invasive or unavailable in regular doctor's offices.\n- The device uses a saliva sample instead of blood or a biopsy, making it painless and easy to administer during a routine checkup.\n- The underlying algorithm has shown very high accuracy rates in studies, meaning doctors can trust the results to identify patients who need further care.\n- They plan to sell a reusable reader device along with affordable disposable test strips, creating a steady stream of revenue similar to how printer ink is sold.\n- With new medical guidelines recommending regular screening for high-risk patients, primary care doctors are actively looking for a practical way to test people on-site.\n\n**FOUNDER'S PITCH**\nUp to 100M Americans are estimated to have fatty liver disease (MASLD), and clinical guidelines from the AASLD, AACE, AGA, and ADA now recommend that primary care physicians screen high-risk patients for liver fibrosis using non-invasive tests - with the AGA's latest Clinical Care Pathway calling for repeat screening every 1\u20132 years - but no point-of-care test exists. Calaris Diagnostics is developing SALCheck\u2122 Liver, the first saliva-based rapid test for liver fibrosis triage, powered by a proprietary, peer-reviewed algorithm (AUROC up to 0.97) exclusively licensed from our university research partner. Our go-to-market targets the 200,000+ US primary care and endocrinology sites where these patients are already being seen but not screened, with a $12-$15 disposable test strip and a ~$2,500 reader (razor-razorblade model). SALCheck Liver is our flagship with intent to expand into other cardiometabolic products.\n\n**FOUNDER'S WORK & EDUCATION**\nOptiGenix, Cercle, Innovative Health Diagnostics, University of Sydney, UNSW",
       "batch": "Deepchecks Mar 2026",
       "source": "Deepchecks",
       "status": "Not Contacted",
-      "industries": "Clean Energy, Healthcare",
+      "industries": "Medtech, Healthcare",
       "subindustry": "",
       "tags": "Deep Tech",
       "website": "https://calarisdx.com/",
@@ -59508,17 +59553,18 @@
         }
       ],
       "interactions": [],
-      "notes": []
+      "notes": [],
+      "valuation": "$5M - $10M"
     },
     {
       "id": 559,
       "name": "Cyrano",
       "one_liner": "Hardware enabling AI video analytics on legacy CCTV",
-      "long_description": "**DESCRIPTION**\nCyrano builds a small edge device that upgrades existing CCTV systems with AI, allowing property operators to detect incidents like trespassing, theft, and loitering in real time without replacing cameras. The system plugs into legacy DVRs or RTSP feeds and begins monitoring immediately, sending alerts and enabling plain-English search across historical footage.\nWe&#x27;re seeing initial success in multifamily portfolios, where one successful deployment can expand across 10-200 buildings. Our acquisition strategy is direct outreach to property operators and managers, starting with small pilot deployments that expand portfolio-wide once value is demonstrated.\n\n**FOUNDER'S WORK & EDUCATION**\nAudiofeud, RishiZest, Kutir Corporation, Northeastern University, BASIS Independent Fremont",
+      "long_description": "**DESCRIPTION**\nCyrano upgrades legacy CCTV systems with a plug-in device that adds AI-powered alerts and search capabilities to existing cameras. This lets property operators detect incidents and find footage instantly without the massive expense of replacing their entire security infrastructure.\n\n- Most security cameras just record blindly, but this device connects to existing recorders to spot problems like trespassing or theft as they happen.\n- Property owners avoid the huge cost of ripping out old wires and cameras because the system works with the hardware they already own.\n- Users can search through historical video using simple text descriptions instead of wasting hours watching empty footage to find an incident.\n- The business model is profitable immediately, charging for both the hardware installation and a recurring monthly subscription for the software.\n- The founders have specialized experience in computer vision and hardware, having previously built systems for wildfire detection and drones.\n\n**FOUNDER'S PITCH**\nCyrano builds a small edge device that upgrades existing CCTV systems with AI, allowing property operators to detect incidents like trespassing, theft, and loitering in real time without replacing cameras. The system plugs into legacy DVRs or RTSP feeds and begins monitoring immediately, sending alerts and enabling plain-English search across historical footage. We're seeing initial success in multifamily portfolios, where one successful deployment can expand across 10-200 buildings. Our acquisition strategy is direct outreach to property operators and managers, starting with small pilot deployments that expand portfolio-wide once value is demonstrated.\n\n**FOUNDER'S WORK & EDUCATION**\nAudiofeud, RishiZest, Kutir Corporation, Northeastern University, BASIS Independent Fremont",
       "batch": "Deepchecks Mar 2026",
       "source": "Deepchecks",
       "status": "Not Contacted",
-      "industries": "Construction Tech, AI/ML",
+      "industries": "AI/ML, Security",
       "subindustry": "",
       "tags": "Deep Tech",
       "website": "https://gmail.com/",
@@ -59603,17 +59649,18 @@
         }
       ],
       "interactions": [],
-      "notes": []
+      "notes": [],
+      "valuation": "$5M - $10M"
     },
     {
       "id": 560,
       "name": "Coformer.ai",
       "one_liner": "Drug formulation improving solubility via AI co-crystal engineering",
-      "long_description": "**DESCRIPTION**\nPerkin Medal-winning solid-state technology accelerated by AI to improve drug bioavailability. This enables rapid regulatory approval. The plan is to acquire customers after dog studies or small-scale human trials through licensing deals.",
+      "long_description": "**DESCRIPTION**\nCoformer.ai uses Perkin Medal-winning solid-state technology accelerated by AI to improve drug bioavailability. This enables rapid regulatory approval by solving solubility challenges that cause many promising drugs to fail in development.\n\n- The platform uses AI to engineer co-crystals that dramatically improve how well drugs dissolve and absorb in the body.\n- Their approach enables rapid regulatory approval by solving formulation challenges early in development.\n- The plan is to acquire customers after dog studies or small-scale human trials through licensing deals.\n- The technology is built on award-winning solid-state chemistry expertise combined with modern AI acceleration.\n- By improving bioavailability, they help pharma companies rescue drugs that would otherwise fail due to poor solubility.\n\n**FOUNDER'S PITCH**\nPerkin Medal-winning solid-state technology accelerated by AI to improve drug bioavailability. This enables rapid regulatory approval. The plan is to acquire customers after dog studies or small-scale human trials through licensing deals.\n\n**FOUNDER'S WORK & EDUCATION**\nCoformer, TransForm Pharmaceuticals, University of Mumbai, MIT",
       "batch": "Deepchecks Mar 2026",
       "source": "Deepchecks",
       "status": "Not Contacted",
-      "industries": "Healthcare, AI/ML",
+      "industries": "Pharma, AI/ML",
       "subindustry": "",
       "tags": "Deep Tech",
       "website": "https://coformer.ai/",
@@ -59698,13 +59745,14 @@
         }
       ],
       "interactions": [],
-      "notes": []
+      "notes": [],
+      "valuation": "$26M+"
     },
     {
       "id": 561,
       "name": "TALON OS",
       "one_liner": "Teleoperation platform enabling real-time control of autonomous robots",
-      "long_description": "**DESCRIPTION**\nTALON OS is a hardware agnostic browser teleop layer for robots and drones using RAPTOR Protocol for ultra low latency control. We have a signed $1.2M PO with $534K upfront plus $30K monthly software at activation, built by an operator led engineering team.\n\n**FOUNDER'S WORK & EDUCATION**\nWindy Sports and Fitness, VentureMind AI, Texas A&M University",
+      "long_description": "**DESCRIPTION**\nTALON OS builds a browser-based teleoperation layer that allows operators to control robots and drones remotely with ultra-low latency. This hardware-agnostic system enables companies to manage diverse fleets for tasks like security patrols and evidence capture without being locked into a single equipment manufacturer.\n\n- The platform runs entirely in a web browser, allowing operators to control robots from anywhere without needing to install complex software.\n- It uses the RAPTOR Protocol to ensure commands reach the robots instantly, fixing the lag issues that typically make remote control difficult.\n- The system works with any type of robot or drone, giving customers the flexibility to mix and match hardware from different vendors.\n- The company has already signed a $1.2M purchase order with substantial upfront cash, showing that major customers are ready to adopt the technology.\n- The team is led by engineers with real-world operations experience, ensuring the product solves actual problems rather than theoretical ones.\n\n**FOUNDER'S PITCH**\nTALON OS is a hardware agnostic browser teleop layer for robots and drones using RAPTOR Protocol for ultra low latency control. We have a signed $1.2M PO with $534K upfront plus $30K monthly software at activation, built by an operator led engineering team.\n\n**FOUNDER'S WORK & EDUCATION**\nWindy Sports and Fitness, VentureMind AI, Texas A&M University",
       "batch": "Deepchecks Mar 2026",
       "source": "Deepchecks",
       "status": "Not Contacted",
@@ -59793,17 +59841,19 @@
         }
       ],
       "interactions": [],
-      "notes": []
+      "notes": [],
+      "valuation": "$11M - $15M",
+      "raise_amount": "$4M+"
     },
     {
       "id": 562,
       "name": "VitroBot",
       "one_liner": "Facade maintenance and inspection, automating operations with robotics",
-      "long_description": "**DESCRIPTION**\nVitroBot builds autonomous robots that clean and inspect skyscraper facades using the double-rope infrastructure already on every building, no modifications, no new hardware installed. 6-10x cheaper than manual rope access, zero human safety risk, in a $40B+ market where Gen Z is abandoning the job",
+      "long_description": "**DESCRIPTION**\nVitroBot builds autonomous robots that clean and inspect skyscraper facades using the standard safety ropes already found on most high-rise buildings. This approach cuts maintenance costs by up to ten times and eliminates safety risks by removing human workers from dangerous heights.\n\n- The startup targets a $40 billion global market that currently struggles with labor shortages and high worker turnover.\n- Unlike competitors that need custom rails or cranes, these robots attach to the standard safety ropes found on 95% of buildings.\n- Building owners can lower their cleaning expenses by 6 to 10 times compared to hiring manual crews.\n- The system keeps workers out of dangerous environments to prevent accidents and allows for continuous operation day and night.\n- The founding team combines aerospace engineering expertise with certified rope access skills, giving them practical insight into the job's physical constraints.\n\n**FOUNDER'S PITCH**\nVitroBot builds autonomous robots that clean and inspect skyscraper facades using the double-rope infrastructure already on every building, no modifications, no new hardware installed. 6-10x cheaper than manual rope access, zero human safety risk, in a $40B+ market where Gen Z is abandoning the job\n\n**FOUNDER'S WORK & EDUCATION**\nWhite Loop Capital, Herake.com, SCI TURENNE, Saint Martin de France",
       "batch": "Deepchecks Mar 2026",
       "source": "Deepchecks",
       "status": "Not Contacted",
-      "industries": "Climate Tech, Robotics",
+      "industries": "Robotics, Climate Tech",
       "subindustry": "",
       "tags": "Deep Tech",
       "website": "https://gmail.com/",
@@ -59888,17 +59938,19 @@
         }
       ],
       "interactions": [],
-      "notes": []
+      "notes": [],
+      "valuation": "$5M - $10M",
+      "raise_amount": "$250K - $1M"
     },
     {
       "id": 563,
       "name": "CarnotX",
       "one_liner": "Drones delivering NDAA-compliant enterprise inspection capabilities",
-      "long_description": "**DESCRIPTION**\nCarnotX is an autonomous, reliable, cost-effective drone for commercial inspection and EMS, which hasn&#x27;t been done in the US. We&#x27;ve gotten 10 Letters of Intent and have many more on the way. Our team comes from autonomy and machine learning in aerospace and we believe we&#x27;re the perfect team.\n\n**FOUNDER'S WORK & EDUCATION**\nBAE Systems, University of Massachusetts Amherst, University of Illinois Urbana-Champaign, Saint John&#x27;s High School",
+      "long_description": "**DESCRIPTION**\nCarnotX builds affordable, autonomous US-made drones designed specifically for commercial inspection and emergency response teams. Their platform solves the reliability issues and high costs of existing domestic drones while offering a secure alternative to banned foreign hardware.\n\n- US-made drones are often too pricey or unreliable, while foreign ones face bans; this company offers a dependable American option that costs much less.\n- The drones use special software that fixes itself to keep flying safely even if the connection drops, stopping the crashes that happen with other systems.\n- They have already received 10 signed agreements from customers in inspection and emergency services who need a better domestic solution.\n- By combining standard parts with their own software, they keep manufacturing costs down and can sell units for under $15,000.\n- The founders are engineers with experience in defense and self-driving vehicles, bringing high reliability standards to the commercial market.\n\n**FOUNDER'S PITCH**\nCarnotX is an autonomous, reliable, cost-effective drone for commercial inspection and EMS, which hasn't been done in the US. We've gotten 10 Letters of Intent and have many more on the way. Our team comes from autonomy and machine learning in aerospace and we believe we're the perfect team.\n\n**FOUNDER'S WORK & EDUCATION**\nBAE Systems, University of Massachusetts Amherst, University of Illinois Urbana-Champaign, Saint John's High School",
       "batch": "Deepchecks Mar 2026",
       "source": "Deepchecks",
       "status": "Not Contacted",
-      "industries": "Robotics, Space Tech",
+      "industries": "Robotics, Defense",
       "subindustry": "",
       "tags": "Deep Tech",
       "website": "https://carnotx.com/",
@@ -59983,17 +60035,19 @@
         }
       ],
       "interactions": [],
-      "notes": []
+      "notes": [],
+      "valuation": "Under $5M",
+      "raise_amount": "$250K - $1M"
     },
     {
       "id": 564,
       "name": "Snowline",
       "one_liner": "Edge computing enabling real-time queuing and vehicle recognition",
-      "long_description": "**DESCRIPTION**\nSnowline (ex-Google/Tesla/cold chain team) is displacing legacy transport refrigeration with a vertically-integrated Physical AI System built on mass-produced components\u00a0\u00a0for both diesel and EV fleets. Alpha deployed on the roads. Monarch Trucks in California is our first strategic sales channel.\n\n**FOUNDER'S WORK & EDUCATION**\nGaingels, Google, Antologi by Area 120, University of Washington, Macalester College, Lester B. Pearson United World College of the Pacific",
+      "long_description": "**DESCRIPTION**\nSnowline replaces outdated transport refrigeration with a smart, electric cooling system that works on both diesel and electric trucks. This platform combines hardware and predictive software to prevent cargo spoilage while drastically reducing fuel and maintenance costs.\n\n- Traditional refrigerated shipping relies on old equipment that breaks often, causing nearly a quarter of all cargo claims due to temperature failures.\n- Instead of just tracking temperature, this system uses electric cooling and software to manage the climate and spot mechanical problems before they spoil the goods.\n- Fleet operators can save up to $200,000 per truck over its life by lowering fuel use, maintenance bills, and insurance costs.\n- The hardware is built as a simple replacement that fits onto existing trucks, so fleets can upgrade without having to buy brand new vehicles.\n- The founding team includes experts from Tesla, Google, and Apple who have experience building and scaling complex manufacturing and software systems.\n\n**FOUNDER'S PITCH**\nSnowline (ex-Google/Tesla/cold chain team) is displacing legacy transport refrigeration with a vertically-integrated Physical AI System built on mass-produced components for both diesel and EV fleets. Alpha deployed on the roads. Monarch Trucks in California is our first strategic sales channel.\n\n**FOUNDER'S WORK & EDUCATION**\nGaingels, Google, Antologi by Area 120, University of Washington, Macalester College, Lester B. Pearson United World College of the Pacific",
       "batch": "Deepchecks Mar 2026",
       "source": "Deepchecks",
       "status": "Not Contacted",
-      "industries": "AI/ML, Education",
+      "industries": "Transportation, Hardware",
       "subindustry": "",
       "tags": "Deep Tech",
       "website": "https://snowlinetech.com/",
@@ -60078,13 +60132,15 @@
         }
       ],
       "interactions": [],
-      "notes": []
+      "notes": [],
+      "valuation": "$16M - $20M",
+      "raise_amount": "$4M+"
     },
     {
       "id": 565,
       "name": "Meridian Systems",
       "one_liner": "Vessel infrastructure operator enabling unmanned logistics",
-      "long_description": "**DESCRIPTION**\nFirst American-owned operator purpose-built for autonomous vessel shore infrastructure.\nFounder M.S. Maritime Transport Management, University of Antwerp, actively engaged with USV Companies and DIU personnel.",
+      "long_description": "**DESCRIPTION**\nMeridian Port Systems builds and operates specialized floating docks with automated charging and fire safety for autonomous maritime vessels. This network provides essential pier space and power for the growing fleet of unmanned Navy ships that currently have nowhere to dock.\n\n- The US Navy is deploying hundreds of unmanned vessels but currently lacks the pier space, power connections, and safety systems needed to support them.\n- Their modular floating docks feature robotic arms for fast charging and built-in foam fire suppression to handle the specific risks of battery-powered ships.\n- Instead of just selling software, the company operates as a landlord that owns the physical infrastructure and leases space to vessel operators for recurring revenue.\n- As the first fully American-owned operator in this space, they eliminate the security risks and data leaks associated with foreign-controlled port terminals.\n- The business targets a massive gap in defense logistics where billions in spending are shifting toward autonomous fleets that traditional ports cannot handle.\n\n**FOUNDER'S PITCH**\nFirst American-owned operator purpose-built for autonomous vessel shore infrastructure. Founder M.S. Maritime Transport Management, University of Antwerp, actively engaged with USV Companies and DIU personnel.\n\n**FOUNDER'S WORK & EDUCATION**\nBizzgrowth, Hwy Haul, 143 Studios, LLC, Antwerp Management School, D'Amore-McKim School of Business at Northeastern University",
       "batch": "Deepchecks Mar 2026",
       "source": "Deepchecks",
       "status": "Not Contacted",
@@ -60173,7 +60229,9 @@
         }
       ],
       "interactions": [],
-      "notes": []
+      "notes": [],
+      "valuation": "$21M - $25M",
+      "raise_amount": "$4M+"
     }
   ],
   "settings": {
