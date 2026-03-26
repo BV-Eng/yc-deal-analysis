@@ -181,6 +181,102 @@ curl -X POST https://bv-deal-analysis.vercel.app/api/admin/reload-seed
 3. **Commit the updated seed-data.json**
 4. **Reload production:** `curl -X POST https://bv-deal-analysis.vercel.app/api/admin/reload-seed`
 
+---
+
+## Processing Deepchecks Batches
+
+When adding a new Deepchecks batch, follow this complete checklist:
+
+### Required Data from Deepchecks HTML
+
+For each company, extract ALL of these fields:
+- **Company name**
+- **Valuation** (e.g., "$16M - $20M")
+- **Raise amount** (e.g., "$1M - $2M")
+- **Industry tag** (e.g., "Biotech", "Hardware")
+- **One-liner** (the short tagline)
+- **Full description** (the paragraph with bullet points)
+- **Founder's pitch** (the founder's own words)
+- **Founder's work & education** (companies + schools)
+- **Contact email**
+- **Location** (if non-US, e.g., "Europe", "Canada")
+
+### Data Structure Requirements
+
+The `long_description` field MUST be formatted like previous batches:
+
+```
+**DESCRIPTION**
+[Main paragraph describing the company]
+
+- [Bullet point 1]
+- [Bullet point 2]
+- [Bullet point 3]
+- [Bullet point 4]
+- [Bullet point 5]
+
+**FOUNDER'S PITCH**
+[The founder's pitch text]
+
+**FOUNDER'S WORK & EDUCATION**
+[Companies, schools listed]
+```
+
+### Founder Data Requirements
+
+Each founder entry needs:
+- `id` - Unique integer ID (find max existing ID and increment)
+- `name` - Full name
+- `first_name`, `last_name` - Split from name
+- `linkedin` - LinkedIn profile URL
+- `founder_score` - Overall score (calculated from 9 dimensions)
+- All 9 dimension scores + justifications:
+  - `breakthrough_score`, `breakthrough_justification`
+  - `mission_score`, `mission_justification`
+  - `achievements_score`, `achievements_justification`
+  - `work_ethic_score`, `work_ethic_justification`
+  - `grit_score`, `grit_justification`
+  - `magnetism_score`, `magnetism_justification`
+  - `curiosity_score`, `curiosity_justification`
+  - `coachability_score`, `coachability_justification`
+  - `team_chemistry_score`, `team_chemistry_justification`
+
+### Complete Workflow
+
+```bash
+# 1. Add companies to seed-data.json with basic info
+# 2. Get LinkedIn data via PhantomBuster for founders
+# 3. Score founders with the scoring script
+python3 scripts/score_deepchecks_mar2026.py
+
+# 4. Update full descriptions from Deepchecks HTML
+python3 /tmp/update_deepchecks_full.py
+
+# 5. Assign thesis themes correctly
+#    - Sustainable Industry: biotech, clean energy, agtech, materials, circular
+#    - Human Health: medical, neurotech, diagnostics, therapeutics
+#    - Neutral: space, defense, general tech
+#    - Tomorrow's Workforce: ONLY if actually workforce/education related
+
+# 6. Assign owners
+python3 scripts/assign_owners_fast.py
+
+# 7. Commit, push, reload
+git add data/seed-data.json
+git commit -m "Add Deepchecks [Month] [Year] batch"
+git push origin main
+sleep 15
+curl -X POST https://bv-deal-analysis.vercel.app/api/admin/reload-seed
+```
+
+### Common Mistakes to Avoid
+
+1. **Missing founder IDs** - Frontend won't display founder score badge
+2. **Short descriptions** - Must include full DESCRIPTION + FOUNDER'S PITCH + WORK & EDUCATION
+3. **Wrong thesis themes** - "Tomorrow's Workforce" is ONLY for education/training companies
+4. **Forgetting to reload** - Dashboard won't update until you call reload endpoint
+5. **Reloading too fast** - Wait 15 seconds for Vercel to deploy before reloading
+
 ## API Endpoints
 
 ### Companies
